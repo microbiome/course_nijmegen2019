@@ -1,6 +1,6 @@
-book_filename: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL"
+book_filename: "Introduction to microbiome data science"
 delete_merged_file: true
 new_session: yes
-author: "Sudarshan A. Shetty"
+author: "Leo Lahti"
 date: "`r Sys.Date()`"
 output_dir: "docs"
