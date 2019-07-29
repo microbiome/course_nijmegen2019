@@ -1,0 +1,99 @@
+---
+title: "Course outline"
+author: "`r authors`"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+
+# Course overview
+
+**Data exploration and analysis in gut microbiome profiling studies**
+
+## 12 September:
+
+Session 1 (9.30-11.30  / 2 hours)
+Overview of a standard bioinformatics workflow in microbiome research.
+- Ecosystem view of the gut microbiome: from bugs to communities and function
+- Preprocessing and quality control
+  - Diagnostic plots and properties of microbiome data
+  - Common methods: DADA2 (SVs) etc.
+- Analysis and modeling of taxonomic composition
+  - Principal coordinates analysis & other common visualization techniques 
+  - Differential abundance analysis
+  - Varieties of alpha and beta diversity
+  - Identification of community types (DMM)
+  - Quantification of associations with external factors such as age, diet, or medication
+- Reproducible research and best practices in microbiome data science
+
+Session 2 (12-13 / 1 hour)
+KEYNOTE: Modern statistics in human gut microbiome research
+
+- Overview of a standard bioinformatics workflow in microbiome
+  research.
+
+- Highlight how properties of microbiome data, such as sparsity,
+  non-Gaussianity, and compositionality influences the choice and
+  performance of the statistical methods: CLR; PCA vs. PCoA;
+  community-level vs. subcommunity vs. species level; DESeq2; multiple
+  testing;
+
+- Role of reproducible research and best practices in microbiome data
+  science
+
+
+Session 3 (14.30-17.30 / 3 hours including breaks)
+
+Hands-on session: introduction to R tools (microbiome, microbiomeutilities, phyloseq, other)
+
+3A) Introduction to phyloseq & example data (from 16S rRNA amplicon profiling studies)
+
+3B) Generating a reproducible report with Rmarkdown
+
+3C) Examples on microbiome data visualization and diversity analysis
+
+
+
+## 13 September:
+
+Session 4 (9.30-12:00 / 2.5 hours)
+
+Lunch 12:00-13:30 (1.5 hours)
+
+Session 5 (13:30-15:00 / 1.5 hours)
+
+Downstream analysis and modeling of taxonomic composition within and between individuals or experimental groups
+
+Break (15:00-15:30 / 0.5 hours)
+
+Session 6 (15:30-17:00 / 1.5 hours)
+- Pointers to other tools & environments (QIIME2, Anvi'o)
+- Wrap-up & conclusions
+
+
+
+
+
+
+## Material
+
+https://datacarpentry.org/R-ecology-lesson/
+
+
+## Literature 
+
+- Modern Statistics for Modern Biology. Holmes & Huber (2018):. URL: http://web.stanford.edu/class/bios221/book/
+
+- Signatures of ecological processes in microbial community time series. Faust K et al. Microbiome, 6(120) 2018
+
+- Multi-stability and the origin of microbial community types. Faust et al. ISME Journal, 11:2159–2166, 2017.
+
+- Linking statistical and ecological theory: Hubbell’s unified neutral theory of biodiversity as a hierarchical Dirichlet process. Harris et al. Proceedings of the IEEE, 105(3):516–529, 2017.
+
+- Metagenomics meets time series analysis: unraveling microbial community dynamics. Faust K. Current Opinion in Microbiology, 25:56–66, 2015.
+
+- Microbial communities as dynamical systems. Gonze D et al. Current Opinion in Microbiology, 44:41–49, 2018.
+
+- Microbiome Data Science. Shetty & Lahti, 2019. URL: https://openresearchlabs.github.io/publications/papers/2018-Shetty-Lahti-MDS.pdf
+
