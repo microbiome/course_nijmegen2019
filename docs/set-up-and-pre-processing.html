@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Set-up and Pre-processing | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Set-up and Pre-processing | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Set-up and Pre-processing | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2019-07-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="literature.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#preparing-for-the-course"><i class="fa fa-check"></i><b>2.1</b> Preparing for the course</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#useful-functionsresources"><i class="fa fa-check"></i><b>2.2</b> Useful functions/resources</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#focus"><i class="fa fa-check"></i><b>2.3</b> Focus</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#target-audience"><i class="fa fa-check"></i><b>2.4</b> Target audience</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="citation.html"><a href="citation.html"><i class="fa fa-check"></i><b>3</b> Citation</a><ul>
+<li class="chapter" data-level="3.1" data-path="citation.html"><a href="citation.html#license"><i class="fa fa-check"></i><b>3.1</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
+<li class="chapter" data-level="5" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Set-up and Pre-processing</a><ul>
+<li class="chapter" data-level="5.1" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#otu-or-asvs-or-sotus"><i class="fa fa-check"></i><b>5.1</b> OTU or ASVs or sOTUs</a></li>
+<li class="chapter" data-level="5.2" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#general-overview"><i class="fa fa-check"></i><b>5.2</b> General overview</a></li>
+<li class="chapter" data-level="5.3" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#structure"><i class="fa fa-check"></i><b>5.3</b> Structure</a></li>
+<li class="chapter" data-level="5.4" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#making-a-phyloseq-object"><i class="fa fa-check"></i><b>5.4</b> Making a phyloseq object</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>6</b> Literature</a></li>
+<li class="chapter" data-level="7" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>7</b> Methods</a></li>
+<li class="chapter" data-level="8" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>8</b> Applications</a><ul>
+<li class="chapter" data-level="8.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>8.1</b> Example one</a></li>
+<li class="chapter" data-level="8.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>8.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>9</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="set-up-and-pre-processing" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Set-up and Pre-processing</h1>
+<p>This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the <a href="https://www.ncbi.nlm.nih.gov/pubmed/22699609">Human microbiome project phase I data</a>.</p>
+<div id="otu-or-asvs-or-sotus" class="section level2">
+<h2><span class="header-section-number">5.1</span> OTU or ASVs or sOTUs</h2>
+<p>For past few years (maybe decade), identifying Operational taxonomic units (OTUs) from raw sequences used clustering approach. Using 97% identity cut-off was a standard approach and often closed reference OTU picking was accepted in the sicentific community. During the time of the development of tools and bioinformatics approaches this was possibly the best available method. However, as with many other fields of science, the knowledge has been updated. Evolution of bioinformatics approaches is a constant process. Based on current knowledge, the cons of 97% OTU picking stratergy (using clustering approaches) have out-weighed the pros (eg. less time).</p>
+<p>Recent approaches are now focused towards Amplicon Seuence Variants/sOTUs:<br />
+* <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3864673/">Oligotyping</a><br />
+* <a href="http://dx.doi.org/10.1128/mSystems.00191-16">Deblur</a><br />
+* <a href="https://www.nature.com/articles/nmeth.3869">DADA2</a><br />
+* <a href="https://f1000research.com/articles/5-1791/v1">NG-Tax</a></p>
+<p>All above approaches have one common theme, they avoid 97% clustering and focus on minor differences (in many cases single nucleotide variations) to identify unique ASVs/sOTU.</p>
+<p>Note: Some how naming is different and variable. For this purpose and in this book, I will stick to ASVs when data from NG-tax is used.</p>
+<p>In this, section, we will compare outputs from 97% OTU picking approach and NG-tax approach.<br />
+The data used here is the 16S rRNA gene variable region (V1-V3) for 97% OTU-pciking. The raw reads were processed using QIIME 1.9.1, SortMeRNA, and OTU picking was done using the closed-reference OTU-picking at 97% identity.</p>
+<p>For NG-Tax, we use the same raw data and processed through default settings.</p>
+<p>Here, we do not aim to bench mark. For this course, we aim to show differences between results from two approaches.</p>
+<p>For down stream analysis of *.biom files we use <a href="https://joey711.github.io/phyloseq/">Phyloseq</a> and <a href="http://microbiome.github.io/microbiome/">microbiome</a>.<br />
+Kindly cite all the packages and tools that were used in your analysis as listed at the end of each document in <code>sessionInfo</code>. Also make sure that you provide the workflow and scripts you used for analysis atleast as supplementary material with your research article.<br />
+Check <a href="http://www.statmethods.net/">Quick-R</a>.</p>
+</div>
+<div id="general-overview" class="section level2">
+<h2><span class="header-section-number">5.2</span> General overview</h2>
+<center>
+<img src="images/Overview.png" alt="microbiome R package" />
+</center>
+</div>
+<div id="structure" class="section level2">
+<h2><span class="header-section-number">5.3</span> Structure</h2>
+<p>Let us create few folders to organize the analysis. While this can be personal preference, make sure you write the structure to guide others who do not know your data well.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create Folders as following</span>
+<span class="co"># Tables</span>
+<span class="kw">dir.create</span>(<span class="st">&quot;tables&quot;</span>)
+
+<span class="co"># Figures</span>
+<span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>)
+
+<span class="co"># Phyloseq objects</span>
+<span class="kw">dir.create</span>(<span class="st">&quot;phyobjects&quot;</span>)
+
+<span class="co"># Custom codes/notes</span>
+<span class="kw">dir.create</span>(<span class="st">&quot;codes_notes&quot;</span>)</code></pre></div>
+<p><strong>Load packages</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(microbiome) <span class="co"># data analysis and visualisation</span>
+<span class="kw">library</span>(phyloseq) <span class="co"># also the basis of data object. Data analysis and visualisation</span>
+<span class="kw">library</span>(microbiomeutilities) <span class="co"># some utility tools</span>
+<span class="kw">library</span>(RColorBrewer) <span class="co"># nice color options</span>
+<span class="kw">library</span>(ggpubr) <span class="co"># publication quality figures, based on ggplot2</span>
+<span class="kw">library</span>(DT) <span class="co"># interactive tables in html and markdown</span>
+<span class="kw">library</span>(data.table) <span class="co"># alternative to data.frame</span>
+<span class="kw">library</span>(dplyr) <span class="co"># data handling</span></code></pre></div>
+</div>
+<div id="making-a-phyloseq-object" class="section level2">
+<h2><span class="header-section-number">5.4</span> Making a phyloseq object</h2>
+<p>This is the basis for the analyses demonstrated in this tutorial. In the phyloseq object, information on OTU abundances, taxonomy of OTUs, the phylogenetic tree and metadata is stored. A single object with all this information provides a convinient way of handling, manipulating and visualizing data.<br />
+For more infromation: <a href="http://joey711.github.io/phyloseq/import-data">phyloseq</a></p>
+<p>Please remember that the metadata (i.e. mapping) file has to be in <em>.csv</em> format (columns have sample attributes). The <code>read_phylseq</code> function from microbiome package requires metadata in <em>.csv</em> format.</p>
+<p><strong>Things to be done in QIIME terminal (if required):</strong><br />
+<strong>Important Note 2</strong>: If you have error in loading the biom files stating <strong>JSON or HDF5</strong> then you need to convert it in to a JSON format.</p>
+<p>For this, use the following command within the QIIME terminal and not in R!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># biom convert -i NGTaxMerged.biom -o ngtax_json.biom --table-type &quot;OTU table&quot; --to-json    </span></code></pre></div>
+<p>For more information on the biom format please <a href="http://biom-format.org/documentation/biom_conversion.html">click here</a>.</p>
+<p><strong>Important Note 3</strong>: The most recent version of NG-Tax does not have this issue.</p>
+<p><strong>NOTE</strong><br />
+The <code>read_phyloseq</code> function can be used for reading other outputs (like .shared and consensus taxonomy files from mothur) into phyloseq object. type <code>?read_phyloseq</code> in the console pane for more information.<br />
+If you don’t have your own biom file, we have a test dataset stored in <code>input_data</code>. Unzip the humanmicrobiome.zip and you will have the original biom file, copy it in the <code>input_data</code> folder.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02_Comparison.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
