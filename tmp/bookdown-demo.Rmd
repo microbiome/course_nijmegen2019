@@ -1,0 +1,2187 @@
+--- 
+title: "A Minimal Book Example"
+author: "Yihui Xie"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Prerequisites
+
+Thiss is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+
+The **bookdown** package can be installed from CRAN or Github:
+
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+---
+title: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL 2018 v2.0"
+author: "Sudarshan A. Shetty, Leo Lahti, Gerben DA. Hermes"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Introduction  
+
+<center>![ microbiome R package](images/logos.png)</center>  
+
+Three day spring school on basics of high throughput 16S rRNA gene sequencing data analysis. This spring school is organised in collaboration with [VLAG graduate school](https://www.vlaggraduateschool.nl/en.htm), [Laboratory of Microbiology](https://www.wur.nl/en/Expertise-Services/Chair-groups/Agrotechnology-and-Food-Sciences/Laboratory-of-Microbiology.htm), [Laboratory of Systems and Synthetic Biology](https://www.wur.nl/en/Expertise-Services/Chair-groups/Agrotechnology-and-Food-Sciences/Laboratory-of-Systems-and-Synthetic-Biology.htm), Wageningen University & Research, the Netherlands and [Department of Mathematics and Statistics University of Turku](https://www.utu.fi/en/units/sci/units/math/Pages/home.aspx), Finland. This year it will be held at [Wageningen University & Research](https://www.wur.nl/en.htm). We will cover topics related to basics of sequencing and microbial community analysis. We will use [NG-Tax]( https://f1000research.com/articles/5-1791/v1) and [R](https://www.r-project.org/) based tools like [Phyloseq](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217), [microbiome](http://microbiome.github.io/microbiome/) and [ggplot2](http://ggplot2.org/) for downstream data analysis and visualization.   
+
+
+## Preparing for the course
+
+We recommend using your own laptop. If this is not possible, kindly contact the organizers.
+
+Install the following software before the course:
+
+* R 3.5.1 [Download link](https://cran.r-project.org/bin/windows/base/old/3.5.1/).    
+* Rstudio [Download link](https://www.rstudio.com/products/rstudio/download/).  
+
+*Make sure you have admin rights on the machine you install these softwares to avoid access issues.  
+
+Download the master branch of the the github repository for the [course](https://github.com/mibwurrepo/Microbial-bioinformatics-introductory-course-Material-2018).  
+
+![ microbiome R package](images/Gihub_repo_step1.png)</center>  
+
+Unzip the `Microbial-bioinformatics-introductory-course-Material-2018-master.zip` folder. Unzip the `humanmicrobiome.zip` subfolder within the `input_data` folder so that the *humanmicrobiome.biom* file is in `input_data` folder.  
+open the `microbiometutorials.Rproj`  
+
+The script to set-up the RStudio environment with required package installations can be found in the folder named `scripts/setup_microbiome_analysis.R`. In the image below, there is description of how to run this code.    
+
+![ microbiome R package](images/RStudio_IDE.png)</center>  
+
+
+## Useful functions/resources     
+
+* [Base R](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)  
+* [R Markdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
+* [RStudio IDE](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)  
+* [ggplot2](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)  
+* [phyloseq](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217)  
+* [microbiome](http://microbiome.github.io/microbiome/)  
+* [R graphics cookbook](http://www.cookbook-r.com/Graphs/)  
+* [List of R tools for microbiome analysis](https://microsud.github.io/Tools-Microbiome-Analysis/)  
+
+## Focus    
+The primary aim is introduce microbial community data analysis. There will be talks and discussion on theory and methodology for analysis of microbial community data. We will cover topics ranging from design of studies, sequencing technologies, importance of controls and standardized DNA processing. Supervised hands-on training covering analyses from raw reads using NG-Tax, downstream analysis in R for exploration and analysis of microbiome sequencing data will be priority. There will be a strong focus on using R, R Studio for moving towards reproducible and open science.   
+
+## Target audience  
+Anyone who plans to or is currently doing high throughput microbial community analysis.  
+
+
+
+# Citation  
+If you found this book useful, please cite:  
+Shetty Sudarshan A, Lahti Leo, Hermes Gerben DA, & Hauke Smidt. (2018, September 27). Microbial bioinformatics introductory course material 2018 (Version 0.01). Zenodo. http://doi.org/10.5281/zenodo.1436630
+
+
+
+
+
+
+## License  
+
+The 2-Clause BSD License
+SPDX short identifier: BSD-2-Clause
+
+Further resources on the 2-clause BSD license
+Note: This license has also been called the "Simplified BSD License" and the "FreeBSD License". See also the 3-clause BSD License.
+
+Copyright **2018-2020 Sudarshan A. Shetty and Leo Lahti**  
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+
+<!--chapter:end:01-index.Rmd-->
+
+# Introduction {#intro}
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+<!--chapter:end:01-intro.Rmd-->
+
+---
+title: "Comparison NG-tax and QIIME"
+author: "Sudarshan A. Shetty,"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Set-up and Pre-processing  
+
+This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the [Human microbiome project phase I data](https://www.ncbi.nlm.nih.gov/pubmed/22699609).  
+
+## OTU or ASVs or sOTUs  
+For past few years (maybe decade), identifying Operational taxonomic units (OTUs) from raw sequences used clustering approach. Using 97% identity cut-off was a standard approach and often closed reference OTU picking was accepted in the sicentific community. During the time of the development of tools and bioinformatics approaches this was possibly the best available method. However, as with many other fields of science, the knowledge has been updated. Evolution of bioinformatics approaches is a constant process. Based on current knowledge, the cons of 97% OTU picking stratergy (using clustering approaches) have out-weighed the pros (eg. less time).  
+
+Recent approaches are now focused towards Amplicon Seuence Variants/sOTUs:  
+* [Oligotyping](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3864673/)  
+* [Deblur](http://dx.doi.org/10.1128/mSystems.00191-16)  
+* [DADA2](https://www.nature.com/articles/nmeth.3869)  
+* [NG-Tax](https://f1000research.com/articles/5-1791/v1)  
+
+All above approaches have one common theme, they avoid 97% clustering and focus on minor differences (in many cases single nucleotide variations) to identify unique ASVs/sOTU.   
+
+Note: Some how naming is different and variable. For this purpose and in this book, I will stick to ASVs when data from NG-tax is used.  
+
+In this, section, we will compare outputs from 97% OTU picking approach and NG-tax approach.  
+The data used here is the 16S rRNA gene variable region (V1-V3) for 97% OTU-pciking. The raw reads were processed using QIIME 1.9.1, SortMeRNA, and OTU picking was done using the closed-reference OTU-picking at 97% identity.   
+
+For NG-Tax, we use the same raw data and processed through default settings.  
+
+Here, we do not aim to bench mark. For this course, we aim to show differences between results from two approaches.  
+
+For down stream analysis of *.biom files we use [Phyloseq](https://joey711.github.io/phyloseq/) and [microbiome](http://microbiome.github.io/microbiome/).    
+Kindly cite all the packages and tools that were used in your analysis as listed at the end of each document in `sessionInfo`. Also make sure that you provide the workflow and scripts you used for analysis atleast as supplementary material with your research article.    
+Check [Quick-R](http://www.statmethods.net/).  
+
+## General overview  
+
+<center>![ microbiome R package](images/Overview.png)</center> 
+
+## Structure    
+
+Let us create few folders to organize the analysis. While this can be personal preference, make sure you write the structure to guide others who do not know your data well.  
+
+```{r, eval=FALSE}
+
+# Create Folders as following
+# Tables
+dir.create("tables")
+
+# Figures
+dir.create("figures")
+
+# Phyloseq objects
+dir.create("phyobjects")
+
+# Custom codes/notes
+dir.create("codes_notes")
+```
+
+**Load packages**  
+
+```{r, warning=FALSE, message=FALSE}
+
+library(microbiome) # data analysis and visualisation
+library(phyloseq) # also the basis of data object. Data analysis and visualisation
+library(microbiomeutilities) # some utility tools
+library(RColorBrewer) # nice color options
+library(ggpubr) # publication quality figures, based on ggplot2
+library(DT) # interactive tables in html and markdown
+library(data.table) # alternative to data.frame
+library(dplyr) # data handling
+
+```
+
+## Making a phyloseq object  
+
+This is the basis for the analyses demonstrated in this tutorial. In the phyloseq object, information on OTU abundances, taxonomy of OTUs, the phylogenetic tree and metadata is stored. A single object with all this information provides a convinient way of handling, manipulating and visualizing data.  
+For more infromation: [phyloseq](http://joey711.github.io/phyloseq/import-data)  
+
+Please remember that the metadata (i.e. mapping) file has to be in *.csv* format (columns have sample attributes). The `read_phylseq` function from microbiome package requires metadata in *.csv* format.  
+
+**Things to be done in QIIME terminal (if required):**  
+**Important Note 2**: If you have error in loading the biom files stating **JSON or HDF5** then you need to convert it in to a JSON format.  
+
+For this, use the following command within the QIIME terminal and not in R!  
+
+````{r}
+
+# biom convert -i NGTaxMerged.biom -o ngtax_json.biom --table-type "OTU table" --to-json    
+
+```
+
+For more information on the biom format please  [click here](http://biom-format.org/documentation/biom_conversion.html). 
+
+**Important Note 3**: The most recent version of NG-Tax does not have this issue. 
+
+**NOTE**     
+The `read_phyloseq` function can be used for reading other outputs (like .shared and consensus taxonomy files from mothur) into phyloseq object. type `?read_phyloseq` in the console pane for more information.      
+If you don't have your own biom file, we have a test dataset stored in `input_data`. Unzip the humanmicrobiome.zip and you will have the original biom file, copy it in the `input_data` folder.  
+
+
+
+
+
+<!--chapter:end:02_Comparison.Rmd-->
+
+# Literature
+
+Here is a review of existing methods.
+
+<!--chapter:end:02-literature.Rmd-->
+
+---
+title: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL 2018"
+author: "Sudarshan"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Alpha diversities  
+
+Alpha diversity measures are used to identify within individual taxa richness and evenness. The commonly used metrics/indices are Shannon, Inverse Simpson, Simpson, Gini, Observed and Chao1. These indices do not take into account the phylogeny of the taxa identified in sequencing. Phylogenetic diversity (Faith's PD) uses phylogenetic distance to calculate the diversity of a given sample.   
+
+*It is important to note that, alpha diversity indices are sensitive to noise that is inherent to application of polymerase chain reaction and the sequencing errors.*  
+
+One has to consider the sequencing depth (how much of the taxa have been sampled) for each sample. If there is a large difference, then it is important to normalize the samples to equal sampling depth. First, we look at the sampling depth (no. of reads per sample).     
+
+**Load packages**  
+ 
+
+```{r, warning=FALSE, message=FALSE}
+
+library(microbiome) # data analysis and visualisation
+library(phyloseq) # also the basis of data object. Data analysis and visualisation
+library(microbiomeutilities) # some utility tools 
+library(RColorBrewer) # nice color options
+library(ggpubr) # publication quality figures, based on ggplot2
+library(DT) # interactive tables in html and markdown
+library(data.table) # alternative to data.frame
+library(dplyr) # data handling  
+
+```
+
+The data for tutorial is stored as *.rds file in the R project `phyobjects` folder.  
+
+We will use the filtered phyloseq object from **Set-up and Pre-processing** section.  
+
+```{r}
+
+ps1 <- readRDS("./phyobjects/ps.ng.tax.rds")
+
+# use print option to see the data saved as phyloseq object.
+
+print(ps1)
+
+```
+
+
+```{r}
+
+summary(sample_sums(ps1))
+
+```
+
+As is evident there is a large difference in the number of reads. Minimum is 2458 and maximum is 115023!! There is a ~47X difference!  
+
+We can plot the rarefaction curve for the observed ASVs in the entire data set. This is a way to check how has the richness captured in the sequencing effort.   
+
+```{r}
+
+otu_tab <- t(abundances(ps1))
+p <- vegan::rarecurve(otu_tab, 
+                      step = 50, label = FALSE, 
+                      sample = min(rowSums(otu_tab), 
+                                   col = "blue", cex = 0.6))
+
+```
+
+Almost all samples are reaching a plateau and few samples have high number of reads and high number of ASVs.  
+Since we are comparing different body sites, some are expected to have low bacterial load.  
+We will normalize to the lowest depth of at least 2458 reads to keep maximum samples for our anlaysis. This can be varied to remove samples with lower sequencing depth. This decision will depend on the research question being addressed.  
+
+Note: At the end of this section, we look at relationship between reads per samples and diversity metrics. 
+
+## Equal sample sums  
+
+```{r}
+
+set.seed(9242)  # This will help in reproducing the filtering and nomalisation. 
+
+ps0.rar <- rarefy_even_depth(ps1, sample.size = 2458)
+
+saveRDS(ps0.rar, "./phyobjects/ps0.rar.rds")
+
+```
+
+Check how much data you have now  
+
+```{r}
+
+ps0.rar <- readRDS("./phyobjects/ps0.rar.rds")
+
+
+print(ps0.rar)
+
+```
+
+The plot below is only for a quick and dirty check for reads per samples.   
+
+```{r}
+
+ # quick check for sampling depth
+
+barplot(sample_sums(ps0.rar), las =2)
+
+```
+
+Quick check taxa prevalence.  
+
+```{r}
+# quick check taxa prevalence
+
+p.rar <- plot_taxa_prevalence(ps0.rar, "Phylum")
+
+p.rar
+
+```
+
+Compare this to taxa prevalence plot from previous section of the tutorial.  
+
+Do you see any difference?  
+
+## Diversities  
+
+### Non-phylogenetic diversities  
+
+For more diversity indices please refer to [Microbiome Package](http://microbiome.github.io/microbiome/Diversity.html)  
+
+Let us calculate diversity.  
+
+```{r}
+
+hmp.div <- alpha(ps0.rar, index = "all")
+
+datatable(hmp.div)
+
+```
+
+This is one way to plot the data. 
+
+```{r}
+# get the metadata out as seprate object
+hmp.meta <- meta(ps0.rar)
+
+# Add the rownames as a new colum for easy integration later.
+hmp.meta$sam_name <- rownames(hmp.meta)
+
+# Add the rownames to diversity table
+hmp.div$sam_name <- rownames(hmp.div)
+
+# merge these two data frames into one
+div.df <- merge(hmp.div,hmp.meta, by = "sam_name")
+
+# check the tables
+colnames(div.df)
+
+# Now use this data frame to plot 
+p <- ggboxplot(div.df, 
+               x = "scientific_name", 
+               y = "diversity_shannon",
+              fill = "scientific_name", 
+              palette = "jco")
+
+p <- p + rotate_x_text()
+
+print(p)
+
+colnames(hmp.div)
+```
+
+
+Alternative way  
+
+```{r}
+
+# convert phyloseq object into a long data format.
+
+div.df2 <- div.df[, c("scientific_name", "diversity_inverse_simpson", "diversity_gini_simpson", "diversity_shannon", "diversity_fisher", "diversity_coverage")]
+
+# the names are not pretty. we can replace them
+
+colnames(div.df2) <- c("Location", "Inverse Simpson", "Gini-Simpson", "Shannon", "Fisher", "Coverage")
+
+# check
+colnames(div.df2)
+
+div_df_melt <- reshape2::melt(div.df2)
+
+head(div_df_melt)
+```
+
+The diversity indices are stored under column named *variable*.  
+
+```{r, fig.height=8, fig.width=12}
+
+# Now use this data frame to plot 
+p <- ggboxplot(div_df_melt, x = "Location", y = "value",
+              fill = "Location", 
+              palette = "jco", 
+              legend= "right",
+              facet.by = "variable", 
+              scales = "free")
+
+p <- p + rotate_x_text() 
+# we will remove the x axis lables
+
+p <- p + rremove("x.text")
+p
+ggsave("./figures/Diversities.pdf", height = 4, width = 10)
+
+```
+
+
+```{r}
+
+lev <- levels(div_df_melt$Location) # get the variables
+
+# make a pairwise list that we want to compare.
+L.pairs <- combn(seq_along(lev), 2, simplify = FALSE, FUN = function(i) lev[i])
+
+pval <- list(
+  cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 0.1, 1),
+  symbols = c("****", "***", "**", "*", "n.s")
+)
+
+p2 <- p + stat_compare_means(
+  comparisons = L.pairs,
+  label = "p.signif",
+  symnum.args = list(
+    cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 0.1, 1),
+    symbols = c("****", "***", "**", "*", "n.s")
+  )
+)
+
+print(p2)
+```
+
+### Phylogenetic diversity   
+
+Phylogenetic diversity is calculated using the `picante` package.  
+
+```{r, message=FALSE, warning=FALSE}
+
+library(picante)
+
+ps0.rar.asvtab <- as.data.frame(ps0.rar@otu_table)
+
+ps0.rar.tree <- ps0.rar@phy_tree
+
+# hmp.meta from previous code chunks
+
+# We first need to check if the tree is rooted or not 
+
+ps0.rar@phy_tree
+# it is a rooted tree
+df.pd <- pd(t(ps0.rar.asvtab), ps0.rar.tree,include.root=T) # t(ou_table) transposes the table for use in picante and the tre file comes from the first code chunck we used to read tree file (see making a phyloseq object section).
+
+
+datatable(df.pd)
+
+```
+
+now we need to plot PD. Check above how to get the metadata file from a phyloseq object.  
+
+```{r}
+# now we need to plot PD
+
+# We will add the results of PD to this file and then plot.
+
+hmp.meta$Phylogenetic_Diversity <- df.pd$PD
+
+```
+
+**Plot**   
+
+```{r}
+
+pd.plot <- ggboxplot(hmp.meta,
+  x = "scientific_name",
+  y = "Phylogenetic_Diversity",
+  fill = "scientific_name",
+  palette = "jco",
+  ylab = "Phylogenetic Diversity",
+  xlab = "Body site",
+  legend = "right"
+)
+pd.plot <- pd.plot + rotate_x_text()
+
+pd.plot + stat_compare_means(
+  comparisons = L.pairs,
+  label = "p.signif",
+  symnum.args = list(
+    cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 0.1, 1),
+    symbols = c("****", "***", "**", "*", "n.s")
+  )
+)
+```
+
+**NOTE:**  
+
+There are arguments both for and against the use of rarefying to equal library size.  
+The application of normalization method will depend on the type of research question. It is always good to check if there is a correlation between increasing library sizes and richness. Observed ASVs and Phylogenetic diversity can be affected by library sizes. It is always good to check for this before making a choice.    
+
+```{r}
+
+lib.div <- alpha(ps1, index = "all")
+
+lib.div2 <- richness(ps1)
+
+
+# let us add nmber of total reads/samples
+lib.div$ReadsPerSample <- sample_sums(ps1)
+
+lib.div$Observed <- lib.div2$observed
+
+colnames(lib.div)
+
+```
+
+We will use `ggscatter` function from `ggpubr` package to visualze. 
+
+```{r}
+
+p1 <- ggscatter(lib.div, "diversity_shannon", "ReadsPerSample") +
+  stat_cor(method = "pearson")
+
+p2 <- ggscatter(lib.div, "diversity_inverse_simpson", "ReadsPerSample",
+  add = "loess"
+) +
+  stat_cor(method = "pearson")
+
+p3 <- ggscatter(lib.div, "Observed", "ReadsPerSample",
+  add = "loess") +
+  stat_cor(
+    method = "pearson",
+    label.x = 100,
+    label.y = 50000
+  )
+
+ggarrange(p1, p2, p3, ncol = 2, nrow = 2)
+```
+
+
+```{r}
+
+sessionInfo()
+
+```
+
+
+
+<!--chapter:end:03-MAW-PII.Rmd-->
+
+# Methods
+
+We describe our methods in this chapter.
+
+<!--chapter:end:03-method.Rmd-->
+
+# Applications
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## Example one
+
+## Example two
+
+<!--chapter:end:04-application.Rmd-->
+
+---
+title: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL 2018"
+author: "Sudarshan"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Composition plots  
+
+Barplots are a one way of visualising the composition of your samples.    
+
+We will use the filtered phyloseq object from **Set-up and Pre-processing** section.  
+
+**Load packages** 
+
+```{r, warning=FALSE, message=FALSE}
+
+library(microbiome) # data analysis and visualisation
+library(phyloseq) # also the basis of data object. Data analysis and visualisation
+library(RColorBrewer) # nice color options
+library(ggpubr) # publication quality figures, based on ggplot2
+library(dplyr) # data handling  
+
+```
+
+  
+```{r}
+
+ps1 <- readRDS("./phyobjects/ps.ng.tax.rds")
+
+# use print option to see the data saved as phyloseq object.
+
+print(ps1)
+
+```
+
+## Barplot counts 
+
+```{r, fig.height= 6, fig.width=20, warning=FALSE, message= FALSE}
+
+ps1.com <- ps1
+
+# if you have dada2/deblur output and sequences as taxa names, then you can change them as follows
+taxa_names(ps1.com) <- paste0("ASV_", rownames(tax_table(ps1.com)))
+
+# We need to set Palette
+taxic <- as.data.frame(ps1.com@tax_table) # this will help in setting large color options
+
+# colourCount = length(unique(taxic$Family))  #define number of variable colors based on number of Family (change the level accordingly to phylum/class/order)
+# getPalette = colorRampPalette(brewer.pal(12, "Paired"))  # change the palette as well as the number of colors will change according to palette.
+
+taxic$OTU <- rownames(taxic) # Add the OTU ids from OTU table into the taxa table at the end.
+colnames(taxic) # You can see that we now have extra taxonomy levels.
+
+taxmat <- as.matrix(taxic) # convert it into a matrix.
+new.tax <- tax_table(taxmat) # convert into phyloseq compatible file.
+tax_table(ps1.com) <- new.tax # incroporate into phyloseq Object
+
+
+# now edit the unclassified taxa
+tax_table(ps1.com)[tax_table(ps1.com)[, "Family"] == "", "Family"] <- "Unclassified family"
+
+# it would be nice to have the Taxonomic names in italics.
+# for that we set this
+
+guide_italics <- guides(fill = guide_legend(label.theme = element_text(
+  size = 15,
+  face = "italic", colour = "Black", angle = 0
+)))
+
+
+## Now we need to plot at family level, we can do it as follows:
+
+# first remove the phy_tree
+
+ps1.com@phy_tree <- NULL
+
+# Second merge at family level
+
+ps1.com.fam <- microbiome::aggregate_top_taxa(ps1.com, "Family", top = 10)
+
+plot.composition.COuntAbun <- plot_composition(ps1.com.fam) + theme(legend.position = "bottom") +
+  scale_fill_brewer("Family", palette = "Paired") + theme_bw() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  ggtitle("Relative abundance") + guide_italics + theme(legend.title = element_text(size = 18))
+
+plot.composition.COuntAbun
+#ggsave("./Test_Outputfiles/Family_barplot_CountAbundance.pdf", height = 6, width = 8)
+
+
+```
+
+This plot is based on the reads per sample. In the next step, we plot the relative abundance.
+
+## Barplot relative abundance 
+
+Make it relative abundance
+
+```{r, fig.height= 6, fig.width=20, warning=FALSE, message= FALSE}
+
+# the previous pseq object ps1.com.fam is only counts.
+
+# Use traqnsform function of microbiome to convert it to rel abun.
+ps1.com.fam.rel <- microbiome::transform(ps1.com.fam, "compositional")
+
+plot.composition.relAbun <- plot_composition(ps1.com.fam.rel,
+                                             sample.sort = "scientific_name",
+                                             x.label = "env_material") 
+plot.composition.relAbun <- plot.composition.relAbun + theme(legend.position = "bottom") 
+plot.composition.relAbun <- plot.composition.relAbun + scale_fill_brewer("Family", palette = "Paired") + theme_bw() 
+plot.composition.relAbun <- plot.composition.relAbun + theme(axis.text.x = element_text(angle = 90)) 
+plot.composition.relAbun <- plot.composition.relAbun + ggtitle("Relative abundance") + guide_italics + theme(legend.title = element_text(size = 18))
+
+print(plot.composition.relAbun)
+
+#ggsave("./figures/Family_barplot_RelAbundance.pdf", height = 6, width = 8)
+
+
+```
+
+### Barplot customize 
+
+```{r}
+
+data.com <- plot.composition.relAbun$data
+colnames(data.com)
+
+```
+
+```{r}
+
+
+p.com <- ggplot(data.com, aes(x = Sample, y = Abundance, fill = Tax))
+p.com <- p.com + geom_bar(position = "stack", stat = "identity")
+p.com <- p.com + scale_x_discrete(labels = data.com$xlabel, breaks = data.com$Sample)
+p.com <- p.com + facet_grid(~xlabel, scales = "free") + theme_bw()
+p.com <- p.com + scale_fill_brewer("Family", palette = "Paired")
+p.com <- p.com + rremove("x.text")
+
+ggsave("./figures/Composition plots.pdf", height = 4, width = 6)
+
+
+```
+
+For more information [Microbiome tutorial](http://microbiome.github.io/microbiome/Composition.html)   
+
+## Heatmaps   
+
+These are a good alternative to barplots (if done right).  
+
+```{r}
+
+# base plot
+p.heat <- ggplot(data.com, aes(x = Sample, y = Tax)) + geom_tile(aes(fill = Abundance)) 
+
+# Change color
+p.heat <- p.heat + scale_fill_distiller("Abundance", palette = "RdYlBu") + theme_bw() 
+
+# Make bacterial names italics
+p.heat <- p.heat + theme(axis.text.y = element_text(colour = 'black', 
+                                                    size = 10, 
+                                                    face = 'italic')) 
+# Make seperate samples based on main varaible
+p.heat <- p.heat + facet_grid(~xlabel, 
+                              scales = "free") + rremove("x.text") 
+
+p.heat <- p.heat + ylab("Family")
+
+#Clean the x-axis
+p.heat <- p.heat + theme(axis.title.x=element_blank(),
+                     axis.text.x=element_blank(),
+                     axis.ticks.x=element_blank()) 
+
+# Clean the facet label box
+p.heat <- p.heat + theme(legend.key = element_blank(), 
+                     strip.background = element_rect(colour="black", fill="white"))
+
+print(p.heat)
+
+ggsave("./figures/Heatmap.pdf", height = 4, width = 6)
+
+
+# + geom_text(aes(label = round(Abundance)), size = 0.4)
+```
+
+
+**Extra**  
+
+Following is an example of customizing the plot using ggpubr.  
+
+```{r}
+
+# we use count data at family level from the barplot for counts
+ps_df <- microbiomeutilities::phy_to_ldf(ps1.com.fam, 
+                                         transform.counts = "compositional")
+
+colnames(ps_df)
+# this data.frame can be used to customize several plots.  
+
+# example boxplot at family level
+
+p.box <- ggstripchart(ps_df, "scientific_name", "Abundance", 
+                      facet.by = "Family", color = "body_product",
+                      palette = "jco"
+                      )
+
+p.box + rremove("x.text")
+
+```
+
+
+```{r}
+
+sessionInfo()
+
+```
+
+
+
+<!--chapter:end:04-MAW-PIII.Rmd-->
+
+---
+title: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL 2018"
+author: "Sudarshan"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Beta diversity metrics  
+
+Beta-diversity: Measures for differences between samples from different groups to identify if there are differences in the overall community composition and structure.   
+
+**Load packages and data**  
+
+```{r, warning=FALSE, message=FALSE}
+
+library(microbiome) # data analysis and visualisation
+library(phyloseq) # also the basis of data object. Data analysis and visualisation
+library(RColorBrewer) # nice color options
+library(ggpubr) # publication quality figures, based on ggplot2
+library(dplyr) # data handling  
+
+```
+
+
+For more information:
+
+[Ordination](http://ordination.okstate.edu/overview.htm).  
+
+[Waste Not, Want Not: Why Rarefying Microbiome Data Is Inadmissible](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003531).  
+
+[Normalisation and data transformation](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0237-y).  
+
+[What is Constrained and Unconstrained Ordination](http://www.davidzeleny.net/anadat-r/doku.php/en:ordination).  
+
+[Microbiome Datasets Are Compositional: And This Is Not Optional](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full)  
+
+[Compositional analysis: a valid approach to analyze microbiome high-throughput sequencing data](http://www.nrcresearchpress.com/doi/full/10.1139/cjm-2015-0821#.WvIJZIiFM2w)  
+
+
+```{r}
+
+# read non rarefied data
+ps1 <- readRDS("./phyobjects/ps.ng.tax.rds")
+
+# read rarefied data
+ps0.rar.rds <- readRDS("./phyobjects/ps0.rar.rds")
+# use print option to see the data saved as phyloseq object.
+
+```
+
+## Phylogenetic beta-diversity metrics  
+
+### Unweighted Unifrac  
+
+Unweighted Unifrac is based on presence/absence of different taxa and abundance is not important. However, it is sensitive to the sequencing depth. If a sample is sequenced more than the others then it may have many OTUs (most of them unique) consequently affecting the unifrac dissimilarity estimation.  
+
+Usually, using subOTU/ASV approaches many singletons/OTUs with very low reads are discarded. If you have you won data you try the following code. For data from NG-tax we will skip this step as we have no singletons.    
+
+```{r, eval=FALSE}
+# if we remove OTUs that are detected atleast 10 times in 5% of the samples
+ps0.rar.filtered <- core(ps0.rar.rds, detection = 10, prevalence = 0.05)
+
+summarize_phyloseq(ps0.rar.filtered)
+
+# we reduce the sparsity considerably. 
+
+```
+
+*For data from OTU picking*  
+Since the data used here consists of different body sites with distinct biological properties, the results of ordination do not change a lot by filtering "rare" OTUs. Once again, knowing the biology of your samples and making choices rationally and documenting them is crucial.  
+Feel free to use the OTU-picking strategy phyloseq object to investigate yourself.  
+
+```{r}
+
+ordu.unwt.uni <- ordinate(ps0.rar.rds, "PCoA", "unifrac", weighted=F)
+
+# check for Eigen values 
+# barplot(ordu.unwt.uni$values$Eigenvalues[1:10])
+
+unwt.unifrac <- plot_ordination(ps0.rar.rds, 
+                                     ordu.unwt.uni, color="scientific_name") 
+unwt.unifrac <- unwt.unifrac + ggtitle("Unweighted UniFrac") + geom_point(size = 2)
+unwt.unifrac <- unwt.unifrac + theme_classic() + scale_color_brewer("Location", palette = "Set2")
+print(unwt.unifrac)
+
+```
+
+Try repeating the above ordination using non-filtered phyloseq object.  
+
+### Weighted Unifrac  
+
+Weighted Unifrac will consider the abundances of different taxa.  
+
+```{r}
+
+ps1.rel <- microbiome::transform(ps1, "compositional")
+
+ordu.wt.uni <- ordinate(ps1.rel , "PCoA", "unifrac", weighted=T)
+
+# check for Eigen values 
+# barplot(ordu.unwt.uni$values$Eigenvalues[1:10])
+
+wt.unifrac <- plot_ordination(ps1.rel, 
+                                     ordu.wt.uni, color="scientific_name") 
+wt.unifrac <- wt.unifrac + ggtitle("Weighted UniFrac") + geom_point(size = 2)
+wt.unifrac <- wt.unifrac + theme_classic() + scale_color_brewer("Location", palette = "Set2")
+print(wt.unifrac)
+
+print(wt.unifrac + stat_ellipse())
+
+```
+
+The figure brings forward an important characteristics of microbiome data called the 'Horse-shoe effect'. An investigation and explaination for this can be found in the article by Morton JT., et al. 2017 [Uncovering the Horseshoe Effect in Microbial Analyses](http://msystems.asm.org/content/2/1/e00166-16).   
+
+You can repeat this analysis with phyloseq object from OTU-picking approach. 
+
+Another important aspect regarding weighted unifrac is its property of having heavier weights for abundant taxa. To detect changes in moderately abundant lineages, an extenstion called generalized (UniFrac distance)(https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3413390/) has been developed. In this test data, we expect sufficient biological variation in composition between sites and hence, we do not apply GUniFrac.  
+
+**To reiterate:** It is crucial to understand the biological features of the samples. Although these are exploratory approaches, it is important to differentiate between biological signal and technical artifacts.  
+
+## Population-level Density landscapes    
+
+```{r}
+
+p <- plot_landscape(ps1.rel, 
+                    "NMDS", 
+                    "bray", 
+                    col = "scientific_name") +
+       labs(title = paste("NMDS / Bray-Curtis"))   
+
+p <- p + scale_color_brewer(palette = "Dark2")+ scale_fill_gradient(low = "#e0ecf4", high = "#6e016b") 
+
+p 
+```
+
+Bray-Curtis dissimilarity does not consider phylogenetic relationships between ASVs. There are several distance methods and a list can be obtained by typing `?distanceMethodList` in the console pane.   
+
+Section on multivariate analysis will be discussed on Day3.  
+
+## PERMANOVA  
+
+Permutational multivariate analysis of variance [further reading](https://onlinelibrary.wiley.com/doi/10.1002/9781118445112.stat07841)  
+
+```{r}
+library(vegan)
+metadf <- data.frame(sample_data(ps1.rel))
+
+unifrac.dist <- UniFrac(ps1.rel, 
+                        weighted = TRUE, 
+                        normalized = TRUE,  
+                        parallel = FALSE, 
+                        fast = TRUE)
+
+permanova <- adonis(unifrac.dist ~ scientific_name, data = metadf)
+
+permanova
+
+```
+
+## Checking the homogeneity condition  
+
+Type `?betadisper` in R console for more information.  
+
+```{r}
+
+ps.disper <- betadisper(unifrac.dist, metadf$scientific_name)
+permutest(ps.disper, pairwise = TRUE)
+
+```
+
+
+
+```{r}
+
+sessionInfo()
+
+```
+
+
+
+
+
+
+<!--chapter:end:05-MAW-PIV.Rmd-->
+
+# Final Words
+
+We have finished a nice book.
+
+<!--chapter:end:05-summary.Rmd-->
+
+---
+title: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL 2018"
+author: "Sudarshan"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Core microbiota  
+
+For more information:
+
+[The adult intestinal core microbiota is determined by analysis depth and health status](https://www.sciencedirect.com/science/article/pii/S1198743X14609629?via%3Dihub).  
+
+[Intestinal microbiome landscaping: insight in community assemblage and implications for microbial modulation strategies](https://academic.oup.com/femsre/article/41/2/182/2979411).  
+
+[Intestinal Microbiota in Healthy Adults: Temporal Analysis Reveals Individual and Common Core and Relation to Intestinal Symptoms](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0023035).  
+
+```{r, warning=FALSE, message=FALSE}
+
+library(microbiome) # data analysis and visualisation
+library(phyloseq) # also the basis of data object. Data analysis and visualisation
+library(RColorBrewer) # nice color options
+library(ggpubr) # publication quality figures, based on ggplot2
+library(dplyr) # data handling  
+
+```
+
+## Core microbiota anlaysis   
+
+We will use the filtered phyloseq object from previous tutorial. We will use the filtered phyloseq object from the first section for pre-processioning.
+
+```{r}
+
+# read non rarefied data
+ps1 <- readRDS("./phyobjects/ps.ng.tax.rds")
+
+# use print option to see the data saved as phyloseq object.
+
+```
+
+Subset the data to keep only stool samples.  
+
+```{r}
+
+ps1.stool <- subset_samples(ps1, bodysite == "Stool")
+
+# convert to relative abundance  
+ps1.stool.rel <- microbiome::transform(ps1.stool, "compositional")
+print(ps1.stool.rel)
+
+ps1.stool.rel2 <- prune_taxa(taxa_sums(ps1.stool.rel) > 0, ps1.stool.rel)
+
+print(ps1.stool.rel2)
+
+```
+
+Check for the core ASVs  
+
+```{r}
+
+core.taxa.standard <- core_members(ps1.stool.rel2, detection = 0.001, prevalence = 50/100)
+
+print(core.taxa.standard)
+
+```
+
+There are 16 ASVs that are core based on the cut-offs for prevalence and detection we choose. However, we only see IDs, not very informative. We can get the classification of these as below.    
+
+```{r}
+
+# Extract the taxonomy table
+
+taxonomy <- as.data.frame(tax_table(ps1.stool.rel2))
+
+# Subset this taxonomy table to include only core OTUs  
+core_taxa_id <- subset(taxonomy, rownames(taxonomy) %in% core.taxa.standard)
+
+DT::datatable(core_taxa_id)
+
+```
+
+
+## Core abundance and diversity  
+Total core abundance in each sample (sum of abundances of the core members):
+
+```{r}
+
+core.abundance <- sample_sums(core(ps1.stool.rel2, detection = 0.001, prevalence = 50/100))
+
+DT::datatable(as.data.frame(core.abundance))
+
+```
+
+
+## Core visualization  
+
+### Core heatmaps  
+
+This visualization method has been used for instance in [Intestinal microbiome landscaping: insight in community assemblage and implications for microbial modulation strategies](https://academic.oup.com/femsre/article/41/2/182/2979411).  
+
+Note that you can order the taxa on the heatmap with the order.taxa argument.
+
+```{r}
+
+# Core with compositionals:
+prevalences <- seq(.05, 1, .05)
+detections <- 10^seq(log10(1e-3), log10(.2), length = 10)
+
+# Also define gray color palette
+gray <- gray(seq(0,1,length=5))
+p.core <- plot_core(ps1.stool.rel2, 
+                    plot.type = "heatmap", 
+                    colours = gray,
+                    prevalences = prevalences, 
+                    detections = detections, 
+                    min.prevalence = .5) +
+    xlab("Detection Threshold (Relative Abundance (%))")
+print(p.core)    
+
+
+# Same with the viridis color palette
+# color-blind friendly and uniform
+# options: viridis, magma, plasma, inferno
+# https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+# Also discrete=TRUE versions available
+library(viridis)
+print(p.core + scale_fill_viridis())
+
+```
+
+Color change 
+
+```{r}
+
+# Core with compositionals:
+prevalences <- seq(.05, 1, .05)
+detections <- 10^seq(log10(1e-3), log10(.2), length = 10)
+
+# Also define gray color palette
+
+p.core <- plot_core(ps1.stool.rel2, 
+                    plot.type = "heatmap", 
+                    colours = rev(brewer.pal(5, "Spectral")),
+                    prevalences = prevalences, 
+                    detections = detections, 
+                    min.prevalence = .5) + 
+  xlab("Detection Threshold (Relative Abundance (%))")
+
+print(p.core) 
+
+```
+
+Use the `format_to_besthit` function from microbiomeutilities to get the best classification of the ASVs.  
+
+```{r}
+
+ps1.stool.rel2.f <- microbiomeutilities::format_to_besthit(ps1.stool.rel2)
+
+p.core <- plot_core(ps1.stool.rel2.f, 
+                    plot.type = "heatmap", 
+                    colours = rev(brewer.pal(5, "Spectral")),
+                    prevalences = prevalences, 
+                    detections = detections, 
+                    min.prevalence = .5) + 
+  xlab("Detection Threshold (Relative Abundance (%))")
+
+p.core + theme(axis.text.y = element_text(face="italic"))
+
+print(p.core)
+
+```
+
+
+```{r}
+
+sessionInfo()
+
+```
+
+
+
+
+<!--chapter:end:06-MAW-PV.Rmd-->
+
+`r if (knitr:::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+
+---
+title: "OPEN & REPRODUCIBLE MICROBIOME DATA ANALYSIS SPRING SCHOOL 2018"
+author: "Sudarshan"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+# Inference of Microbial Ecological Networks     
+
+More information on [SPIEC-EASI](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004226).  
+
+The input for SPIEC-EASI is a counts table. The normalization and tranformation is done by the function.    
+This step is heavy on computational memory and slow. Noise filtered OTU-OTU level covariance would be ideal.     
+
+**Load packages and data**  
+
+```{r, tidy=TRUE, tidy.opts=list(width.cutoff=60), ignore = TRUE, eval=FALSE}
+library(devtools)
+install_github("zdk123/SpiecEasi")
+
+ #Other packages you need to install are 
+#install.packages("igraph")
+
+install.packages("intergraph")
+install.packages("GGally")
+devtools::install_github("briatte/ggnet")
+
+install.packages("network")
+install.packages("ggnetwork")
+
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+
+library(microbiome) # data analysis and visualisation
+library(phyloseq) # also the basis of data object. Data analysis and visualisation
+library(RColorBrewer) # nice color options
+library(ggpubr) # publication quality figures, based on ggplot2
+library(dplyr) # data handling
+library(SpiecEasi) # Network analysis for sparse compositional data  
+library(network)
+library(intergraph)
+#devtools::install_github("briatte/ggnet")
+library(ggnet)
+library(igraph)
+
+```
+
+
+**Read data**
+
+```{r}
+
+ps1 <- readRDS("./phyobjects/ps.ng.tax.rds")
+
+```
+
+**Select only stool samples**  
+
+We will subset our data to include only stool samples.  
+
+```{r}
+
+ps1.stool <- subset_samples(ps1, bodysite == "Stool")
+
+```
+
+
+**For testing reduce the number of ASVs**  
+
+```{r}
+
+ps1.stool.otu <- prune_taxa(taxa_sums(ps1.stool) > 100, ps1.stool)
+
+# Add taxonomic classification to OTU ID
+ps1.stool.otu.f <- microbiomeutilities::format_to_besthit(ps1.stool.otu)
+
+head(tax_table(ps1.stool.otu))
+```
+
+Check the difference in two phyloseq objects.  
+
+```{r, eval=FALSE}
+
+head(tax_table(ps1.stool.otu.f))
+
+```
+
+## Prepare data for SpiecEasi  
+
+The calculation of SpiecEasi are time consuming. For this tutorial, we will have the necessary input files for SpiecEasi.  
+
+* OTU table  
+* Taxonomy table  
+
+We save it as *.rds* object.  
+
+```{r}
+
+otu.c <- t(otu_table(ps1.stool.otu.f)@.Data) #extract the otu table from phyloseq object
+
+tax.c <- as.data.frame(tax_table(ps1.stool.otu.f)@.Data)#extract the taxonomy information
+
+head(tax.c)
+
+# use this only for first attempt to run it on server to save time
+#saveRDS(otu.c, "input_data/stool.otu.c.rds")
+#saveRDS(tax.c, "input_data/stool.tax.c.rds")
+
+```
+
+
+## SPIEC-EASI network reconstruction  
+
+More information on [SPIEC-EASI](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004226).  
+
+This input for SPIEC-EASI is a counts table. The normalization and tranformation is done by the function. This is very handy tool.  
+This step is heavy on computational memory and very slow. For this workshop we have already have the output and will skip this chuck.  
+```{r, eval=FALSE}
+
+# In practice, use more repetitions
+set.seed(1244)
+net.c <- spiec.easi(otu.c, method='mb', icov.select.params=list(rep.num=50)) # reps have to increases for real data
+
+# saveRDS(net.c, "input_data/net.c.rds")
+
+#please use more numebr of rep.num (99 or 999) the paraemters 
+
+## Create graph object and get edge values  
+
+
+```
+
+
+**We have save the output of net.c to save time**  
+
+The output of `spiec.easi` is stored in *./input_data/* as *stool.net.c.rds*. Read this file in R and follow the steps below.  
+
+```{r}
+# the PC has low processing power, you can read the otuput created by us present in the input_data folder.
+source("scripts/symBeta.R") # load custom function to get weights.
+net.c <- readRDS("input_data/stool.net.rds")
+class(net.c)
+n.c <- symBeta(getOptBeta(net.c))
+
+```
+
+**Add names to IDs**  
+We also add abundance values to vertex (nodes).  
+
+```{r}
+
+colnames(n.c) <- rownames(n.c) <- colnames(otu.c)
+
+vsize <- log2(apply(otu.c, 2, mean)) # add log abundance as properties of vertex/nodes.
+
+```
+
+### Prepare data for plotting  
+
+```{r}
+stool.ig <- graph.adjacency(n.c, mode='undirected', add.rownames = TRUE, weighted = TRUE)
+stool.ig # we can see all the attributes and weights
+
+#plot(stool.ig)
+```
+
+
+set the layout option
+
+```{r, eval=FALSE}
+# check what is it?
+?layout_with_fr
+
+```
+
+```{r}
+
+coords.fdr = layout_with_fr(stool.ig)
+
+```
+
+### igraph network  
+
+```{r}
+E(stool.ig)[weight > 0]$color<-"steelblue" #now color the edges based on their values positive is steelblue
+E(stool.ig)[weight < 0]$color<-"orange"  #now color the edges based on their values
+
+plot(stool.ig, layout=coords.fdr, vertex.size = 2, vertex.label.cex = 0.5)
+
+```
+
+The visualisation can be enhanced using [ggnet](https://briatte.github.io/ggnet/) R package.  
+
+```{r}
+
+stool.net <- asNetwork(stool.ig)
+network::set.edge.attribute(stool.net, "color", ifelse(stool.net %e% "weight" > 0, "steelblue", "orange"))
+
+```
+
+Start adding taxonomic information.  
+
+```{r}
+
+colnames(tax_table(ps1.stool.otu.f))
+phyla <- map_levels(colnames(otu.c), from = "best_hit", to = "Phylum", tax_table(ps1.stool.otu.f))
+stool.net %v% "Phylum" <- phyla
+stool.net %v% "nodesize" <- vsize
+
+```
+
+### Network plot    
+
+```{r, warning=FALSE, message=FALSE}
+
+mycolors <- scale_color_manual(values = c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928"))
+
+p <- ggnet2(stool.net, node.color = "Phylum", 
+            label = TRUE, node.size = "nodesize", 
+            label.size = 2, edge.color = "color") + guides(color=guide_legend(title="Phylum"), size = FALSE) + mycolors
+
+p 
+```
+
+This is difficult to interpret. One way is to remove nodes that are connected to few other nodes. We can use degree as a network statisitic. 
+
+```{r}
+
+stl.mb <- degree.distribution(stool.ig)
+plot(0:(length(stl.mb)-1), stl.mb, ylim=c(0,.35), type='b', 
+      ylab="Frequency", xlab="Degree", main="Degree Distributions")
+
+# we will look at only taxa connect more than 10 others
+p <- ggnet2(stool.net, node.color = "Phylum", 
+            label = TRUE, 
+            label.size = 3, edge.color = "color",
+            size = "degree", size.min = 10) + guides(color=guide_legend(title="Phylum"), size = FALSE) + mycolors
+
+p 
+
+
+```
+
+## Network properties  
+
+Check for the number of positive and negative edges.  
+
+```{r}
+
+betaMat=as.matrix(symBeta(getOptBeta(net.c)))
+
+# We divide by two since an edge is represented by two entries in the matrix.
+positive=length(betaMat[betaMat>0])/2 
+
+negative=length(betaMat[betaMat<0])/2 
+
+total=length(betaMat[betaMat!=0])/2 
+
+```
+
+### Modularity in networks  
+
+```{r}
+
+net.c
+
+mod.net <- net.c$refit
+
+colnames(mod.net) <- rownames(mod.net) <- colnames(otu.c)#you can remove this 
+
+vsize <- log2(apply(otu.c, 2, mean))# value we may or may not use as vertex.attribute
+
+stool.ig.mod <- graph.adjacency(mod.net, mode='undirected', add.rownames = TRUE)
+plot(stool.ig.mod) # we can see all the attributes and weights
+
+
+stool.net.mod <- asNetwork(stool.ig.mod)
+
+```
+
+Set vertex attributes. We can color by phyla and set the size of nodes based on log2 abundance.  
+
+```{r}
+
+phyla <- map_levels(colnames(otu.c), from = "best_hit", to = "Phylum", tax_table(ps1.stool.otu.f))
+stool.net.mod %v% "Phylum" <- phyla
+stool.net.mod %v% "nodesize" <- vsize
+
+```
+
+### Network plot    
+
+```{r, warning=FALSE, message=FALSE}
+
+mycolors <- scale_color_manual(values = c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a","#ffff99","#b15928"))
+
+# check the colorpicker in the addins option in RStudio to interactively select color options.  
+
+p <- ggnet2(stool.net.mod, node.color = "Phylum", 
+            label = TRUE, node.size = 2, 
+            label.size = 2) + guides(color=guide_legend(title="Phylum"), size = FALSE) + mycolors
+
+p 
+```
+
+Identify modularity in networks.  
+
+```{r}
+
+modules =cluster_fast_greedy(stool.ig.mod)
+
+print(modules)
+
+modularity(modules)
+
+V(stool.ig.mod)$color=modules$membership
+
+plot(stool.ig.mod, col = modules, vertex.size = 4, vertex.label = NA)
+
+stool.net.mod %v% "membership" <- modules$membership
+
+p <- ggnet2(stool.net.mod, node.color = "membership", 
+            label = TRUE, node.size = "nodesize", 
+            label.size = 2) + guides(color=guide_legend(title="membership"), size = FALSE) + mycolors
+
+p 
+
+```
+
+Check which OTUs are part of different modules.  
+
+```{r}
+
+modulesOneIndices=which(modules$membership==1)
+modulesOneOtus=modules$names[modulesOneIndices]
+modulesTwoIndices=which(modules$membership==2)
+modulesTwoOtus=modules$names[modulesTwoIndices]
+
+modulesThreeIndices=which(modules$membership==3)
+modulesThreeOtus=modules$names[modulesThreeIndices]
+modulesFourIndices=which(modules$membership==4)
+modulesFourOtus=modules$names[modulesFourIndices]
+
+modulesFiveIndices=which(modules$membership==5)
+modulesFiveOtus=modules$names[modulesFiveIndices]
+modulesSixIndices=which(modules$membership==6)
+modulesSixOtus=modules$names[modulesSixIndices]
+
+print(modulesOneOtus)
+
+```
+
+### Good reads for ecological networks  
+
+[Using network analysis to explore co-occurrence patterns in soil microbial communities](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3260507/)  
+
+[Microbial Co-occurrence Relationships in the Human Microbiome](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002606)  
+
+[Correlation detection strategies in microbial data sets vary widely in sensitivity and precision](http://www.nature.com/ismej/journal/v10/n7/full/ismej2015235a.html)  
+
+
+```{r}
+
+sessionInfo()
+
+```
+
+
+
+
+<!--chapter:end:07-MAW-PVI.Rmd-->
+
+---
+title: "Differential abundance testing"
+author: "Leo Lahti"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+---
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+# Handle citations
+require(knitcitations)
+require(bookdown)
+require(ggplot2)
+# cleanbib()
+# options("citation_format" = "pandoc")
+bib <- read.bibtex("bibliography.bib")
+#opts_chunk$set(fig.width=4, fig.height=3, par=TRUE, out.width='2in', fig.pos='H')
+library(knitr)
+knitr::opts_chunk$set(fig.path = "figure/", dev="CairoPNG")
+theme_set(theme_bw(20))
+```
+
+
+# Differential abundance testing for univariate data
+
+This section covers basic univariate tests for two-group comparison,
+covering t-test, Wilcoxon test, and multiple testing. You can try out the suggested exercises in the hands-on session. These are followed by example solutions which we will cover in more detail in the class.
+
+
+## Load example data
+
+The following example compares the abundance of a selected bug between
+two conditions. We assume that the data is already properly
+normalized. 
+
+```{r univariate1, warning=FALSE, message=FALSE}
+library(microbiome)
+theme_set(theme_bw(20))
+
+data(dietswap)
+d <- dietswap
+
+# Pick microbial abundances for a given taxonomic group
+taxa <- "Dialister"
+
+# Construct a data.frame with the selected
+# taxonomic group and grouping
+df <- data.frame(Abundance = abundances(d)[taxa,],
+                 Group = meta(d)$nationality)
+
+library(knitr)
+kable(head(df))
+```
+
+
+## Visual comparison of two groups
+
+**Task: Compare the groups visually** Tips: boxplot, density plot, histogram
+
+
+Visualization of the absolute abundances is shown on the left. Let us try the log10 transformation.  Now, the data contains many zeros and taking log10 will yield infinite values. Hence we choose the commonly used, although somewhat problematic, log10(1+x) transformation (right).
+
+```{r univariate_boxplot, warning=FALSE, message=FALSE, fig.width=10, fig.height=5, out.width="600px"}
+library(ggplot2)
+p1 <- ggplot(df, aes(x = Group, y = Abundance)) +
+       geom_boxplot() +
+       labs(title = "Absolute abundances", y = "Abundance (read count)")
+
+# Let us add the log10(1+x) version:
+df$Log10_Abundance <- log10(1 + df$Abundance)
+p2 <- ggplot(df, aes(x = Group, y = Log10_Abundance)) +
+       geom_boxplot() +
+       labs(title = "Log10 abundances", y = "Abundance (log10(1+x) read count)")       
+
+library(patchwork)
+p1 + p2
+```
+
+## Statistical comparison of two groups
+
+**Task: Test whether abundance differences are statistically significant between the two groups** Tips: t-test (t.test); Wilcoxon test (wilcox.test). Find information on how to use by typing help(t.test) or help(wilcox.test); or by looking for examples from the web.
+
+The groups seem to differ. 
+First, let us perform the t-test. This is based on Gaussian assumptions. Each group is expected to follow Gaussian distribution.
+
+Significance p-value with t-test:
+
+```{r univariate2b, warning=FALSE, message=FALSE}
+print(t.test(Log10_Abundance ~ Group, data = df)$p.value)
+```
+
+According to this, the abundances is not significantly different between the two groups (at  $p<0.05$ level).
+
+
+## Investigate assumptions of the t-test
+
+**Task: Assess whether the abundance data is Gaussian or log-normal within each group** You can use for instance histogram (hist) or density plots (plot(density())).
+
+Now let us investigate the Gaussian assumption of the t-test in more
+detail. Let us try another visualization; the density plot.
+
+```{r univariate_densityplot, warning=FALSE, message=FALSE}
+p <- ggplot(df, aes(fill = Group, x = Log10_Abundance)) +
+       geom_density(alpha = 0.5)
+print(p)
+```
+
+
+Apparently, the data is not even approximately Gaussian distributed.  In such cases, a common procedure is to use non-parametric tests. These do not make assumptions of the data distribution but instead compare the ordering of the samples.
+
+
+So, let us look at the significance p-value with Wilcoxon test (log10 data):
+
+```{r univariate_wilcoxon, warning=FALSE, message=FALSE}
+print(wilcox.test(Log10_Abundance ~ Group, data = df)$p.value)
+```
+
+
+But since the test is non-parametric, we can as well use the original absolute abundances; thelog transformation does not change sample ordering on which the Wilcoxon test is based. 
+
+Let us verify that the absolute abundances yield the same p-value for Wilcoxon test:
+
+```{r univariate_wilcoxon2, warning=FALSE, message=FALSE}
+print(wilcox.test(Abundance ~ Group, data = df)$p.value)
+```
+
+
+## Compare results between parametric and non-parametric tests
+
+Let us compare how much the results would differ in the whole data
+between t-test (parametric) and Wilcoxon test (non-parametric).To remove non-varying taxa that would demand extra scripting, let us for demonstration purposes now focus on core taxa that are observed in more than 20% of the samples with more than 3 reads.
+
+```{r univariate4, warning=FALSE, message=FALSE}
+# Core taxa to be tested
+test.taxa <- core_members(d, prevalence = 20/100, detection = 3)
+
+# Calculate p-values with the two different methods for each taxonomic unit
+pvalue.ttest <- c()
+pvalue.wilcoxon <- c()
+for (taxa in test.taxa) {
+  # Create a new data frame for each taxonomic group
+  df <- data.frame(Abundance = abundances(d)[taxa,],
+                   Log10_Abundance = log10(1 + abundances(d)[taxa,]),  
+                   Group = meta(d)$nationality)
+
+  pvalue.ttest[[taxa]] <- t.test(Log10_Abundance ~ Group, data = df)$p.value
+  pvalue.wilcoxon[[taxa]] <- wilcox.test(Abundance ~ Group, data = df)$p.value  
+}
+# Arrange the results in a data.frame
+pvalues <- data.frame(taxon = test.taxa,
+	              pvalue.ttest = pvalue.ttest,
+                      pvalue.wilcoxon = pvalue.wilcoxon)
+
+# Note that multiple testing occurs.
+# We must correct the p-values.
+# let us apply the standard Benjamini-Hochberg False Discovery Rate (FDR)
+# correction
+pvalues$pvalue.ttest.adjusted <- p.adjust(pvalues$pvalue.ttest)
+pvalues$pvalue.wilcoxon.adjusted <- p.adjust(pvalues$pvalue.wilcoxon)
+```
+
+
+Compare the distribution of raw and adjusteed p-values.
+
+```{r univariate5, warning=FALSE, message=FALSE, fig.width=10, fig.height=5, out.width="600px"}
+p1 <- ggplot(pvalues, aes(x = pvalue.wilcoxon)) +
+        geom_histogram() +
+        labs(title = "Raw p-values") +
+	ylim(c(0, 80))
+
+p2 <- ggplot(pvalues, aes(x = pvalue.wilcoxon.adjusted)) +
+        geom_histogram() +
+        labs(title = "Adjusted p-values") +
+	ylim(c(0, 80))	
+
+print(p1 + p2)
+```
+
+
+Now compare these adjusted p-values between t-test and Wilcoxon test. Let us also highlight the p = 0.05 intervals.
+
+```{r univariate6, warning=FALSE, message=FALSE, fig.width=8, fig.height=8, out.width="600px"}
+p <- ggplot(data = pvalues,
+         aes(x = pvalue.ttest.adjusted,
+	     y = pvalue.wilcoxon.adjusted)) +
+       geom_text(aes(label = taxon)) + 
+       geom_abline(aes(intercept = 0, slope = 1)) +
+       geom_hline(aes(yintercept = 0.05), shape = 2) +
+       geom_vline(aes(xintercept = 0.05), shape = 2)
+print(p)
+```
+
+
+
+
+
+
+# Linear models: the role of covariates
+
+This section provides hands-on introduction to linear (and generalized linear) models.
+
+**Task Fit linear model to compare abundance between the two groups.** You can use functions lm or glm, for instance.
+
+## Fitting a linear model
+
+Let us compare two groups with a linear model. We use Log10 abundances
+since this is closer to the Gaussian assumptions than the absolute
+count data. Fit a linear model with Gaussian variation as follows:
+
+```{r lm, warning=FALSE, message=FALSE}
+res <- glm(Log10_Abundance ~ Group, data = df, family = "gaussian")
+```
+
+
+## Interpreting linear model output
+
+Investigate the model coefficients:
+
+```{r lm_coefs, warning=FALSE, message=FALSE}
+knitr::kable(summary(res)$coefficients, digits = 5)
+```
+
+
+The intercept equals to the mean in the first group:
+
+
+```{r lm_coefs3, warning=FALSE, message=FALSE}
+print(mean(subset(df, Group == "AAM")$Log10_Abundance))
+```
+
+The group term equals to the difference between group means:
+
+```{r lm_coefs3b, warning=FALSE, message=FALSE}
+print(mean(subset(df, Group == "AFR")$Log10_Abundance) -
+      mean(subset(df, Group == "AAM")$Log10_Abundance))
+```
+
+
+Note that the linear model (default) significance equals to t-test assuming equal variances.
+
+```{r lm_signif, warning=FALSE, message=FALSE}
+print(t.test(Log10_Abundance ~ Group, data = df, var.equal=TRUE)$p.value)
+```
+
+
+## Covariate testing
+
+**Task: Investigate how sex and bmi affect the results. **
+
+An important advantage of linear and generalized linear models, compared to plain t-test is that they allow incorporating additional variables, such as potential confounders (age, BMI, gender..):
+
+```{r lm_glm_cov, warning=FALSE, message=FALSE}
+# Add a covariate:
+df$sex <- meta(d)$sex
+df$bmi_group <- meta(d)$bmi_group
+
+# Fit the model:
+res <- glm(Log10_Abundance ~ Group + sex + bmi_group, data = df, family = "gaussian")
+```
+
+We can even include interaction terms:
+
+```{r lm_glm, warning=FALSE, message=FALSE}
+res <- glm(Log10_Abundance ~ Group * sex * bmi_group, data = df, family = "gaussian")
+kable(coefficients(res))
+```
+
+
+For more examples on using and analysing linear models, see statmethods [regression](https://www.statmethods.net/stats/regression.html) and [ANOVA](See also [statmethods](https://www.statmethods.net/stats/anova.html) tutorials. **Try to adapt those examples on our microbiome example data data sets**.
+
+
+# Advanced models for differential abundance
+
+GLMs are the basis for advanced testing of differential abundance in
+sequencing data. This is necessary, as the sequencing data sets
+deviate from symmetric, continuous, Gaussian assumptions in many ways.
+
+## Particular properties of taxonomic profiling data
+
+
+### Discrete count data
+
+Sequencing data consists of discrete counts:
+
+```{r pooled2, warning=FALSE, message=FALSE}
+print(abundances(d)[1:5,1:3])
+```
+
+### Sparsity 
+
+The data is sparse:
+
+```{r pooled3, warning=FALSE, message=print, fig.width=8, fig.height=8}
+hist(log10(1 + abundances(d)), 100)
+```
+
+### Rarity
+ 
+Long tails of rare taxa:
+
+```{r tail, warning=FALSE, message=print, fig.width=16, fig.height=8, out.width="600px"}
+library(reshape2)
+medians <- apply(abundances(d),1,median)/1e3
+A <- melt(abundances(d))
+A$Var1 <- factor(A$Var1, levels = rev(names(sort(medians))))
+p <- ggplot(A, aes(x = Var1, y = value)) +
+        geom_boxplot() +
+	labs(y = "Abundance (reads)", x = "Taxonomic Group") +
+	scale_y_log10()
+	
+print(p)
+```
+
+### Overdispersion
+
+Variance exceeds the mean:
+
+```{r pooled_overdispersion, warning=FALSE, message=FALSE, fig.width=8, fig.height=8, out.width="600px"}
+means <- apply(abundances(d),1,mean)
+variances <- apply(abundances(d),1,var)
+
+# Calculate mean and variance over samples for each taxon
+library(reshape2)
+library(dplyr)
+df <- melt(abundances(d))
+names(df) <- c("Taxon", "Sample", "Reads")
+df <- df %>% group_by(Taxon) %>%
+             summarise(mean = mean(Reads),
+	               variance = var(Reads))
+
+# Illustrate overdispersion
+library(scales)
+p <- ggplot(df, aes(x = mean, y = variance)) +
+       geom_point() +
+       geom_abline(aes(intercept = 0, slope = 1)) +
+       scale_x_log10(labels = scales::scientific) +
+       scale_y_log10(labels = scales::scientific) +
+       labs(title = "Overdispersion (variance > mean)")
+print(p)
+```
+
+
+## Generalized linear models: a brief overview
+
+Let us briefly discuss the ideas underlying generalized linear models.
+
+The Generalized linear model (GLM) allows a richer family of
+probability distributions to describe the data. Intuitively speaking,
+GLMs allow the modeling of nonlinear, nonsymmetric, and nongaussian
+associations. GLMs consist of three elements:
+
+  - A probability distribution for the data (from exponential family)
+
+  - A linear predictor targeting the mean, or expectation: $Xb$ 
+
+  - A link function g such that $E(Y) = \mu = g^{-1}(Xb)$.
+
+Let us fit Poisson with (natural) log-link just to demonstrate how
+generalized linear models could be fitted in R. We fit the abundance
+(read counts) assuming that the data is Poisson distributed, and the
+logarithm of its mean, or expectation, is obtained with a linear
+model. For further examples in R, you can also check the [statmethods website](https://www.statmethods.net/advstats/glm.html).
+
+```{r lm_glm2, warning=FALSE, message=FALSE}
+# Load again the example data
+d <- dietswap
+df <- data.frame(Abundance = abundances(d)[taxa,],
+                 Group = meta(d)$nationality)
+
+res <- glm(Abundance ~ 1, data = df, family = "poisson")
+```
+
+
+Investigate the model output:
+
+```{r lm_glm2b, warning=FALSE, message=FALSE}
+knitr::kable(summary(res)$coefficients, digits = 5)
+```
+
+
+Note the link between mean and estimated coefficient ($\mu = e^{Xb}$):
+
+```{r lm_glm2c, warning=FALSE, message=FALSE}
+mean(df$Abundance)
+exp(coef(res))
+```
+
+
+## DESeq2: differential abundance testing for sequencing data
+
+### Fitting DESeq2
+
+[DESeq2 analysis]((https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8) accommodates those particular assumptions about
+sequencing data. 
+
+```{r pooled_deseq, warning=FALSE, message=FALSE}
+# Start by converting phyloseq object to deseq2 format
+library(DESeq2)
+d <- dietswap # Phyloseq data
+ds2 <- phyloseq_to_deseq2(d, ~ group + nationality)
+
+# Run DESeq2 analysis (all taxa at once!)
+dds <- DESeq(ds2)
+
+# Investigate results
+deseq.results <- as.data.frame(results(dds))
+deseq.results$taxon <- rownames(results(dds))
+
+# Sort (arrange) by pvalue and effect size
+library(knitr)
+deseq.results <- deseq.results %>%
+                   arrange(pvalue, log2FoldChange)
+
+# Print the result table
+# Let us only show significant hits
+knitr::kable(deseq.results %>%
+               filter(pvalue < 0.05 & log2FoldChange > 1.5),
+	     digits = 5)
+```
+
+
+### Comparison between DESeq2 and standard models
+
+For comparison purposes, assess significances and effect sizes based on Wilcoxon test.
+
+```{r pooled_topw, warning=FALSE, message=FALSE, fig.width=10, fig.height=5, out.width="200px"}
+test.taxa <- taxa(d)
+pvalue.wilcoxon <- c()
+foldchange <- c()
+for (taxa in test.taxa) {
+  # Create a new data frame for each taxonomic group
+  df <- data.frame(Abundance = abundances(d)[taxa,],
+                   Log10_Abundance = log10(1 + abundances(d)[taxa,]),
+                   Group = meta(d)$nationality)
+  # Calculate pvalue and effect size (difference beween log means)		 
+  pvalue.wilcoxon[[taxa]] <- wilcox.test(Abundance ~ Group, data = df)$p.value
+  foldchange[[taxa]] <- coef(lm(Log10_Abundance ~ Group, data = df))[[2]]
+}
+# Correct p-values for multiple testing
+pvalue.wilcoxon.adjusted <- p.adjust(pvalue.wilcoxon)
+```
+
+
+
+```{r pooled_pcomp, warning=FALSE, message=FALSE, fig.width=10, fig.height=5}
+par(mfrow = c(1,2))
+plot(deseq.results$padj, pvalue.wilcoxon.adjusted,
+  xlab = "DESeq2 adjusted p-value",
+  ylab = "Wilcoxon adjusted p-value",
+  main = "P-value comparison")
+abline(v = 0.05, h = 0.05, lty = 2)
+
+plot(deseq.results$log2FoldChange, foldchange, 
+  xlab = "DESeq2",
+  ylab = "Linear model",
+  main = "Effect size comparison")
+abline(0,1)
+```
+
+For systematic comparisons between various methods for differential abundance testing, see [this paper](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0237-y).
+
+
+# Multivariate comparisons of microbial community composition
+
+The above examples focus on comparison per individual taxonomic group. Often, the groups are correlated and we are interested in comparing the overall community composition.
+
+## PERMANOVA  
+
+Permutational multivariate analysis of variance [further reading](https://onlinelibrary.wiley.com/doi/10.1002/9781118445112.stat07841). See also [statmethods](https://www.statmethods.net/stats/anova.html).
+
+```{r}
+library(vegan)
+pseq <- dietswap
+
+# Pick relative abundances (compositional) and sample metadata 
+pseq.rel <- microbiome::transform(pseq, "compositional")
+otu <- abundances(pseq.rel)
+meta <- meta(pseq.rel)
+
+# samples x species as input
+library(vegan)
+permanova <- adonis(t(otu) ~ group,
+               data = meta, permutations=99, method = "bray")
+
+# P-value
+print(as.data.frame(permanova$aov.tab)["group", "Pr(>F)"])
+```
+
+## Checking the homogeneity condition  
+
+Type `?betadisper` in R console for more information.  
+
+```{r permanovacheck}
+# Note the assumption of similar multivariate spread among the groups
+# ie. analogous to variance homogeneity
+# Here the groups have signif. different spreads and
+# permanova result may be potentially explained by that.
+dist <- vegdist(t(otu))
+anova(betadisper(dist, meta$group))
+permutest(betadisper(dist, meta$group), pairwise = TRUE)
+```
+
+We can also check which taxa contribute most to the community differences. Are these same or different compared to DESeq2?
+
+```{r permanovatop, out.width="600px"}
+coef <- coefficients(permanova)["group1",]
+top.coef <- coef[rev(order(abs(coef)))[1:20]]
+par(mar = c(3, 14, 2, 1))
+barplot(sort(top.coef), horiz = T, las = 1, main = "Top taxa")
+```
+
+
+# Further exercises
+
+When done with the differential abundance testing examples, you can investigate the use of the following standard methods for microbiome studies. We are available to discuss and explain the technical aspects in more detail during the class.
+
+
+## Compositionality
+
+**Compositionality effect** compare the effect of CLR transformation (microbiome::clr) on microbiome analysis results. 1) Compare t-test and/or Wilcoxon test results between data that is transformed with compositional or clr transformation (see the function microbiome::transform); and/or 2) Prepare PCoA with Bray-Curtis distances for compositional data; and PCoA with euclidean distances for CLR-transformed data (microbiome::transform). For examples, see [microbiome tutorial](http://microbiome.github.io/microbiome/Landscaping.html).
+
+
+## Redundancy analysis (RDA)
+
+A very good overview of various multivariate methods used in microbial ecology is provided [here](http://www.wright.edu/~oleg.paliy/Papers/Paliy_ME2016.pdf). Read the Redundancy analysis (and possibly other) section. Next, try to perform simple redundancy analysis in R based on the following examples.
+
+Standard RDA for microbiota profiles versus the given (here 'time')
+variable from sample metadata (see also the RDA method in
+phyloseq::ordinate)
+
+```{r rda2, warning=FALSE, message=FALSE, eval=FALSE}
+x <- transform(dietswap, "compositional")
+otu <- abundances(x)
+metadata <- meta(x)
+
+library(vegan)
+rda.result <- vegan::rda(t(otu) ~ factor(metadata$nationality),
+                         na.action = na.fail, scale = TRUE)
+```
+
+Visualize the standard RDA output:
+
+```{r rda4, warning=FALSE, message=FALSE, fig.width=8, fig.height=8, eval=FALSE}
+plot(rda.result, choices = c(1,2), type = "points", pch = 15, scaling = 3, cex = 0.7, col = metadata$time)
+points(rda.result, choices = c(1,2), pch = 15, scaling = 3, cex = 0.7, col = metadata$time)
+pl <- ordihull(rda.result, metadata$nationality, scaling = 3, label = TRUE)
+```
+
+
+Test RDA significance:
+
+```{r rda2bc, warning=FALSE, message=FALSE, eval=FALSE}
+permutest(rda.result) 
+```
+
+Include confounding variables:
+
+```{r rda3, warning=FALSE, message=FALSE, fig.width=8, fig.height=8, eval=FALSE}
+rda.result2 <- vegan::rda(t(otu) ~ metadata$nationality + Condition(metadata$bmi_group + metadata$sex))
+```
+
+
+# Citation  
+If you found this book useful, please cite:  
+Shetty Sudarshan A, Lahti Leo, Hermes Gerben DA, & Hauke Smidt. (2018, September 27). Microbial bioinformatics introductory course material 2018 (Version 0.01). Zenodo. http://doi.org/10.5281/zenodo.1436630
+
+
+
+
+
+
+
+
+
+<!--chapter:end:08-MAW-PVII.Rmd-->
+
