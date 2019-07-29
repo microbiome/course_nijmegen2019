@@ -81,7 +81,8 @@ Session 6 (15:30-17:00 / 1.5 hours)
 https://datacarpentry.org/R-ecology-lesson/
 
 
-## Literature 
+## Literature
+
 
 - Modern Statistics for Modern Biology. Holmes & Huber (2018):. URL: http://web.stanford.edu/class/bios221/book/
 
