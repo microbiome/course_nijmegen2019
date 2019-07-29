@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Set-up and Pre-processing | Introduction to microbiome data science</title>
+  <title>5 Linear models: the role of covariates | Introduction to microbiome data science</title>
   <meta name="description" content="Course material" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Set-up and Pre-processing | Introduction to microbiome data science" />
+  <meta property="og:title" content="5 Linear models: the role of covariates | Introduction to microbiome data science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="microbiome/test" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Set-up and Pre-processing | Introduction to microbiome data science" />
+  <meta name="twitter:title" content="5 Linear models: the role of covariates | Introduction to microbiome data science" />
   
   <meta name="twitter:description" content="Course material" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="citation.html">
-<link rel="next" href="differential-abundance-testing-for-univariate-data.html">
+<link rel="prev" href="differential-abundance-testing-for-univariate-data.html">
+<link rel="next" href="advanced-models-for-differential-abundance.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -165,73 +165,129 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-up-and-pre-processing" class="section level1">
-<h1><span class="header-section-number">3</span> Set-up and Pre-processing</h1>
-<p>This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the <a href="https://www.ncbi.nlm.nih.gov/pubmed/22699609">Human microbiome project phase I data</a>.</p>
-<div id="otu-or-asvs-or-sotus" class="section level2">
-<h2><span class="header-section-number">3.1</span> OTU or ASVs or sOTUs</h2>
-<p>For past few years (maybe decade), identifying Operational taxonomic units (OTUs) from raw sequences used clustering approach. Using 97% identity cut-off was a standard approach and often closed reference OTU picking was accepted in the sicentific community. During the time of the development of tools and bioinformatics approaches this was possibly the best available method. However, as with many other fields of science, the knowledge has been updated. Evolution of bioinformatics approaches is a constant process. Based on current knowledge, the cons of 97% OTU picking stratergy (using clustering approaches) have out-weighed the pros (eg. less time).</p>
-<p>Recent approaches are now focused towards Amplicon Seuence Variants/sOTUs:<br />
-* <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3864673/">Oligotyping</a><br />
-* <a href="http://dx.doi.org/10.1128/mSystems.00191-16">Deblur</a><br />
-* <a href="https://www.nature.com/articles/nmeth.3869">DADA2</a><br />
-* <a href="https://f1000research.com/articles/5-1791/v1">NG-Tax</a></p>
-<p>All above approaches have one common theme, they avoid 97% clustering and focus on minor differences (in many cases single nucleotide variations) to identify unique ASVs/sOTU.</p>
-<p>Note: Some how naming is different and variable. For this purpose and in this book, I will stick to ASVs when data from NG-tax is used.</p>
-<p>In this, section, we will compare outputs from 97% OTU picking approach and NG-tax approach.<br />
-The data used here is the 16S rRNA gene variable region (V1-V3) for 97% OTU-pciking. The raw reads were processed using QIIME 1.9.1, SortMeRNA, and OTU picking was done using the closed-reference OTU-picking at 97% identity.</p>
-<p>For NG-Tax, we use the same raw data and processed through default settings.</p>
-<p>Here, we do not aim to bench mark. For this course, we aim to show differences between results from two approaches.</p>
-<p>For down stream analysis of *.biom files we use <a href="https://joey711.github.io/phyloseq/">Phyloseq</a> and <a href="http://microbiome.github.io/microbiome/">microbiome</a>.<br />
-Kindly cite all the packages and tools that were used in your analysis as listed at the end of each document in <code>sessionInfo</code>. Also make sure that you provide the workflow and scripts you used for analysis atleast as supplementary material with your research article.<br />
-Check <a href="http://www.statmethods.net/">Quick-R</a>.</p>
+<div id="linear-models-the-role-of-covariates" class="section level1">
+<h1><span class="header-section-number">5</span> Linear models: the role of covariates</h1>
+<p>This section provides hands-on introduction to linear (and generalized linear) models.</p>
+<p><strong>Task Fit linear model to compare abundance between the two groups.</strong> You can use functions lm or glm, for instance.</p>
+<div id="fitting-a-linear-model" class="section level2">
+<h2><span class="header-section-number">5.1</span> Fitting a linear model</h2>
+<p>Let us compare two groups with a linear model. We use Log10 abundances since this is closer to the Gaussian assumptions than the absolute count data. Fit a linear model with Gaussian variation as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">glm</span>(Log10_Abundance <span class="op">~</span><span class="st"> </span>Group, <span class="dt">data =</span> df, <span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)</code></pre></div>
 </div>
-<div id="general-overview" class="section level2">
-<h2><span class="header-section-number">3.2</span> General overview</h2>
-<center>
-<img src="images/Overview.png" alt="microbiome R package" />
-</center>
+<div id="interpreting-linear-model-output" class="section level2">
+<h2><span class="header-section-number">5.2</span> Interpreting linear model output</h2>
+<p>Investigate the model coefficients:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">summary</span>(res)<span class="op">$</span>coefficients, <span class="dt">digits =</span> <span class="dv">5</span>)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Estimate</th>
+<th align="right">Std. Error</th>
+<th align="right">t value</th>
+<th align="right">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td align="right">0.64825</td>
+<td align="right">0.02877</td>
+<td align="right">22.53405</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>GroupAFR</td>
+<td align="right">0.20313</td>
+<td align="right">0.04308</td>
+<td align="right">4.71530</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>The intercept equals to the mean in the first group:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">mean</span>(<span class="kw">subset</span>(df, Group <span class="op">==</span><span class="st"> &quot;AAM&quot;</span>)<span class="op">$</span>Log10_Abundance))</code></pre></div>
+<pre><code>## [1] 0.6482493</code></pre>
+<p>The group term equals to the difference between group means:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">mean</span>(<span class="kw">subset</span>(df, Group <span class="op">==</span><span class="st"> &quot;AFR&quot;</span>)<span class="op">$</span>Log10_Abundance) <span class="op">-</span>
+<span class="st">      </span><span class="kw">mean</span>(<span class="kw">subset</span>(df, Group <span class="op">==</span><span class="st"> &quot;AAM&quot;</span>)<span class="op">$</span>Log10_Abundance))</code></pre></div>
+<pre><code>## [1] 0.2031287</code></pre>
+<p>Note that the linear model (default) significance equals to t-test assuming equal variances.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">t.test</span>(Log10_Abundance <span class="op">~</span><span class="st"> </span>Group, <span class="dt">data =</span> df, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)<span class="op">$</span>p.value)</code></pre></div>
+<pre><code>## [1] 4.284318e-06</code></pre>
 </div>
-<div id="structure" class="section level2">
-<h2><span class="header-section-number">3.3</span> Structure</h2>
-<p>Let us create few folders to organize the analysis. While this can be personal preference, make sure you write the structure to guide others who do not know your data well.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create Folders as following</span>
-<span class="co"># Tables</span>
-<span class="kw">dir.create</span>(<span class="st">&quot;tables&quot;</span>)
+<div id="covariate-testing" class="section level2">
+<h2><span class="header-section-number">5.3</span> Covariate testing</h2>
+<p><strong>Task: Investigate how sex and bmi affect the results. </strong></p>
+<p>An important advantage of linear and generalized linear models, compared to plain t-test is that they allow incorporating additional variables, such as potential confounders (age, BMI, gender..):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add a covariate:</span>
+df<span class="op">$</span>sex &lt;-<span class="st"> </span><span class="kw">meta</span>(d)<span class="op">$</span>sex
+df<span class="op">$</span>bmi_group &lt;-<span class="st"> </span><span class="kw">meta</span>(d)<span class="op">$</span>bmi_group
 
-<span class="co"># Figures</span>
-<span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>)
-
-<span class="co"># Phyloseq objects</span>
-<span class="kw">dir.create</span>(<span class="st">&quot;phyobjects&quot;</span>)
-
-<span class="co"># Custom codes/notes</span>
-<span class="kw">dir.create</span>(<span class="st">&quot;codes_notes&quot;</span>)</code></pre></div>
-<p><strong>Load packages</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(microbiome) <span class="co"># data analysis and visualisation</span>
-<span class="kw">library</span>(phyloseq) <span class="co"># also the basis of data object. Data analysis and visualisation</span>
-<span class="kw">library</span>(microbiomeutilities) <span class="co"># some utility tools</span>
-<span class="kw">library</span>(RColorBrewer) <span class="co"># nice color options</span>
-<span class="kw">library</span>(ggpubr) <span class="co"># publication quality figures, based on ggplot2</span>
-<span class="kw">library</span>(DT) <span class="co"># interactive tables in html and markdown</span>
-<span class="kw">library</span>(data.table) <span class="co"># alternative to data.frame</span>
-<span class="kw">library</span>(dplyr) <span class="co"># data handling</span></code></pre></div>
-</div>
-<div id="making-a-phyloseq-object" class="section level2">
-<h2><span class="header-section-number">3.4</span> Making a phyloseq object</h2>
-<p>This is the basis for the analyses demonstrated in this tutorial. In the phyloseq object, information on OTU abundances, taxonomy of OTUs, the phylogenetic tree and metadata is stored. A single object with all this information provides a convinient way of handling, manipulating and visualizing data.<br />
-For more infromation: <a href="http://joey711.github.io/phyloseq/import-data">phyloseq</a></p>
-<p>Please remember that the metadata (i.e. mapping) file has to be in <em>.csv</em> format (columns have sample attributes). The <code>read_phylseq</code> function from microbiome package requires metadata in <em>.csv</em> format.</p>
-<p><strong>Things to be done in QIIME terminal (if required):</strong><br />
-<strong>Important Note 2</strong>: If you have error in loading the biom files stating <strong>JSON or HDF5</strong> then you need to convert it in to a JSON format.</p>
-<p>For this, use the following command within the QIIME terminal and not in R!</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># biom convert -i NGTaxMerged.biom -o ngtax_json.biom --table-type &quot;OTU table&quot; --to-json    </span></code></pre></div>
-<p>For more information on the biom format please <a href="http://biom-format.org/documentation/biom_conversion.html">click here</a>.</p>
-<p><strong>Important Note 3</strong>: The most recent version of NG-Tax does not have this issue.</p>
-<p><strong>NOTE</strong><br />
-The <code>read_phyloseq</code> function can be used for reading other outputs (like .shared and consensus taxonomy files from mothur) into phyloseq object. type <code>?read_phyloseq</code> in the console pane for more information.<br />
-If you don’t have your own biom file, we have a test dataset stored in <code>input_data</code>. Unzip the humanmicrobiome.zip and you will have the original biom file, copy it in the <code>input_data</code> folder.</p>
-
+<span class="co"># Fit the model:</span>
+res &lt;-<span class="st"> </span><span class="kw">glm</span>(Log10_Abundance <span class="op">~</span><span class="st"> </span>Group <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi_group, <span class="dt">data =</span> df, <span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)</code></pre></div>
+<p>We can even include interaction terms:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">glm</span>(Log10_Abundance <span class="op">~</span><span class="st"> </span>Group <span class="op">*</span><span class="st"> </span>sex <span class="op">*</span><span class="st"> </span>bmi_group, <span class="dt">data =</span> df, <span class="dt">family =</span> <span class="st">&quot;gaussian&quot;</span>)
+<span class="kw">kable</span>(<span class="kw">coefficients</span>(res))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td align="right">0.8736029</td>
+</tr>
+<tr class="even">
+<td>GroupAFR</td>
+<td align="right">0.0261450</td>
+</tr>
+<tr class="odd">
+<td>sexmale</td>
+<td align="right">0.0022871</td>
+</tr>
+<tr class="even">
+<td>bmi_groupoverweight</td>
+<td align="right">-0.3160401</td>
+</tr>
+<tr class="odd">
+<td>bmi_groupobese</td>
+<td align="right">-0.2117135</td>
+</tr>
+<tr class="even">
+<td>GroupAFR:sexmale</td>
+<td align="right">-0.2180267</td>
+</tr>
+<tr class="odd">
+<td>GroupAFR:bmi_groupoverweight</td>
+<td align="right">0.5360971</td>
+</tr>
+<tr class="even">
+<td>GroupAFR:bmi_groupobese</td>
+<td align="right">0.2396655</td>
+</tr>
+<tr class="odd">
+<td>sexmale:bmi_groupoverweight</td>
+<td align="right">0.0133203</td>
+</tr>
+<tr class="even">
+<td>sexmale:bmi_groupobese</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>GroupAFR:sexmale:bmi_groupoverweight</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>GroupAFR:sexmale:bmi_groupobese</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>For more examples on using and analysing linear models, see statmethods <a href="https://www.statmethods.net/stats/regression.html">regression</a> and [ANOVA](See also <a href="https://www.statmethods.net/stats/anova.html">statmethods</a> tutorials. <strong>Try to adapt those examples on our microbiome example data data sets</strong>.</p>
 </div>
 </div>
             </section>
@@ -239,8 +295,8 @@ If you don’t have your own biom file, we have a test dataset stored in <code>i
           </div>
         </div>
       </div>
-<a href="citation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="differential-abundance-testing-for-univariate-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="differential-abundance-testing-for-univariate-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-models-for-differential-abundance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

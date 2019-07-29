@@ -1,2 +1,2 @@
 library(bookdown)
-render_book("index.Rmd", "bookdown::gitbook")
+render_book("index.Rmd", "bookdown::gitbook", output_dir = "docs")

@@ -4,24 +4,24 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Minimal Book Example</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <title>Introduction to microbiome data science</title>
+  <meta name="description" content="Course material" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:title" content="Introduction to microbiome data science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="Course material" />
+  <meta name="github-repo" content="microbiome/test" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Minimal Book Example" />
+  <meta name="twitter:title" content="Introduction to microbiome data science" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="Course material" />
   
 
-<meta name="author" content="Yihui Xie" />
+<meta name="author" content="Leo Lahti" />
 
 
 <meta name="date" content="2019-07-29" />
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="introduction.html">
+<link rel="next" href="citation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -87,7 +87,6 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -100,37 +99,55 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#preparing-for-the-course"><i class="fa fa-check"></i><b>2.1</b> Preparing for the course</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#useful-functionsresources"><i class="fa fa-check"></i><b>2.2</b> Useful functions/resources</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#focus"><i class="fa fa-check"></i><b>2.3</b> Focus</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#target-audience"><i class="fa fa-check"></i><b>2.4</b> Target audience</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-course"><i class="fa fa-check"></i><b>1.1</b> Preparing for the course</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#useful-functionsresources"><i class="fa fa-check"></i><b>1.2</b> Useful functions/resources</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#focus"><i class="fa fa-check"></i><b>1.3</b> Focus</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#target-audience"><i class="fa fa-check"></i><b>1.4</b> Target audience</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="citation.html"><a href="citation.html"><i class="fa fa-check"></i><b>3</b> Citation</a><ul>
-<li class="chapter" data-level="3.1" data-path="citation.html"><a href="citation.html#license"><i class="fa fa-check"></i><b>3.1</b> License</a></li>
+<li class="chapter" data-level="2" data-path="citation.html"><a href="citation.html"><i class="fa fa-check"></i><b>2</b> Citation</a><ul>
+<li class="chapter" data-level="2.1" data-path="citation.html"><a href="citation.html#license"><i class="fa fa-check"></i><b>2.1</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>4</b> Introduction</a></li>
-<li class="chapter" data-level="5" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Set-up and Pre-processing</a><ul>
-<li class="chapter" data-level="5.1" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#otu-or-asvs-or-sotus"><i class="fa fa-check"></i><b>5.1</b> OTU or ASVs or sOTUs</a></li>
-<li class="chapter" data-level="5.2" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#general-overview"><i class="fa fa-check"></i><b>5.2</b> General overview</a></li>
-<li class="chapter" data-level="5.3" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#structure"><i class="fa fa-check"></i><b>5.3</b> Structure</a></li>
-<li class="chapter" data-level="5.4" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#making-a-phyloseq-object"><i class="fa fa-check"></i><b>5.4</b> Making a phyloseq object</a></li>
+<li class="chapter" data-level="3" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html"><i class="fa fa-check"></i><b>3</b> Set-up and Pre-processing</a><ul>
+<li class="chapter" data-level="3.1" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#otu-or-asvs-or-sotus"><i class="fa fa-check"></i><b>3.1</b> OTU or ASVs or sOTUs</a></li>
+<li class="chapter" data-level="3.2" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#general-overview"><i class="fa fa-check"></i><b>3.2</b> General overview</a></li>
+<li class="chapter" data-level="3.3" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#structure"><i class="fa fa-check"></i><b>3.3</b> Structure</a></li>
+<li class="chapter" data-level="3.4" data-path="set-up-and-pre-processing.html"><a href="set-up-and-pre-processing.html#making-a-phyloseq-object"><i class="fa fa-check"></i><b>3.4</b> Making a phyloseq object</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>6</b> Literature</a></li>
-<li class="chapter" data-level="7" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>7</b> Methods</a></li>
-<li class="chapter" data-level="8" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>8</b> Applications</a><ul>
-<li class="chapter" data-level="8.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>8.1</b> Example one</a></li>
-<li class="chapter" data-level="8.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>8.2</b> Example two</a></li>
+<li class="chapter" data-level="4" data-path="differential-abundance-testing-for-univariate-data.html"><a href="differential-abundance-testing-for-univariate-data.html"><i class="fa fa-check"></i><b>4</b> Differential abundance testing for univariate data</a><ul>
+<li class="chapter" data-level="4.1" data-path="differential-abundance-testing-for-univariate-data.html"><a href="differential-abundance-testing-for-univariate-data.html#load-example-data"><i class="fa fa-check"></i><b>4.1</b> Load example data</a></li>
+<li class="chapter" data-level="4.2" data-path="differential-abundance-testing-for-univariate-data.html"><a href="differential-abundance-testing-for-univariate-data.html#visual-comparison-of-two-groups"><i class="fa fa-check"></i><b>4.2</b> Visual comparison of two groups</a></li>
+<li class="chapter" data-level="4.3" data-path="differential-abundance-testing-for-univariate-data.html"><a href="differential-abundance-testing-for-univariate-data.html#statistical-comparison-of-two-groups"><i class="fa fa-check"></i><b>4.3</b> Statistical comparison of two groups</a></li>
+<li class="chapter" data-level="4.4" data-path="differential-abundance-testing-for-univariate-data.html"><a href="differential-abundance-testing-for-univariate-data.html#investigate-assumptions-of-the-t-test"><i class="fa fa-check"></i><b>4.4</b> Investigate assumptions of the t-test</a></li>
+<li class="chapter" data-level="4.5" data-path="differential-abundance-testing-for-univariate-data.html"><a href="differential-abundance-testing-for-univariate-data.html#compare-results-between-parametric-and-non-parametric-tests"><i class="fa fa-check"></i><b>4.5</b> Compare results between parametric and non-parametric tests</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>9</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
+<li class="chapter" data-level="5" data-path="linear-models-the-role-of-covariates.html"><a href="linear-models-the-role-of-covariates.html"><i class="fa fa-check"></i><b>5</b> Linear models: the role of covariates</a><ul>
+<li class="chapter" data-level="5.1" data-path="linear-models-the-role-of-covariates.html"><a href="linear-models-the-role-of-covariates.html#fitting-a-linear-model"><i class="fa fa-check"></i><b>5.1</b> Fitting a linear model</a></li>
+<li class="chapter" data-level="5.2" data-path="linear-models-the-role-of-covariates.html"><a href="linear-models-the-role-of-covariates.html#interpreting-linear-model-output"><i class="fa fa-check"></i><b>5.2</b> Interpreting linear model output</a></li>
+<li class="chapter" data-level="5.3" data-path="linear-models-the-role-of-covariates.html"><a href="linear-models-the-role-of-covariates.html#covariate-testing"><i class="fa fa-check"></i><b>5.3</b> Covariate testing</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html"><i class="fa fa-check"></i><b>6</b> Advanced models for differential abundance</a><ul>
+<li class="chapter" data-level="6.1" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#particular-properties-of-taxonomic-profiling-data"><i class="fa fa-check"></i><b>6.1</b> Particular properties of taxonomic profiling data</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#discrete-count-data"><i class="fa fa-check"></i><b>6.1.1</b> Discrete count data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#sparsity"><i class="fa fa-check"></i><b>6.1.2</b> Sparsity</a></li>
+<li class="chapter" data-level="6.1.3" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#rarity"><i class="fa fa-check"></i><b>6.1.3</b> Rarity</a></li>
+<li class="chapter" data-level="6.1.4" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#overdispersion"><i class="fa fa-check"></i><b>6.1.4</b> Overdispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#generalized-linear-models-a-brief-overview"><i class="fa fa-check"></i><b>6.2</b> Generalized linear models: a brief overview</a></li>
+<li class="chapter" data-level="6.3" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#deseq2-differential-abundance-testing-for-sequencing-data"><i class="fa fa-check"></i><b>6.3</b> DESeq2: differential abundance testing for sequencing data</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#fitting-deseq2"><i class="fa fa-check"></i><b>6.3.1</b> Fitting DESeq2</a></li>
+<li class="chapter" data-level="6.3.2" data-path="advanced-models-for-differential-abundance.html"><a href="advanced-models-for-differential-abundance.html#comparison-between-deseq2-and-standard-models"><i class="fa fa-check"></i><b>6.3.2</b> Comparison between DESeq2 and standard models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="multivariate-comparisons-of-microbial-community-composition.html"><a href="multivariate-comparisons-of-microbial-community-composition.html"><i class="fa fa-check"></i><b>7</b> Multivariate comparisons of microbial community composition</a><ul>
+<li class="chapter" data-level="7.1" data-path="multivariate-comparisons-of-microbial-community-composition.html"><a href="multivariate-comparisons-of-microbial-community-composition.html#permanova"><i class="fa fa-check"></i><b>7.1</b> PERMANOVA</a></li>
+<li class="chapter" data-level="7.2" data-path="multivariate-comparisons-of-microbial-community-composition.html"><a href="multivariate-comparisons-of-microbial-community-composition.html#checking-the-homogeneity-condition"><i class="fa fa-check"></i><b>7.2</b> Checking the homogeneity condition</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="further-exercises.html"><a href="further-exercises.html"><i class="fa fa-check"></i><b>8</b> Further exercises</a><ul>
+<li class="chapter" data-level="8.1" data-path="further-exercises.html"><a href="further-exercises.html#compositionality"><i class="fa fa-check"></i><b>8.1</b> Compositionality</a></li>
+<li class="chapter" data-level="8.2" data-path="further-exercises.html"><a href="further-exercises.html#redundancy-analysis-rda"><i class="fa fa-check"></i><b>8.2</b> Redundancy analysis (RDA)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="citation-1.html"><a href="citation-1.html"><i class="fa fa-check"></i><b>9</b> Citation</a></li>
 </ul>
 
       </nav>
@@ -140,7 +157,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to microbiome data science</a>
           </h1>
         </div>
 
@@ -149,20 +166,52 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">A Minimal Book Example</h1>
-<p class="author"><em>Yihui Xie</em></p>
+<h1 class="title">Introduction to microbiome data science</h1>
+<p class="author"><em>Leo Lahti</em></p>
 <p class="date"><em>2019-07-29</em></p>
 </div>
-<div id="prerequisites" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>Thiss is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)
-<span class="co"># or the development version</span>
-<span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
-
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<p>This course is organised in collaboration with <a href="https://www.utu.fi/en/units/sci/units/math/Pages/home.aspx">Department of Mathematics and Statistics University of Turku</a>, Finland. It will be held at <a href="">Radboud University</a>, Nijmegen on Sep 12-13, 2019.</p>
+<p>The course will cover the standard workflow in taxonomic profiling studies, with a focus on human gut microbiota, ranging from low-level preprocessing to statistical analysis, visualization, and reproducible reporting.</p>
+<div id="preparing-for-the-course" class="section level2">
+<h2><span class="header-section-number">1.1</span> Preparing for the course</h2>
+<p>We recommend using your own laptop. If this is not possible, kindly contact the organizers.</p>
+<p>Install the following software before the course:</p>
+<ul>
+<li>R <a href="https://cran.r-project.org">Download link</a>.<br />
+</li>
+<li>Rstudio <a href="https://www.rstudio.com/products/rstudio/download/">Download link</a>.</li>
+</ul>
+</div>
+<div id="useful-functionsresources" class="section level2">
+<h2><span class="header-section-number">1.2</span> Useful functions/resources</h2>
+<ul>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf">Base R</a><br />
+</li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">R Markdown</a><br />
+</li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">RStudio IDE</a><br />
+</li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2</a><br />
+</li>
+<li><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217">phyloseq</a><br />
+</li>
+<li><a href="http://microbiome.github.io/microbiome/">microbiome</a><br />
+</li>
+<li><a href="http://www.cookbook-r.com/Graphs/">R graphics cookbook</a><br />
+</li>
+<li><a href="https://microsud.github.io/Tools-Microbiome-Analysis/">List of R tools for microbiome analysis</a></li>
+</ul>
+</div>
+<div id="focus" class="section level2">
+<h2><span class="header-section-number">1.3</span> Focus</h2>
+<p>The primary aim is introduce microbial community data analysis. There will be talks and discussion on theory and methodology for analysis of microbial community data. We will cover topics ranging from design of studies, sequencing technologies, importance of controls and standardized DNA processing. Supervised hands-on training covering analyses from raw reads using NG-Tax, downstream analysis in R for exploration and analysis of microbiome sequencing data will be priority. There will be a strong focus on using R, R Studio for moving towards reproducible and open science.</p>
+</div>
+<div id="target-audience" class="section level2">
+<h2><span class="header-section-number">1.4</span> Target audience</h2>
+<p>Anyone who plans to or is currently doing high throughput microbial community analysis.</p>
+</div>
 </div>
             </section>
 
@@ -170,7 +219,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         </div>
       </div>
 
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="citation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -200,14 +249,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
 "text": null
 },
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
