@@ -48,7 +48,8 @@ The primary aim is introduce microbial community data analysis. There will be ta
 ## Target audience  
 Anyone who plans to or is currently doing high throughput microbial community analysis.  
 
-# Citation  
+## Citation  
+
 If you found this useful, please cite:  
 Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science.
 
@@ -56,3 +57,5 @@ Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome 
 ## License  
 
 The 2-Clause BSD License
+
+
