@@ -11,9 +11,7 @@ site: bookdown::bookdown_site
 
 ## 12 September
 
-### Session 1 (9.30-11.30  / 2 hours)
-
-**Standard bioinformatics workflow in microbiome research**
+**Session 1 (9.30-11.30  / 2 hours): Standard bioinformatics workflow in microbiome research**
 
  * Introduction and learning goals
  * Alternative study designs
@@ -21,14 +19,10 @@ site: bookdown::bookdown_site
  * Reproducible research and best practices in microbiome data science
  
 
-### Session 2 (12-13 / 1 hour)
-
-**Lecture: Contemporary research on microbiome data science**
+**Session 2 (12-13 / 1 hour): Lecture on Contemporary research on microbiome data science**
 
 
-### Session 3 (14.30-17.30 / 3 hours including breaks)
-
-**Hands-on session: introduction to R tools**
+**Session 3 (14.30-17.30 / 3 hours including breaks) / Hands-on: introduction to R tools**
 
  * Part I: From raw data to phyloseq objects
  
@@ -39,9 +33,7 @@ site: bookdown::bookdown_site
 
 ## 13 September
 
-### Session 4 (9.30-12:00 / 2.5 hours)
-
-**Special properties of microbiome data**
+**Session 4 (9.30-12:00 / 2.5 hours): Special properties of microbiome data**
 
  * Sparsity, compositionality, non-Gaussianity
  * The role of covariates: age, diet, or medication 
@@ -54,22 +46,16 @@ site: bookdown::bookdown_site
 **Lunch 12:00-13:30 (1.5 hours)**
 
 
-### Session 5 (13:30-15:00 / 1.5 hours)
-
-**Hands-on session: Reproducible research**
+**Session 5 (13:30-15:00 / 1.5 hours): Hands-on session: Reproducible research**
 
  * Completing and fine-tuning the reproducible reports
 
 **Break (15:00-15:30 / 0.5 hours)**
 
-### Session 6 (15:30-17:00 / 1.5 hours)
+
+**Session 6 (15:30-17:00 / 1.5 hours): Wrap-up**
 
  * Summary and reflection of the leaning objects
  * Other tools & environments (QIIME2, Anvi'o)
  * Wrap-up & conclusions
-
-
-
-
-
 
