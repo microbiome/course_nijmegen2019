@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction to microbiome data science</title>
+  <title>2 Schedule | Introduction to microbiome data science</title>
   <meta name="description" content="Course material" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction to microbiome data science" />
+  <meta property="og:title" content="2 Schedule | Introduction to microbiome data science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="microbiome/course_nijmegen2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to microbiome data science" />
+  <meta name="twitter:title" content="2 Schedule | Introduction to microbiome data science" />
   
   <meta name="twitter:description" content="Course material" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="schedule.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="set-up-and-pre-processing.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -159,58 +159,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Introduction to microbiome data science</h1>
-<p class="author"><em>Leo Lahti and Henrik Eckermann</em></p>
-<p class="date"><em>2019-08-10</em></p>
-</div>
-<div id="overview" class="section level1">
-<h1><span class="header-section-number">1</span> Overview</h1>
-<p>The course provides an overview of the standard bioinformatics workflow in taxonomic profiling studies, with a focus on human gut microbiota, ranging from data preprocessing to statistical analysis and reproducible reporting.</p>
-<p><strong>Learning goals</strong> Introduce microbial community data analysis. There will be talks and discussion on theory and methodology for analysis of microbial community data. We will cover topics ranging from design of studies, sequencing technologies, importance of controls and standardized DNA processing. Supervised hands-on training covering analyses from raw reads using NG-Tax, downstream analysis in R for exploration and analysis of microbiome sequencing data will be priority. There will be a strong focus on using R, R Studio for moving towards reproducible and open science.</p>
-<p><strong>Target audience</strong> Anyone who plans to or is currently doing high throughput microbial community analysis.</p>
-<p><strong>Venue</strong> This course will be held at <a href="">Radboud University</a>, Nijmegen on Sep 12-13, 2019, organised in collaboration with <a href="https://www.utu.fi/en/university/faculty-of-science-and-engineering/department-of-future-technologies">University of Turku</a>, Finland.</p>
-<div id="preparation" class="section level2">
-<h2><span class="header-section-number">1.1</span> Preparation</h2>
-<div id="software-setup" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Software setup</h3>
-<p>We recommend using your own laptop. If this is not possible, kindly contact the organizers.</p>
-<p>Install the following software before the course:</p>
+<div id="schedule" class="section level1">
+<h1><span class="header-section-number">2</span> Schedule</h1>
+<p><strong>Data exploration and analysis in gut microbiome profiling studies</strong></p>
+<div id="september" class="section level2">
+<h2><span class="header-section-number">2.1</span> 12 September:</h2>
+<p>Session 1 (9.30-11.30 / 2 hours)
+Overview of a standard bioinformatics workflow in microbiome research.
+- Ecosystem view of the gut microbiome: from bugs to communities and function
+- Preprocessing and quality control
+- Diagnostic plots and properties of microbiome data
+- Common methods: DADA2 (SVs) etc.
+- Analysis and modeling of taxonomic composition
+- Principal coordinates analysis &amp; other common visualization techniques
+- Differential abundance analysis
+- Varieties of alpha and beta diversity
+- Identification of community types (DMM)
+- Quantification of associations with external factors such as age, diet, or medication
+- Reproducible research and best practices in microbiome data science</p>
+<p>Session 2 (12-13 / 1 hour)
+KEYNOTE: Modern statistics in human gut microbiome research</p>
 <ul>
-<li>R <a href="https://cran.r-project.org">Download link</a>.<br />
-</li>
-<li>Rstudio <a href="https://www.rstudio.com/products/rstudio/download/">Download link</a>.<br />
-</li>
-<li>R Libraries <a href="code/install_dependencies.R">Installation script</a></li>
+<li><p>Overview of a standard bioinformatics workflow in microbiome
+research.</p></li>
+<li><p>Highlight how properties of microbiome data, such as sparsity,
+non-Gaussianity, and compositionality influences the choice and
+performance of the statistical methods: CLR; PCA vs. PCoA;
+community-level vs. subcommunity vs. species level; DESeq2; multiple
+testing;</p></li>
+<li><p>Role of reproducible research and best practices in microbiome data
+science</p></li>
 </ul>
-<p>Some installation instructions can be also found in the Data Carpentry manual <a href="https://datacarpentry.org/R-ecology-lesson/">Data Analysis and Visualization in R for Ecologists</a>.</p>
+<p>Session 3 (14.30-17.30 / 3 hours including breaks)</p>
+<p>Hands-on session: introduction to R tools (microbiome, microbiomeutilities, phyloseq, other)</p>
+<p>3A) Introduction to phyloseq &amp; example data (from 16S rRNA amplicon profiling studies)</p>
+<p>3B) Generating a reproducible report with Rmarkdown</p>
+<p>3C) Examples on microbiome data visualization and diversity analysis</p>
 </div>
-</div>
-<div id="reusing-the-material" class="section level2">
-<h2><span class="header-section-number">1.2</span> Reusing the material</h2>
-<p>Unless otherwise stated, the teaching materials can be freely used, modified and shared based on the open 2-Clause BSD License. Kindlty cite the material as follows: “Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science. URL: <a href="https://microbiome.github.io" class="uri">https://microbiome.github.io</a>”</p>
-<div id="background-reading" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Background reading</h3>
-<p>The following background materials can help to get familiar with the course topics in advance.</p>
-<ul>
-<li>R programming basics: <a href="https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf">Base R</a></li>
-<li>R visualization: <a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2</a> and <a href="http://www.cookbook-r.com/Graphs/">R graphics cookbook</a></li>
-<li>Reproducible document generation with <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">R Markdown</a><br />
-</li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">RStudio IDE</a><br />
-</li>
-<li>Microbiome bioinformatics in R: <a href="https://microsud.github.io/Tools-Microbiome-Analysis/">List of R tools for microbiome analysis</a>. See in particular <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217">phyloseq</a> and <a href="http://microbiome.github.io/tutorials/">microbiome tutorial</a>.</li>
-<li><p><a href="https://datacarpentry.org/R-ecology-lesson/">Data Analysis and Visualization in R for Ecologists</a> by Data Carpentry</p></li>
-<li><p><a href="http://web.stanford.edu/class/bios221/book/">Modern Statistics for Modern Biology. Holmes &amp; Huber (2018)</a></p></li>
-<li><p>[Signatures of ecological processes in microbial community time series. Faust K et al. Microbiome, 6(120) 2018]</p></li>
-<li><p>[Multi-stability and the origin of microbial community types. Faust et al. ISME Journal, 11:2159–2166, 2017]</p></li>
-<li><p>[Linking statistical and ecological theory: Hubbell’s unified neutral theory of biodiversity as a hierarchical Dirichlet process. Harris et al. Proceedings of the IEEE, 105(3):516–529, 2017]</p></li>
-<li><p>[Metagenomics meets time series analysis: unraveling microbial community dynamics. Faust K. Current Opinion in Microbiology, 25:56–66, 2015]</p></li>
-<li><p>[Microbial communities as dynamical systems. Gonze D et al. Current Opinion in Microbiology, 44:41–49, 2018]</p></li>
-<li><p><a href="https://openresearchlabs.github.io/publications/papers/2018-Shetty-Lahti-MDS.pdf">Microbiome Data Science. Shetty &amp; Lahti, 2019</a></p></li>
-</ul>
+<div id="september-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> 13 September:</h2>
+<p>Session 4 (9.30-12:00 / 2.5 hours)</p>
+<p>Lunch 12:00-13:30 (1.5 hours)</p>
+<p>Session 5 (13:30-15:00 / 1.5 hours)</p>
+<p>Downstream analysis and modeling of taxonomic composition within and between individuals or experimental groups</p>
+<p>Break (15:00-15:30 / 0.5 hours)</p>
+<p>Session 6 (15:30-17:00 / 1.5 hours)
+- Pointers to other tools &amp; environments (QIIME2, Anvi’o)
+- Wrap-up &amp; conclusions</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -218,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="schedule.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="set-up-and-pre-processing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

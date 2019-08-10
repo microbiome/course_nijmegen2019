@@ -1,6 +1,6 @@
 --- 
 title: "Introduction to microbiome data science"
-author: "Leo Lahti"
+author: "Leo Lahti and Henrik Eckermann"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -8,19 +8,26 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: microbiome/test
+github-repo: microbiome/course_nijmegen2019
 description: "Course material"
 ---
 
 
-# Introduction  
+# Overview
 
-This course is organised in collaboration with [Department of Mathematics and Statistics University of Turku](https://www.utu.fi/en/units/sci/units/math/Pages/home.aspx), Finland. It will be held at [Radboud University](), Nijmegen on Sep 12-13, 2019.
+The course provides an overview of the standard bioinformatics workflow in taxonomic profiling studies, with a focus on human gut microbiota, ranging from data preprocessing to statistical analysis and reproducible reporting.
 
-The course will cover the standard workflow in taxonomic profiling studies, with a focus on human gut microbiota, ranging from low-level preprocessing to statistical analysis, visualization, and reproducible reporting.
+**Learning goals** Introduce microbial community data analysis. There will be talks and discussion on theory and methodology for analysis of microbial community data. We will cover topics ranging from design of studies, sequencing technologies, importance of controls and standardized DNA processing. Supervised hands-on training covering analyses from raw reads using NG-Tax, downstream analysis in R for exploration and analysis of microbiome sequencing data will be priority. There will be a strong focus on using R, R Studio for moving towards reproducible and open science.   
+
+**Target audience** Anyone who plans to or is currently doing high throughput microbial community analysis.  
+
+**Venue** This course will be held at [Radboud University](), Nijmegen on Sep 12-13, 2019, organised in collaboration with [University of Turku](https://www.utu.fi/en/university/faculty-of-science-and-engineering/department-of-future-technologies), Finland. 
 
 
-## Preparing for the course
+## Preparation
+
+
+### Software setup
 
 We recommend using your own laptop. If this is not possible, kindly contact the organizers.
 
@@ -28,34 +35,46 @@ Install the following software before the course:
 
 * R [Download link](https://cran.r-project.org).    
 * Rstudio [Download link](https://www.rstudio.com/products/rstudio/download/).  
+* R Libraries [Installation script](code/install_dependencies.R)
+
+Some installation instructions can be also found in the Data Carpentry manual [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/).
 
 
-## Useful functions/resources     
+## Reusing the material
 
-* [Base R](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)  
-* [R Markdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
-* [RStudio IDE](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)  
-* [ggplot2](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)  
-* [phyloseq](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217)  
-* [microbiome](http://microbiome.github.io/microbiome/)  
-* [R graphics cookbook](http://www.cookbook-r.com/Graphs/)  
-* [List of R tools for microbiome analysis](https://microsud.github.io/Tools-Microbiome-Analysis/)  
-
-## Focus    
-
-The primary aim is introduce microbial community data analysis. There will be talks and discussion on theory and methodology for analysis of microbial community data. We will cover topics ranging from design of studies, sequencing technologies, importance of controls and standardized DNA processing. Supervised hands-on training covering analyses from raw reads using NG-Tax, downstream analysis in R for exploration and analysis of microbiome sequencing data will be priority. There will be a strong focus on using R, R Studio for moving towards reproducible and open science.   
-
-## Target audience  
-Anyone who plans to or is currently doing high throughput microbial community analysis.  
-
-## Citation  
-
-If you found this useful, please cite:  
-Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science.
+Unless otherwise stated, the teaching materials can be freely used, modified and shared based on the open 2-Clause BSD License. Kindlty cite the material as follows: "Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science. URL: https://microbiome.github.io"
 
 
-## License  
+### Background reading
 
-The 2-Clause BSD License
+The following background materials can help to get familiar with the course topics in advance.
+
+ * R programming basics: [Base R](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)
+ * R visualization: [ggplot2](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) and [R graphics cookbook](http://www.cookbook-r.com/Graphs/)
+ * Reproducible document generation with [R Markdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
+ * [RStudio IDE](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)  
+ * Microbiome bioinformatics in R: [List of R tools for microbiome analysis](https://microsud.github.io/Tools-Microbiome-Analysis/). See in particular [phyloseq](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217) and [microbiome tutorial](http://microbiome.github.io/tutorials/).
+ * [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry
+
+- [Modern Statistics for Modern Biology. Holmes & Huber (2018)](http://web.stanford.edu/class/bios221/book/)
+
+- [Signatures of ecological processes in microbial community time series. Faust K et al. Microbiome, 6(120) 2018]
+
+- [Multi-stability and the origin of microbial community types. Faust et al. ISME Journal, 11:2159–2166, 2017]
+
+- [Linking statistical and ecological theory: Hubbell’s unified neutral theory of biodiversity as a hierarchical Dirichlet process. Harris et al. Proceedings of the IEEE, 105(3):516–529, 2017]
+
+- [Metagenomics meets time series analysis: unraveling microbial community dynamics. Faust K. Current Opinion in Microbiology, 25:56–66, 2015]
+
+- [Microbial communities as dynamical systems. Gonze D et al. Current Opinion in Microbiology, 44:41–49, 2018]
+
+- [Microbiome Data Science. Shetty & Lahti, 2019](https://openresearchlabs.github.io/publications/papers/2018-Shetty-Lahti-MDS.pdf)
+
+
+
+
+
+
+
 
 

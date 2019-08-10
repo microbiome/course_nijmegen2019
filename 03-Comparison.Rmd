@@ -1,6 +1,6 @@
 ---
-title: "Comparison NG-tax and QIIME"
-author: "Sudarshan A. Shetty,"
+title: "Intro"
+author: "`r authors`"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
 site: bookdown::bookdown_site

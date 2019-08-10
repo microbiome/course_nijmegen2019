@@ -7,7 +7,7 @@ site: bookdown::bookdown_site
 ---
 
 
-# Course overview
+# Schedule
 
 **Data exploration and analysis in gut microbiome profiling studies**
 
@@ -75,26 +75,4 @@ Session 6 (15:30-17:00 / 1.5 hours)
 
 
 
-
-## Material
-
-https://datacarpentry.org/R-ecology-lesson/
-
-
-## Literature
-
-
-- Modern Statistics for Modern Biology. Holmes & Huber (2018):. URL: http://web.stanford.edu/class/bios221/book/
-
-- Signatures of ecological processes in microbial community time series. Faust K et al. Microbiome, 6(120) 2018
-
-- Multi-stability and the origin of microbial community types. Faust et al. ISME Journal, 11:2159–2166, 2017.
-
-- Linking statistical and ecological theory: Hubbell’s unified neutral theory of biodiversity as a hierarchical Dirichlet process. Harris et al. Proceedings of the IEEE, 105(3):516–529, 2017.
-
-- Metagenomics meets time series analysis: unraveling microbial community dynamics. Faust K. Current Opinion in Microbiology, 25:56–66, 2015.
-
-- Microbial communities as dynamical systems. Gonze D et al. Current Opinion in Microbiology, 44:41–49, 2018.
-
-- Microbiome Data Science. Shetty & Lahti, 2019. URL: https://openresearchlabs.github.io/publications/papers/2018-Shetty-Lahti-MDS.pdf
 
