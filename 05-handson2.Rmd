@@ -10,7 +10,7 @@ site: bookdown::bookdown_site
 
 # Hands-on 2
 
-### Special properties of microbiome data
+## Special properties of microbiome data
 
  * Sparsity, compositionality, non-Gaussianity
  * The role of covariates: age, diet, or medication 
@@ -20,6 +20,6 @@ site: bookdown::bookdown_site
  * Co-occurrence networks: SparCC
 
 
-### Further resources
+## Further resources
 
 
