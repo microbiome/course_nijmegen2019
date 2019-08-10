@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Set-up and Pre-processing | Introduction to microbiome data science</title>
+  <title>7 Session 4 (9.30-12:00 / 2.5 hours) | Introduction to microbiome data science</title>
   <meta name="description" content="Course material" />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Set-up and Pre-processing | Introduction to microbiome data science" />
+  <meta property="og:title" content="7 Session 4 (9.30-12:00 / 2.5 hours) | Introduction to microbiome data science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="microbiome/course_nijmegen2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Set-up and Pre-processing | Introduction to microbiome data science" />
+  <meta name="twitter:title" content="7 Session 4 (9.30-12:00 / 2.5 hours) | Introduction to microbiome data science" />
   
   <meta name="twitter:description" content="Course material" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="schedule.html">
-<link rel="next" href="set-up-and-pre-processing-1.html">
+<link rel="prev" href="session-3-14-30-17-30-3-hours-including-breaks-1.html">
+<link rel="next" href="session-5-1330-1500-1-5-hours-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -185,82 +185,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="set-up-and-pre-processing" class="section level1">
-<h1><span class="header-section-number">3</span> Set-up and Pre-processing</h1>
-<p>This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the <a href="https://www.ncbi.nlm.nih.gov/pubmed/22699609">Human microbiome project phase I data</a>.</p>
-<div id="otu-or-asvs-or-sotus" class="section level2">
-<h2><span class="header-section-number">3.1</span> OTU or ASVs or sOTUs</h2>
-<p>For past few years (maybe decade), identifying Operational taxonomic units (OTUs) from raw sequences used clustering approach. Using 97% identity cut-off was a standard approach and often closed reference OTU picking was accepted in the sicentific community. During the time of the development of tools and bioinformatics approaches this was possibly the best available method. However, as with many other fields of science, the knowledge has been updated. Evolution of bioinformatics approaches is a constant process. Based on current knowledge, the cons of 97% OTU picking stratergy (using clustering approaches) have out-weighed the pros (eg. less time).</p>
-<p>Recent approaches are now focused towards Amplicon Seuence Variants/sOTUs:<br />
-* <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3864673/">Oligotyping</a><br />
-* <a href="http://dx.doi.org/10.1128/mSystems.00191-16">Deblur</a><br />
-* <a href="https://www.nature.com/articles/nmeth.3869">DADA2</a><br />
-* <a href="https://f1000research.com/articles/5-1791/v1">NG-Tax</a></p>
-<p>All above approaches have one common theme, they avoid 97% clustering and focus on minor differences (in many cases single nucleotide variations) to identify unique ASVs/sOTU.</p>
-<p>Note: Some how naming is different and variable. For this purpose and in this book, I will stick to ASVs when data from NG-tax is used.</p>
-<p>In this, section, we will compare outputs from 97% OTU picking approach and NG-tax approach.<br />
-The data used here is the 16S rRNA gene variable region (V1-V3) for 97% OTU-pciking. The raw reads were processed using QIIME 1.9.1, SortMeRNA, and OTU picking was done using the closed-reference OTU-picking at 97% identity.</p>
-<p>For NG-Tax, we use the same raw data and processed through default settings.</p>
-<p>Here, we do not aim to bench mark. For this course, we aim to show differences between results from two approaches.</p>
-<p>For down stream analysis of *.biom files we use <a href="https://joey711.github.io/phyloseq/">Phyloseq</a> and <a href="http://microbiome.github.io/microbiome/">microbiome</a>.<br />
-Kindly cite all the packages and tools that were used in your analysis as listed at the end of each document in <code>sessionInfo</code>. Also make sure that you provide the workflow and scripts you used for analysis atleast as supplementary material with your research article.<br />
-Check <a href="http://www.statmethods.net/">Quick-R</a>.</p>
-</div>
-<div id="general-overview" class="section level2">
-<h2><span class="header-section-number">3.2</span> General overview</h2>
-<center>
-<img src="images/Overview.png" alt="microbiome R package" />
-</center>
-</div>
-<div id="structure" class="section level2">
-<h2><span class="header-section-number">3.3</span> Structure</h2>
-<p>Let us create few folders to organize the analysis. While this can be personal preference, make sure you write the structure to guide others who do not know your data well.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Create Folders as following</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># Tables</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">dir.create</span>(<span class="st">&quot;tables&quot;</span>)</a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co"># Figures</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>)</a>
-<a class="sourceLine" id="cb1-7" title="7"></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co"># Phyloseq objects</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="kw">dir.create</span>(<span class="st">&quot;phyobjects&quot;</span>)</a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co"># Custom codes/notes</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="kw">dir.create</span>(<span class="st">&quot;codes_notes&quot;</span>)</a></code></pre></div>
-<p><strong>Load packages</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(microbiome) <span class="co"># data analysis and visualisation</span></a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw">library</span>(phyloseq) <span class="co"># also the basis of data object. Data analysis and visualisation</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">library</span>(microbiomeutilities) <span class="co"># some utility tools</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="kw">library</span>(RColorBrewer) <span class="co"># nice color options</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">library</span>(ggpubr) <span class="co"># publication quality figures, based on ggplot2</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="kw">library</span>(DT) <span class="co"># interactive tables in html and markdown</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="kw">library</span>(data.table) <span class="co"># alternative to data.frame</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="kw">library</span>(dplyr) <span class="co"># data handling</span></a></code></pre></div>
-</div>
-<div id="making-a-phyloseq-object" class="section level2">
-<h2><span class="header-section-number">3.4</span> Making a phyloseq object</h2>
-<p>This is the basis for the analyses demonstrated in this tutorial. In the phyloseq object, information on OTU abundances, taxonomy of OTUs, the phylogenetic tree and metadata is stored. A single object with all this information provides a convinient way of handling, manipulating and visualizing data.<br />
-For more infromation: <a href="http://joey711.github.io/phyloseq/import-data">phyloseq</a></p>
-<p>Please remember that the metadata (i.e. mapping) file has to be in <em>.csv</em> format (columns have sample attributes). The <code>read_phylseq</code> function from microbiome package requires metadata in <em>.csv</em> format.</p>
-<p><strong>Things to be done in QIIME terminal (if required):</strong><br />
-<strong>Important Note 2</strong>: If you have error in loading the biom files stating <strong>JSON or HDF5</strong> then you need to convert it in to a JSON format.</p>
-<p>For this, use the following command within the QIIME terminal and not in R!</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># biom convert -i NGTaxMerged.biom -o ngtax_json.biom --table-type &quot;OTU table&quot; --to-json    </span></a></code></pre></div>
-<p>For more information on the biom format please <a href="http://biom-format.org/documentation/biom_conversion.html">click here</a>.</p>
-<p><strong>Important Note 3</strong>: The most recent version of NG-Tax does not have this issue.</p>
-<p><strong>NOTE</strong><br />
-The <code>read_phyloseq</code> function can be used for reading other outputs (like .shared and consensus taxonomy files from mothur) into phyloseq object. type <code>?read_phyloseq</code> in the console pane for more information.<br />
-If you don’t have your own biom file, we have a test dataset stored in <code>input_data</code>. Unzip the humanmicrobiome.zip and you will have the original biom file, copy it in the <code>input_data</code> folder.</p>
+<div id="session-4-9.30-1200-2.5-hours-1" class="section level1">
+<h1><span class="header-section-number">7</span> Session 4 (9.30-12:00 / 2.5 hours)</h1>
+<p><strong>Special properties of microbiome data</strong></p>
+<ul>
+<li>Sparsity, compositionality, non-Gaussianity</li>
+<li>The role of covariates: age, diet, or medication</li>
+<li>Influence on statistical analysis</li>
+<li>Differential abundance analysis: DADA2</li>
+<li>Visualization: PCoA</li>
+<li>Co-occurrence networks: SparCC</li>
+</ul>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="schedule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="set-up-and-pre-processing-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="session-3-14-30-17-30-3-hours-including-breaks-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="session-5-1330-1500-1-5-hours-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

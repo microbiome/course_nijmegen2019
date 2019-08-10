@@ -1,0 +1,11 @@
+# Session 4 (9.30-12:00 / 2.5 hours)
+
+**Special properties of microbiome data**
+
+ * Sparsity, compositionality, non-Gaussianity
+ * The role of covariates: age, diet, or medication 
+ * Influence on statistical analysis
+ * Differential abundance analysis: DADA2
+ * Visualization: PCoA
+ * Co-occurrence networks: SparCC
+

@@ -1,11 +1,3 @@
----
-title: "Intro"
-author: "`r authors`"
-date: "`r Sys.Date()`"
-output: bookdown::gitbook
-site: bookdown::bookdown_site
----
-
 # Set-up and Pre-processing  
 
 This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the [Human microbiome project phase I data](https://www.ncbi.nlm.nih.gov/pubmed/22699609).  
