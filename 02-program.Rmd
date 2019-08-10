@@ -33,6 +33,7 @@ site: bookdown::bookdown_site
 
 ## 13 September
 
+
 **Session 4 (9.30-12:00 / 2.5 hours): Special properties of microbiome data**
 
  * Sparsity, compositionality, non-Gaussianity

@@ -1,5 +1,5 @@
 ---
-title: "Intro"
+title: "Hands-on 1"
 author: "`r authors`"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
@@ -8,19 +8,15 @@ site: bookdown::bookdown_site
 
 
 
-# Session 1
+# Hands-on 1: introduction to R tools
 
-Set-up and pre-processing (9.30-11.30  / 2 hours)
 
-**Standard bioinformatics workflow in microbiome research**
+## From raw data to phyloseq objects
 
- * Introduction and learning goals
+## Key concepts: core, diversity, landscape view
  
- * Alternative study designs
- 
- * Overview of a standard bioinformatics workflow
- 
- * Reproducible research and best practices in microbiome data science
+## Reproducible reporting with Rmarkdown
+
 
 
 
