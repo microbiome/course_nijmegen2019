@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Session 1 | Introduction to microbiome data science</title>
+  <meta name="description" content="Course material" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Session 1 | Introduction to microbiome data science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course material" />
+  <meta name="github-repo" content="microbiome/course_nijmegen2019" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Session 1 | Introduction to microbiome data science" />
+  
+  <meta name="twitter:description" content="Course material" />
+  
+
+<meta name="author" content="Leo Lahti and Henrik Eckermann" />
+
+
+<meta name="date" content="2019-08-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="session-1.html">
+<link rel="next" href="misc.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparation"><i class="fa fa-check"></i><b>1.1</b> Preparation</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#software-setup"><i class="fa fa-check"></i><b>1.1.1</b> Software setup</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#reusing-the-material"><i class="fa fa-check"></i><b>1.2</b> Reusing the material</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#background-reading"><i class="fa fa-check"></i><b>1.2.1</b> Background reading</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a><ul>
+<li class="chapter" data-level="2.1" data-path="schedule.html"><a href="schedule.html#september"><i class="fa fa-check"></i><b>2.1</b> 12 September</a></li>
+<li class="chapter" data-level="2.2" data-path="schedule.html"><a href="schedule.html#september-1"><i class="fa fa-check"></i><b>2.2</b> 13 September</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="material.html"><a href="material.html"><i class="fa fa-check"></i><b>3</b> Material</a></li>
+<li class="chapter" data-level="4" data-path="session-1.html"><a href="session-1.html"><i class="fa fa-check"></i><b>4</b> Session 1</a><ul>
+<li class="chapter" data-level="4.1" data-path="session-1.html"><a href="session-1.html#otu-or-asvs-or-sotus"><i class="fa fa-check"></i><b>4.1</b> OTU or ASVs or sOTUs</a></li>
+<li class="chapter" data-level="4.2" data-path="session-1.html"><a href="session-1.html#general-overview"><i class="fa fa-check"></i><b>4.2</b> General overview</a></li>
+<li class="chapter" data-level="4.3" data-path="session-1.html"><a href="session-1.html#structure"><i class="fa fa-check"></i><b>4.3</b> Structure</a></li>
+<li class="chapter" data-level="4.4" data-path="session-1.html"><a href="session-1.html#making-a-phyloseq-object"><i class="fa fa-check"></i><b>4.4</b> Making a phyloseq object</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="session-1-1.html"><a href="session-1-1.html"><i class="fa fa-check"></i><b>5</b> Session 1</a><ul>
+<li class="chapter" data-level="5.1" data-path="session-1-1.html"><a href="session-1-1.html#otu-or-asvs-or-sotus-1"><i class="fa fa-check"></i><b>5.1</b> OTU or ASVs or sOTUs</a></li>
+<li class="chapter" data-level="5.2" data-path="session-1-1.html"><a href="session-1-1.html#general-overview-1"><i class="fa fa-check"></i><b>5.2</b> General overview</a></li>
+<li class="chapter" data-level="5.3" data-path="session-1-1.html"><a href="session-1-1.html#structure-1"><i class="fa fa-check"></i><b>5.3</b> Structure</a></li>
+<li class="chapter" data-level="5.4" data-path="session-1-1.html"><a href="session-1-1.html#making-a-phyloseq-object-1"><i class="fa fa-check"></i><b>5.4</b> Making a phyloseq object</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="session-1-1.html"><a href="session-1-1.html#session-1-9.30-11.30-2-hours"><i class="fa fa-check"></i><b>5.4.1</b> Session 1 (9.30-11.30 / 2 hours)</a></li>
+<li class="chapter" data-level="5.4.2" data-path="session-1-1.html"><a href="session-1-1.html#session-2-12-13-1-hour"><i class="fa fa-check"></i><b>5.4.2</b> Session 2 (12-13 / 1 hour)</a></li>
+<li class="chapter" data-level="5.4.3" data-path="session-1-1.html"><a href="session-1-1.html#session-3-14.30-17.30-3-hours-including-breaks"><i class="fa fa-check"></i><b>5.4.3</b> Session 3 (14.30-17.30 / 3 hours including breaks)</a></li>
+<li class="chapter" data-level="5.4.4" data-path="session-1-1.html"><a href="session-1-1.html#session-4-9.30-1200-2.5-hours"><i class="fa fa-check"></i><b>5.4.4</b> Session 4 (9.30-12:00 / 2.5 hours)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="misc.html"><a href="misc.html"><i class="fa fa-check"></i><b>6</b> Misc</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to microbiome data science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="session-1-1" class="section level1">
+<h1><span class="header-section-number">5</span> Session 1</h1>
+<p>Set-up and pre-processing (9.30-11.30 / 2 hours)</p>
+<p><strong>Standard bioinformatics workflow in microbiome research</strong></p>
+<ul>
+<li><p>Introduction and learning goals</p></li>
+<li><p>Alternative study designs</p></li>
+<li><p>Overview of a standard bioinformatics workflow</p></li>
+<li><p>Reproducible research and best practices in microbiome data science</p></li>
+</ul>
+<p>This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the <a href="https://www.ncbi.nlm.nih.gov/pubmed/22699609">Human microbiome project phase I data</a>.</p>
+<div id="otu-or-asvs-or-sotus-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> OTU or ASVs or sOTUs</h2>
+<p>For past few years (maybe decade), identifying Operational taxonomic units (OTUs) from raw sequences used clustering approach. Using 97% identity cut-off was a standard approach and often closed reference OTU picking was accepted in the sicentific community. During the time of the development of tools and bioinformatics approaches this was possibly the best available method. However, as with many other fields of science, the knowledge has been updated. Evolution of bioinformatics approaches is a constant process. Based on current knowledge, the cons of 97% OTU picking stratergy (using clustering approaches) have out-weighed the pros (eg. less time).</p>
+<p>Recent approaches are now focused towards Amplicon Seuence Variants/sOTUs:<br />
+* <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3864673/">Oligotyping</a><br />
+* <a href="http://dx.doi.org/10.1128/mSystems.00191-16">Deblur</a><br />
+* <a href="https://www.nature.com/articles/nmeth.3869">DADA2</a><br />
+* <a href="https://f1000research.com/articles/5-1791/v1">NG-Tax</a></p>
+<p>All above approaches have one common theme, they avoid 97% clustering and focus on minor differences (in many cases single nucleotide variations) to identify unique ASVs/sOTU.</p>
+<p>Note: Some how naming is different and variable. For this purpose and in this book, I will stick to ASVs when data from NG-tax is used.</p>
+<p>In this, section, we will compare outputs from 97% OTU picking approach and NG-tax approach.<br />
+The data used here is the 16S rRNA gene variable region (V1-V3) for 97% OTU-pciking. The raw reads were processed using QIIME 1.9.1, SortMeRNA, and OTU picking was done using the closed-reference OTU-picking at 97% identity.</p>
+<p>For NG-Tax, we use the same raw data and processed through default settings.</p>
+<p>Here, we do not aim to bench mark. For this course, we aim to show differences between results from two approaches.</p>
+<p>For down stream analysis of *.biom files we use <a href="https://joey711.github.io/phyloseq/">Phyloseq</a> and <a href="http://microbiome.github.io/microbiome/">microbiome</a>.<br />
+Kindly cite all the packages and tools that were used in your analysis as listed at the end of each document in <code>sessionInfo</code>. Also make sure that you provide the workflow and scripts you used for analysis atleast as supplementary material with your research article.<br />
+Check <a href="http://www.statmethods.net/">Quick-R</a>.</p>
+</div>
+<div id="general-overview-1" class="section level2">
+<h2><span class="header-section-number">5.2</span> General overview</h2>
+<center>
+<img src="images/Overview.png" alt="microbiome R package" />
+</center>
+</div>
+<div id="structure-1" class="section level2">
+<h2><span class="header-section-number">5.3</span> Structure</h2>
+<p>Let us create few folders to organize the analysis. While this can be personal preference, make sure you write the structure to guide others who do not know your data well.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Create Folders as following</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co"># Tables</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">dir.create</span>(<span class="st">&quot;tables&quot;</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co"># Figures</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="kw">dir.create</span>(<span class="st">&quot;figures&quot;</span>)</a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co"># Phyloseq objects</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="kw">dir.create</span>(<span class="st">&quot;phyobjects&quot;</span>)</a>
+<a class="sourceLine" id="cb4-10" title="10"></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co"># Custom codes/notes</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="kw">dir.create</span>(<span class="st">&quot;codes_notes&quot;</span>)</a></code></pre></div>
+<p><strong>Load packages</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">library</span>(microbiome) <span class="co"># data analysis and visualisation</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">library</span>(phyloseq) <span class="co"># also the basis of data object. Data analysis and visualisation</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">library</span>(microbiomeutilities) <span class="co"># some utility tools</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="kw">library</span>(RColorBrewer) <span class="co"># nice color options</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">library</span>(ggpubr) <span class="co"># publication quality figures, based on ggplot2</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="kw">library</span>(DT) <span class="co"># interactive tables in html and markdown</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="kw">library</span>(data.table) <span class="co"># alternative to data.frame</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="kw">library</span>(dplyr) <span class="co"># data handling</span></a></code></pre></div>
+</div>
+<div id="making-a-phyloseq-object-1" class="section level2">
+<h2><span class="header-section-number">5.4</span> Making a phyloseq object</h2>
+<p>This is the basis for the analyses demonstrated in this tutorial. In the phyloseq object, information on OTU abundances, taxonomy of OTUs, the phylogenetic tree and metadata is stored. A single object with all this information provides a convinient way of handling, manipulating and visualizing data.<br />
+For more infromation: <a href="http://joey711.github.io/phyloseq/import-data">phyloseq</a></p>
+<p>Please remember that the metadata (i.e. mapping) file has to be in <em>.csv</em> format (columns have sample attributes). The <code>read_phylseq</code> function from microbiome package requires metadata in <em>.csv</em> format.</p>
+<p><strong>Things to be done in QIIME terminal (if required):</strong><br />
+<strong>Important Note 2</strong>: If you have error in loading the biom files stating <strong>JSON or HDF5</strong> then you need to convert it in to a JSON format.</p>
+<p>For this, use the following command within the QIIME terminal and not in R!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># biom convert -i NGTaxMerged.biom -o ngtax_json.biom --table-type &quot;OTU table&quot; --to-json    </span></a></code></pre></div>
+<p>For more information on the biom format please <a href="http://biom-format.org/documentation/biom_conversion.html">click here</a>.</p>
+<p><strong>Important Note 3</strong>: The most recent version of NG-Tax does not have this issue.</p>
+<p><strong>NOTE</strong><br />
+The <code>read_phyloseq</code> function can be used for reading other outputs (like .shared and consensus taxonomy files from mothur) into phyloseq object. type <code>?read_phyloseq</code> in the console pane for more information.<br />
+If you don’t have your own biom file, we have a test dataset stored in <code>input_data</code>. Unzip the humanmicrobiome.zip and you will have the original biom file, copy it in the <code>input_data</code> folder.</p>
+
+<div id="session-1-9.30-11.30-2-hours" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Session 1 (9.30-11.30 / 2 hours)</h3>
+<p><strong>Overview of a standard bioinformatics workflow in microbiome research</strong></p>
+<ul>
+<li>Ecosystem view of the gut microbiome: from bugs to communities and function</li>
+<li>Preprocessing and quality control</li>
+<li>Diagnostic plots and properties of microbiome data</li>
+<li>Common methods: DADA2 (SVs) etc.</li>
+<li>Analysis and modeling of taxonomic composition
+<ul>
+<li>Principal coordinates analysis &amp; other common visualization techniques</li>
+<li>Differential abundance analysis</li>
+<li>Varieties of alpha and beta diversity</li>
+<li>Identification of community types (DMM)</li>
+<li>Quantification of associations with external factors such as age, diet, or medication</li>
+</ul></li>
+<li>Reproducible research and best practices in microbiome data science</li>
+</ul>
+</div>
+<div id="session-2-12-13-1-hour" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Session 2 (12-13 / 1 hour)</h3>
+<p><strong>Lecture: Modern statistics in human gut microbiome research</strong></p>
+<ul>
+<li>Human gut microbiome: a quantitative view</li>
+<li>Special properties of microbiome data</li>
+<li>The role of open data science and microbiome research</li>
+</ul>
+</div>
+<div id="session-3-14.30-17.30-3-hours-including-breaks" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Session 3 (14.30-17.30 / 3 hours including breaks)</h3>
+<ul>
+<li>Highlight how properties of microbiome data, such as sparsity,
+non-Gaussianity, and compositionality influences the choice and
+performance of the statistical methods: CLR; PCA vs. PCoA;
+community-level vs. subcommunity vs. species level; DESeq2; multiple
+testing;</li>
+</ul>
+<p><strong>Hands-on session: introduction to R tools</strong></p>
+<ul>
+<li><p>Part I: Raw data, preprocessing and quality control. Introduction
+to phyloseq &amp; example data (from 16S rRNA amplicon profiling
+studies).</p></li>
+<li><p>Part II: Key concepts: core, diversity, community types</p></li>
+<li><p>Part III: Generating reproducible reports with Rmarkdown</p></li>
+<li>Analysis and modeling of taxonomic composition</li>
+<li>From targeted study designs to population monitoring</li>
+<li>Exploratory data analysis</li>
+<li>Examples on microbiome data visualization and diversity analysis</li>
+<li>Differential abundance analysis</li>
+<li><p>Quantification of associations with external factors such as age, diet, or medication</p></li>
+</ul>
+<p>microbiome, microbiomeutilities, phyloseq</p>
+</div>
+<div id="session-4-9.30-1200-2.5-hours" class="section level3">
+<h3><span class="header-section-number">5.4.4</span> Session 4 (9.30-12:00 / 2.5 hours)</h3>
+<p><strong>Special properties of microbiome data</strong></p>
+<ul>
+<li>In this session we will highlight how properties of microbiome data,
+such as sparsity, non-Gaussianity, and compositionality influences the
+choice and performance of the statistical methods: CLR; PCA vs. PCoA;
+community-level vs. subcommunity vs. species level; DESeq2; multiple
+testing;</li>
+</ul>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="session-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="misc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
