@@ -1,5 +1,0 @@
-# Session 5 (13:30-15:00 / 1.5 hours)
-
-**Hands-on session: Reproducible research**
-
- * Completing and fine-tuning the reproducible reports

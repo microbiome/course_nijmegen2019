@@ -1,7 +1,0 @@
-# Session 6 (15:30-17:00 / 1.5 hours)
-
- * Summary and reflection of the leaning objects
- * Other tools & environments (QIIME2, Anvi'o)
- * Wrap-up & conclusions
-
-
