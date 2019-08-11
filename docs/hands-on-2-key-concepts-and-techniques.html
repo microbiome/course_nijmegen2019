@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Hands-on 2: Key concepts and techniques | Introduction to microbiome data science</title>
+  <meta name="description" content="Course material" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Hands-on 2: Key concepts and techniques | Introduction to microbiome data science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course material" />
+  <meta name="github-repo" content="microbiome/course_nijmegen2019" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Hands-on 2: Key concepts and techniques | Introduction to microbiome data science" />
+  
+  <meta name="twitter:description" content="Course material" />
+  
+
+<meta name="author" content="Leo Lahti and Henrik Eckermann" />
+
+
+<meta name="date" content="2019-08-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="hands-on-1-introduction-to-r-tools.html">
+<link rel="next" href="study-material.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-course"><i class="fa fa-check"></i><b>1.1</b> Preparing for the course</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#software-setup"><i class="fa fa-check"></i><b>1.1.1</b> Software setup</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a><ul>
+<li class="chapter" data-level="2.1" data-path="schedule.html"><a href="schedule.html#september-12-thu"><i class="fa fa-check"></i><b>2.1</b> September 12 (Thu)</a></li>
+<li class="chapter" data-level="2.2" data-path="schedule.html"><a href="schedule.html#september-13-fri"><i class="fa fa-check"></i><b>2.2</b> September 13 (Fri)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html"><i class="fa fa-check"></i><b>3</b> Hands-on 1: introduction to R tools</a><ul>
+<li class="chapter" data-level="3.1" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-i-reproducible-reporting-with-rmarkdown"><i class="fa fa-check"></i><b>3.1</b> Part I: Reproducible reporting with Rmarkdown</a></li>
+<li class="chapter" data-level="3.2" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-ii-phyloseq-data-structure"><i class="fa fa-check"></i><b>3.2</b> Part II: Phyloseq data structure</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-iii-data-manipulation-and-exploration"><i class="fa fa-check"></i><b>3.3</b> Part III: Data manipulation and exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html"><i class="fa fa-check"></i><b>4</b> Hands-on 2: Key concepts and techniques</a><ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html#part-i-key-concepts"><i class="fa fa-check"></i><b>4.1</b> Part I: Key concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html#part-ii-statistical-testing"><i class="fa fa-check"></i><b>4.2</b> Part II: Statistical testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-material.html"><a href="study-material.html"><i class="fa fa-check"></i><b>5</b> Study material</a><ul>
+<li class="chapter" data-level="5.1" data-path="study-material.html"><a href="study-material.html#lecture-slides"><i class="fa fa-check"></i><b>5.1</b> Lecture slides</a></li>
+<li class="chapter" data-level="5.2" data-path="study-material.html"><a href="study-material.html#r-programming-additional-resources"><i class="fa fa-check"></i><b>5.2</b> R programming: additional resources</a></li>
+<li class="chapter" data-level="5.3" data-path="study-material.html"><a href="study-material.html#further-reading"><i class="fa fa-check"></i><b>5.3</b> Further reading</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to microbiome data science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hands-on-2-key-concepts-and-techniques" class="section level1">
+<h1><span class="header-section-number">4</span> Hands-on 2: Key concepts and techniques</h1>
+<p>This session will let us familiarize with ecological concepts and
+methods for analysing microbiome profiling data.</p>
+<div id="part-i-key-concepts" class="section level2">
+<h2><span class="header-section-number">4.1</span> Part I: Key concepts</h2>
+<p>Prepare a reproducible report and address the following questions.</p>
+<ul>
+<li><p><strong>Alpha diversity</strong> Estimate taxonomic diversity for each sample
+(function microbiome::alpha). Compare the results between two or
+more diversity indices (visually or statistically). See
+<a href="https://microbiome.github.io/tutorials/">microbiome tutorial</a>
+for examples.</p></li>
+<li><p><strong>Beta diversity</strong> Visualize community variation with PCoA
+(<a href="https://microbiome.github.io/tutorials/Ordination.html">examples</a>).
+Investigate the influence of the data transformations on
+statistical analysis: Visualize community variation with PCoA
+with the following options: 1) Bray-Curtis distances for
+compositional data; 2) Euclidean distances for CLR-transformed
+data.</p></li>
+<li><p><strong>Prevalence</strong> What is the most prevalent genus in the data (tip:
+microbiome::prevalence and sort)</p></li>
+<li><p><strong>Core microbiota</strong> Pick up the core microbiota including taxa that
+exceed 0.1% relative abundance in over 50% of the samples
+(prevalence). How many core taxa there are? You can read more about the core microbiota definition in <a href="https://www.clinicalmicrobiologyandinfection.com/article/S1198-743X(14)60962-9/fulltext">Salonen et al. 2012</a>. Visualize the core microbiota by following the available <a href="https://microbiome.github.io/tutorials/Core.html">examples</a>.</p></li>
+</ul>
+</div>
+<div id="part-ii-statistical-testing" class="section level2">
+<h2><span class="header-section-number">4.2</span> Part II: Statistical testing</h2>
+<ul>
+<li><p><strong>Community-level comparisons</strong> Use
+<a href="https://microbiome.github.io/tutorials/PERMANOVA.html">PERMANOVA</a>
+to investigate whether the community composition differs between
+two groups of individuals (e.g. males and females, or some other
+grouping of your choice). You can also include covariates such as
+age and gender, and see how this affects the results.</p></li>
+<li><p><strong>OTU-level comparisons</strong> Use
+<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">DESeq2</a>
+to identify which genera are associated with gender differences
+(<a href="https://microbiome.github.io/tutorials/all.html">examples on
+DESeq2</a>). For
+more explanation on the method, see <a href="http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">DESeq2
+R/Bioconductor</a>.</p></li>
+<li><p><strong>Role of covariates</strong> Note that including key covariates (diet,
+medication, age..) may have remarkable influence on data
+interpretation in the above analyses (<a href="https://science.sciencemag.org/content/352/6285/560.abstract?ijkey=ADV4ZnF4mHYIg&amp;keytype=ref&amp;siteid=sci">Falony et al. Science
+2016</a>)</p></li>
+<li><p>Experiment with the other available tools in the <a href="https://microbiome.github.io/tutorials/">microbiome
+tutorial</a></p></li>
+<li><p>Provide a compact summary of the data and analyses in the form of a
+reproducible Rmarkdown report. Include only selected summaries and
+analyses of your choice, and focus on delivering a clear and
+compact report.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hands-on-1-introduction-to-r-tools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="study-material.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
