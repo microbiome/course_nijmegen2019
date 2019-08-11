@@ -19,7 +19,7 @@ The lecture slides will be added here.
  * R visualization: [ggplot2](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) and [R graphics cookbook](http://www.cookbook-r.com/Graphs/)
  * Reproducible document generation with [R Markdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
  * [RStudio IDE](https://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)  
- * Microbiome bioinformatics in R: [List of R tools for microbiome analysis](https://microsud.github.io/Tools-Microbiome-Analysis/). See in particular [phyloseq](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217) and [microbiome tutorial](http://microbiome.github.io/tutorials/).
+ * Microbiome bioinformatics in R: [List of R tools for microbiome analysis](https://microsud.github.io/Tools-Microbiome-Analysis/). See in particular [phyloseq](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217) and [microbiome tutorial](http://microbiome.github.io/tutorials/) and [microbiomeutilities](https://microsud.github.io/microbiomeutilities/)
  * [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry
 
 
