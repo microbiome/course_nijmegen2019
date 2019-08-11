@@ -10,16 +10,34 @@ site: bookdown::bookdown_site
 
 # Hands-on 2
 
+## Key concepts: core, diversity, community variation
+ 
+Next, let us familiarize with ecological concepts and methods for
+analysing microbiome profiling data.
+
+
+ * **Core microbiota** Pick up the core microbiota including taxa that
+     exceed 0.1% relative abundance in over 50% of the samples
+     (prevalence). How many core taxa there are? You can read more about the core microbiota definition in [Salonen et al. 2012](https://www.clinicalmicrobiologyandinfection.com/article/S1198-743X(14)60962-9/fulltext)
+
+ * Visualize the core microbiota ([examples](https://microbiome.github.io/tutorials/Core.html))
+
+ * **Alpha diversity** Estimate taxonomic diversity for each sample
+     (function microbiome::alpha). Compare the results between two or more
+     diversity indices.
+
+ * **Beta diversity** Visualize community variation with PCoA ([examples](https://microbiome.github.io/tutorials/Ordination.html))
+
+
+
 ## Special properties of microbiome data
 
  * Sparsity, compositionality, non-Gaussianity
  * The role of covariates: age, diet, or medication 
  * Influence on statistical analysis
  * Differential abundance analysis: DADA2
- * Visualization: PCoA
  * Co-occurrence networks: SparCC
 
 
-## Further resources
 
 

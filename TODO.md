@@ -22,5 +22,13 @@
  * Consider if you are willing to lead one of the hands-on sessions
    (with my help); and then we can switch for the other one?
 
+ * Let's update the literature and links in the study material section
+
+ * Some of the R links in the study material might better go to the
+   actual hands-on instructions?
+
+ * Add tips and links to useful examples and material to the handson
+   exercise questions. This will help the students to find the
+   necessary examples and code easily.
 
 

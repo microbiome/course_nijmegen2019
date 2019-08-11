@@ -19,14 +19,14 @@ This course provides an overview of the standard bioinformatics workflow in taxo
 
 **Target audience** Advanced students and applied researchers who wish to develop their skills in microbial community analysis.
 
-**Venue** This course will be held at [Radboud University](), Nijmegen on Sep 12-13, 2019, organised in collaboration with [University of Turku](https://www.utu.fi/en/university/faculty-of-science-and-engineering/department-of-future-technologies), Finland. 
+**Venue** [Radboud University](), Nijmegen. Sep 12-13, 2019, organised in collaboration with [University of Turku](https://www.utu.fi/en/university/faculty-of-science-and-engineering/department-of-future-technologies), Finland. 
 
 **Learning goals** The students will become familiar with standard bioinformatics concepts and methods in taxonomic profiling studies of the human microbiome. This includes better understanding of the specific statistical challenges, practical hands-on experience with the commonly used methods, and reproducible research with R.
 
 **Reusing the material** Unless otherwise stated, the teaching materials can be freely used, modified and shared based on the open 2-Clause BSD License. Kindlty cite the material as follows: "Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science. URL: https://microbiome.github.io"
 
 
-## Preparation
+## Preparing for the course
 
 
 ### Software setup
@@ -39,7 +39,7 @@ Install the following software before the course:
 * Rstudio [Download link](https://www.rstudio.com/products/rstudio/download/)
 * R Libraries [Installation script](code/install_dependencies.R)
 
-If you are not familiar with R programming, we highly recommend going through [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry.
+If you are not familiar with R programming, we highly recommend going through [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry and further links to R resources in the [study material](https://microbiome.github.io/course_nijmegen2019/study-material.html).
 
 
 

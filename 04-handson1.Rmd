@@ -10,88 +10,87 @@ site: bookdown::bookdown_site
 
 # Hands-on 1: introduction to R tools
 
+The hands-on sessions consists of a set of questions and example data. Solve the exercises by taking advantage of the online examples and resources that are pointed out in the study material. There is often more than one way to solve a given task. Do not hesitate to ask support from the course assistants.
+
+
+## Reproducible reporting with Rmarkdown
+
+Reproducible reporting is the starting point for reporting. Perform the following tasks:
+
+ * Create a Rmarkdown template in RStudio, and render it into a
+   document (markdown, PDF, docx or other format)
+
+ * Experiment with different options with [Rmarkdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
+
+
 
 ## From raw data to phyloseq objects
 
-This tutorial will introduce you to basic steps of microbial community analysis. More importantly on how to look at your data and filter appropriately. We will use the [Human microbiome project phase I data](https://www.ncbi.nlm.nih.gov/pubmed/22699609).  
+Next, let us investigate in more detail how taxonomic profiling data is organized in R. The data structure is called phyloseq ([McMurdie and Holmes, 2013](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217)).
 
-OTU or ASVs or sOTUs  
-
-For past few years (maybe decade), identifying Operational taxonomic units (OTUs) from raw sequences used clustering approach. Using 97% identity cut-off was a standard approach and often closed reference OTU picking was accepted in the sicentific community. During the time of the development of tools and bioinformatics approaches this was possibly the best available method. However, as with many other fields of science, the knowledge has been updated. Evolution of bioinformatics approaches is a constant process. Based on current knowledge, the cons of 97% OTU picking stratergy (using clustering approaches) have out-weighed the pros (eg. less time).  
-
-Recent approaches are now focused towards Amplicon Seuence Variants/sOTUs:  
-* [Oligotyping](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3864673/)  
-* [Deblur](http://dx.doi.org/10.1128/mSystems.00191-16)  
-* [DADA2](https://www.nature.com/articles/nmeth.3869)  
-* [NG-Tax](https://f1000research.com/articles/5-1791/v1)  
-
-All above approaches have one common theme, they avoid 97% clustering and focus on minor differences (in many cases single nucleotide variations) to identify unique ASVs/sOTU.   
-
-Note: Some how naming is different and variable. For this purpose and in this book, I will stick to ASVs when data from NG-tax is used.  
-
-In this, section, we will compare outputs from 97% OTU picking approach and NG-tax approach.  
-The data used here is the 16S rRNA gene variable region (V1-V3) for 97% OTU-pciking. The raw reads were processed using QIIME 1.9.1, SortMeRNA, and OTU picking was done using the closed-reference OTU-picking at 97% identity.   
-
-For NG-Tax, we use the same raw data and processed through default settings.  
-
-Here, we do not aim to bench mark. For this course, we aim to show differences between results from two approaches.  
-
-For down stream analysis of *.biom files we use [Phyloseq](https://joey711.github.io/phyloseq/) and [microbiome](http://microbiome.github.io/microbiome/).    
-Kindly cite all the packages and tools that were used in your analysis as listed at the end of each document in `sessionInfo`. Also make sure that you provide the workflow and scripts you used for analysis atleast as supplementary material with your research article.    
-Check [Quick-R](http://www.statmethods.net/).  
+In this course, we focus on downstream analysis of taxonomic profiling data, and assume that the data has already been appropriately preprocessed and converted in the phyloseq format. The exact steps vary based on the 16S profiling platform. Hands-on examples for converting the Illumina MiSeq sequencing data into R phyloseq object can be found from Bioconductor Workflow for Microbiome Data Analysis: from raw reads to community analyses ([Callahan et al. F1000, 2016](https://f1000research.com/articles/5-1492/v2)).
 
 
-
-Structure    
-
-Let us create few folders to organize the analysis. While this can be personal preference, make sure you write the structure to guide others who do not know your data well.  
-
-```{r, eval=FALSE}
-
-# Create Folders as following
-# Tables
-dir.create("tables")
-
-# Figures
-dir.create("figures")
-
-# Phyloseq objects
-dir.create("phyobjects")
-
-# Custom codes/notes
-dir.create("codes_notes")
-```
-
-**Load packages**  
-
-```{r, warning=FALSE, message=FALSE}
-
-library(microbiome) # data analysis and visualisation
-library(phyloseq) # also the basis of data object. Data analysis and visualisation
-library(microbiomeutilities) # some utility tools
-library(RColorBrewer) # nice color options
-library(ggpubr) # publication quality figures, based on ggplot2
-library(DT) # interactive tables in html and markdown
-library(data.table) # alternative to data.frame
-library(dplyr) # data handling
-
-```
+Provide the answers to at least some of the following questions in the form of a reproducible report (with Rmarkdown). Include the code that you use to retrieve the results. We will release code that provides solutions to all exercises. 
 
 
-Making a phyloseq object  
+ * **Load example data** of the gut microbiome profiling of 1006 western adults from [microbiome R package](https://microbiome.github.io/tutorials/Data.html). The example data sets are already in the [phyloseq format](http://joey711.github.io/phyloseq/import-data). R provides many readily available tools to handle and analyze taxonomic profiling data that is provided in this format.
 
-This is the basis for the analyses demonstrated in this tutorial. In the phyloseq object, information on OTU abundances, taxonomy of OTUs, the phylogenetic tree and metadata is stored. A single object with all this information provides a convinient way of handling, manipulating and visualizing data.  
-For more infromation: [phyloseq](http://joey711.github.io/phyloseq/import-data)  
+ * **Microbal abundances** retrieve the microbial (OTU) abundance table
+   from the example data set (phyloseq object). Note that in this
+   example data set we have genus abundances instead of OTU
+   abundances. This example data set is based on the HITChip 16S
+   phylogenetic microarray, and the taxonomic groupings are only
+   approximations to exact genus-level taxonomic classifications.
 
-Please remember that the metadata (i.e. mapping) file has to be in *.csv* format (columns have sample attributes). The `read_phylseq` function from microbiome package requires metadata in *.csv* format.  
+ * How many different genus-level groups this phyloseq object has?
 
-The `read_phyloseq` function can be used for reading other outputs (like .shared and consensus taxonomy files from mothur) into phyloseq object. type `?read_phyloseq` in the console pane for more information.  
+ * How many different samples this phyloseq object has?
 
+ * **Retrieve the taxonomy table** from the phyloseq object and print out
+   the first few lines of it with the R command head().
 
-## Key concepts: core, diversity, landscape view
- 
-## Reproducible reporting with Rmarkdown
+ * How many different phylum-level groups this phyloseq object has?
+   Tip: count the unique entries in the Phylum column of the taxonomic
+   table.
 
+ * **Retrieve sample metadata** from the example phyloseq object
 
+ * What is the male/femal ratio in this data set?
+
+ * Draw a histogram of subject ages
+
+ * Do some subjects have multiple samples?
+
+ * **Subsetting** Pick a subset of the phyloseq object including only
+     obese individuals. How many there are?
+
+ * How many obese males who are over 40 years old there are?
+
+ * What is the maximum abundance of Akkermansia in this data set?
+
+ * **Transformations** The phyloseq data has absolute abundances. Use
+     the microbiome::transform command to convert these into relative
+     abundances.
+
+ * Compare Akkermansia abundance using the example data before and
+   after the compositionality transformation (with a cross-plot, for
+   instance).
+
+ * Draw a histogram of library sizes (total number of reads per
+   sample). You can use the readcount function, or count the sum of
+   reads per sample by using the colSums command applied on the otu
+   table abundances. The example data set is from phylogenetic
+   microarray, hence the numbers correspond to light intensity on the
+   array rather than sequencing reads but the interpretation is
+   analogous and we can ignore this detail for demonstration
+   purposes. The key idea is that different samples may have different
+   bacterial load. Check [Vandeputte et
+   al. 2017](https://www.nature.com/articles/nature24460) for further
+   discussion on the differences between absolute and relative
+   quantification of microbial abundances.
+
+ * If time allows, experiment with other [phyloseq data manipulation
+   tools](https://microbiome.github.io/tutorials/Preprocessing.html)
 
 
