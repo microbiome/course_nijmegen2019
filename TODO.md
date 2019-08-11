@@ -1,5 +1,8 @@
 # TODO
 
+ * Consider changeing the example data set from atlas1006 to
+   dietswap. The latter might be more similar to typical case studies
+   encoutntered by the course participants.
 
  * Check if there is something to add from the course announcement (in
    the learning goals etc)

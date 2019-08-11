@@ -10,10 +10,10 @@ site: bookdown::bookdown_site
 
 # Hands-on 1: introduction to R tools
 
-The hands-on sessions consists of a set of questions and example data. Solve the exercises by taking advantage of the online examples and resources that are pointed out in the study material. There is often more than one way to solve a given task. Do not hesitate to ask support from the course assistants.
+The hands-on sessions consists of a set of questions and example data. Solve the exercises by taking advantage of the online examples and resources that are pointed out in the study material. There is often more than one way to solve a given task. It is assumed that you have already installed the [required software](https://microbiome.github.io/course_nijmegen2019/index.html#preparing-for-the-course). Do not hesitate to ask support from the course assistants. 
 
 
-## Reproducible reporting with Rmarkdown
+## Part I: Reproducible reporting with Rmarkdown
 
 Reproducible reporting is the starting point for reporting. Perform the following tasks:
 
@@ -24,58 +24,34 @@ Reproducible reporting is the starting point for reporting. Perform the followin
 
 
 
-## From raw data to phyloseq objects
+## Part II: Phyloseq data structure
 
 Next, let us investigate in more detail how taxonomic profiling data is organized in R. The data structure is called phyloseq ([McMurdie and Holmes, 2013](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217)).
 
 In this course, we focus on downstream analysis of taxonomic profiling data, and assume that the data has already been appropriately preprocessed and converted in the phyloseq format. The exact steps vary based on the 16S profiling platform. Hands-on examples for converting the Illumina MiSeq sequencing data into R phyloseq object can be found from Bioconductor Workflow for Microbiome Data Analysis: from raw reads to community analyses ([Callahan et al. F1000, 2016](https://f1000research.com/articles/5-1492/v2)).
 
-
 Provide the answers to at least some of the following questions in the form of a reproducible report (with Rmarkdown). Include the code that you use to retrieve the results. We will release code that provides solutions to all exercises. 
 
+ * **Load example data** of the gut microbiome profiling of 1006
+     western adults from [microbiome R
+     package](https://microbiome.github.io/tutorials/Data.html). The
+     example data sets are already in the [phyloseq
+     format](http://joey711.github.io/phyloseq/import-data). R
+     provides many readily available tools to handle and analyze
+     taxonomic profiling data that is provided in this format.
 
- * **Load example data** of the gut microbiome profiling of 1006 western adults from [microbiome R package](https://microbiome.github.io/tutorials/Data.html). The example data sets are already in the [phyloseq format](http://joey711.github.io/phyloseq/import-data). R provides many readily available tools to handle and analyze taxonomic profiling data that is provided in this format.
+ * **Microbal abundances / OTU Table** retrieve the microbial (OTU)
+   abundance table from the example data set (phyloseq object). This
+   example data set has abundances at the genus level instead of OTU
+   level. The taxonomic groupings in this 16S data set are only
+   approximations to exact genus-level taxonomic classifications. Tip:
+   microbiome::abundances or phyloseq::otu_table
 
- * **Microbal abundances** retrieve the microbial (OTU) abundance table
-   from the example data set (phyloseq object). Note that in this
-   example data set we have genus abundances instead of OTU
-   abundances. This example data set is based on the HITChip 16S
-   phylogenetic microarray, and the taxonomic groupings are only
-   approximations to exact genus-level taxonomic classifications.
-
- * How many different genus-level groups this phyloseq object has?
-
- * How many different samples this phyloseq object has?
-
- * **Retrieve the taxonomy table** from the phyloseq object and print out
-   the first few lines of it with the R command head().
-
- * How many different phylum-level groups this phyloseq object has?
-   Tip: count the unique entries in the Phylum column of the taxonomic
-   table.
-
- * **Retrieve sample metadata** from the example phyloseq object
-
- * What is the male/femal ratio in this data set?
-
- * Draw a histogram of subject ages
-
- * Do some subjects have multiple samples?
-
- * **Subsetting** Pick a subset of the phyloseq object including only
-     obese individuals. How many there are?
-
- * How many obese males who are over 40 years old there are?
-
- * What is the maximum abundance of Akkermansia in this data set?
-
- * **Transformations** The phyloseq data has absolute abundances. Use
-     the microbiome::transform command to convert these into relative
-     abundances.
-
- * Compare Akkermansia abundance using the example data before and
-   after the compositionality transformation (with a cross-plot, for
-   instance).
+ * **OTU tables** Retrieve the OTU table and investigate: 1) How many
+   different samples and genus-level groups this phyloseq object has?
+   What is the maximum abundance of Akkermansia in this data set?
+   Tips: see data operations in the [microbiome
+   tutorial](https://microbiome.github.io/tutorials/)
 
  * Draw a histogram of library sizes (total number of reads per
    sample). You can use the readcount function, or count the sum of
@@ -90,7 +66,36 @@ Provide the answers to at least some of the following questions in the form of a
    discussion on the differences between absolute and relative
    quantification of microbial abundances.
 
- * If time allows, experiment with other [phyloseq data manipulation
+ * **Taxonomy table** Retrieve the taxonomy table and print out the
+   first few lines of it with the R command head(). Investigate how
+   many different phylum-level groups this phyloseq object has? Tips:
+   phyloseq::tax_table and unique.
+
+ * **Sample metadata** Retrieve sample metadata. How many unique
+     subjects this data set has? What is the male/femal ratio? Draw a
+     histogram of subject ages. Tips: microbiome::meta
+
+
+## Part III: Data manipulation and exploration
+
+ * **Subsetting** Pick a subset of the phyloseq object including only
+     obese individuals who are over 40 years old. How many there are?
+     Tips: subset_samples
+
+ * **Transformations** The phyloseq data has absolute abundances. Use
+     the microbiome::transform command to convert these into relative
+     abundances. Compare Akkermansia abundance using the example data
+     before and after the compositionality transformation (with a
+     cross-plot, for instance). Finally, compare the results to CLR-
+     transformed data (see e.g. [Gloor et
+     al. 2017](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full))
+
+ * **Visual exploration** Visualize the population distribution of
+   abundances for the following taxa: Akkermansia, Dialister,
+   Gemella. Do the same for CLR-transformed abundances. Tip:
+   microbiome::plot_density / microbiome::transform
+   
+ * Experiment with other [phyloseq data manipulation
    tools](https://microbiome.github.io/tutorials/Preprocessing.html)
 
 

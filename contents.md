@@ -64,6 +64,13 @@ choice and performance of the statistical methods: CLR; PCA vs. PCoA;
 community-level vs. subcommunity vs. species level; DESeq2; multiple
 testing;
 
+ * Sparsity, compositionality, non-Gaussianity
+ * The role of covariates: age, diet, or medication 
+ * Influence on statistical analysis
+ * Differential abundance analysis: DADA2
+ * Visualization: PCoA
+ * Co-occurrence networks: SparCC
+ 
 # Misc
 
  * Analysis and modeling of taxonomic composition

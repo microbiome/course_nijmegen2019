@@ -9,50 +9,43 @@ site: bookdown::bookdown_site
 
 # Schedule
 
-## 12 September
+## September 12 (Thu)
 
 **Session 1 (9.30-11.30  / 2 hours): Standard bioinformatics workflow in microbiome research**
 
  * Introduction and learning goals
- * Alternative study designs
  * Overview of a standard bioinformatics workflow
  * Reproducible research and best practices in microbiome data science
  
 
-**Session 2 (12-13 / 1 hour): Lecture on Contemporary research on microbiome data science**
+**Session 2 (12-13 / 1 hour)**
+
+ * Lecture: Contemporary research in microbiome data science
 
 
-**Session 3 (14.30-17.30 / 3 hours including breaks) / Hands-on: introduction to R tools**
+**Session 3 (14.30-17.30 / 3 hours including breaks) / Hands-on 1: introduction to R tools**
 
- * Part I: From raw data to phyloseq objects
- 
- * Part II: Key concepts: core, diversity, landscape view
- 
- * Part III: Reproducible reporting with Rmarkdown
+ * Part I:   Reproducible reporting with Rmarkdown 
+ * Part II:  Phyloseq data structure
+ * Part III: Data manipulation and exploration
 
 
-## 13 September
+## September 13 (Fri)
 
+**Session 4 (9.30-12:00 / 2.5 hours): Key concepts and techniques: mixed lecture and hands-on**
 
-**Session 4 (9.30-12:00 / 2.5 hours): Special properties of microbiome data**
-
- * Sparsity, compositionality, non-Gaussianity
- * The role of covariates: age, diet, or medication 
- * Influence on statistical analysis
- * Differential abundance analysis: DADA2
- * Visualization: PCoA
- * Co-occurrence networks: SparCC
+ * Part I:  Key concepts: diversity, core, landscape view
+ * Part II: Statistical testing and special properties of microbiome data
 
 
 **Lunch 12:00-13:30 (1.5 hours)**
 
 
-**Session 5 (13:30-15:00 / 1.5 hours): Hands-on session: Reproducible research**
+**Session 5 (13:30-15:00 / 1.5 hours): Hands-on session: reproducible reporting**
 
- * Completing and fine-tuning the reproducible reports
-
+ * Completing the assignments
+ 
 **Break (15:00-15:30 / 0.5 hours)**
-
 
 **Session 6 (15:30-17:00 / 1.5 hours): Wrap-up**
 

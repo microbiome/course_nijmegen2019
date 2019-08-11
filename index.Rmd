@@ -21,7 +21,7 @@ This course provides an overview of the standard bioinformatics workflow in taxo
 
 **Venue** [Radboud University](), Nijmegen. Sep 12-13, 2019, organised in collaboration with [University of Turku](https://www.utu.fi/en/university/faculty-of-science-and-engineering/department-of-future-technologies), Finland. 
 
-**Learning goals** The students will become familiar with standard bioinformatics concepts and methods in taxonomic profiling studies of the human microbiome. This includes better understanding of the specific statistical challenges, practical hands-on experience with the commonly used methods, and reproducible research with R.
+**Learning goals** The students will become familiar with standard bioinformatics concepts and methods in taxonomic profiling studies of the human microbiome. This includes better understanding of the specific statistical challenges, practical hands-on experience with the commonly used methods, and reproducible research with R. After the course the students know how to approach new programming tasks by utilizing available documentation and R tools.
 
 **Reusing the material** Unless otherwise stated, the teaching materials can be freely used, modified and shared based on the open 2-Clause BSD License. Kindlty cite the material as follows: "Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science. URL: https://microbiome.github.io"
 

@@ -9,6 +9,12 @@
 install.packages("tidyverse")
 install.packages("vegan")
 install.packages("phyloseq")
+install.packages("rmarkdown")
+install.packages("knitr")
+
+# Bioconductor packages
+library(BiocManager)
+BiocManager::install("DESeq2")
 
 # Dedicated microbiome tools
 library(devtools)
