@@ -7,6 +7,8 @@
 
 # Tidyverse
 install.packages("tidyverse")
+install.packages("vegan")
+install.packages("phyloseq")
 
 # Dedicated microbiome tools
 library(devtools)

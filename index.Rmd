@@ -15,13 +15,15 @@ description: "Course material"
 
 # Overview
 
-The course provides an overview of the standard bioinformatics workflow in taxonomic profiling studies, with a focus on human gut microbiota, ranging from data preprocessing to statistical analysis and reproducible reporting.
+This course provides an overview of the standard bioinformatics workflow in taxonomic profiling studies, ranging from data preprocessing to statistical analysis and reproducible reporting, with a focus on examples from human gut microbiota studies.
 
-**Learning goals** Introduce microbial community data analysis. There will be talks and discussion on theory and methodology for analysis of microbial community data. We will cover topics ranging from design of studies, sequencing technologies, importance of controls and standardized DNA processing. Supervised hands-on training covering analyses from raw reads using NG-Tax, downstream analysis in R for exploration and analysis of microbiome sequencing data will be priority. There will be a strong focus on using R, R Studio for moving towards reproducible and open science.   
-
-**Target audience** Anyone who plans to or is currently doing high throughput microbial community analysis.  
+**Target audience** Advanced students and applied researchers who wish to develop their skills in microbial community analysis.
 
 **Venue** This course will be held at [Radboud University](), Nijmegen on Sep 12-13, 2019, organised in collaboration with [University of Turku](https://www.utu.fi/en/university/faculty-of-science-and-engineering/department-of-future-technologies), Finland. 
+
+**Learning goals** The students will become familiar with standard bioinformatics concepts and methods in taxonomic profiling studies of the human microbiome. This includes better understanding of the specific statistical challenges, practical hands-on experience with the commonly used methods, and reproducible research with R.
+
+**Reusing the material** Unless otherwise stated, the teaching materials can be freely used, modified and shared based on the open 2-Clause BSD License. Kindlty cite the material as follows: "Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science. URL: https://microbiome.github.io"
 
 
 ## Preparation
@@ -33,15 +35,12 @@ We recommend using your own laptop. If this is not possible, kindly contact the 
 
 Install the following software before the course:
 
-* R [Download link](https://cran.r-project.org).    
-* Rstudio [Download link](https://www.rstudio.com/products/rstudio/download/).  
+* R [Download link](https://cran.r-project.org)
+* Rstudio [Download link](https://www.rstudio.com/products/rstudio/download/)
 * R Libraries [Installation script](code/install_dependencies.R)
 
-Some installation instructions can be also found in the Data Carpentry manual [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/).
+If you are not familiar with R programming, we highly recommend going through [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry.
 
 
-## Reusing the material
-
-Unless otherwise stated, the teaching materials can be freely used, modified and shared based on the open 2-Clause BSD License. Kindlty cite the material as follows: "Lahti Leo, Henrik Eckerman, Sudarshan Shetty (2019). Introduction to microbiome data science. URL: https://microbiome.github.io"
 
 
