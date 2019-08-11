@@ -111,21 +111,31 @@ analysing microbiome profiling data.</p>
 <li><p><strong>Core microbiota</strong> Pick up the core microbiota including taxa that
 exceed 0.1% relative abundance in over 50% of the samples
 (prevalence). How many core taxa there are? You can read more about the core microbiota definition in <a href="https://www.clinicalmicrobiologyandinfection.com/article/S1198-743X(14)60962-9/fulltext">Salonen et al. 2012</a></p></li>
+<li><p>What is the most prevalent genus in the data (tip: microbiome::prevalence and sort)</p></li>
+<li><p>Special properties of microbiome data: sparsity, compositionality,
+non-Gaussianity. Visualize the population distribution of
+abundances for the following taxa: Akkermansia, Dialister,
+Gemella. Do the same for CLR-transformed abundances.</p></li>
 <li><p>Visualize the core microbiota (<a href="https://microbiome.github.io/tutorials/Core.html">examples</a>)</p></li>
 <li><p><strong>Alpha diversity</strong> Estimate taxonomic diversity for each sample
 (function microbiome::alpha). Compare the results between two or more
 diversity indices.</p></li>
-<li><p><strong>Beta diversity</strong> Visualize community variation with PCoA (<a href="https://microbiome.github.io/tutorials/Ordination.html">examples</a>)</p></li>
+<li><p><strong>Beta diversity</strong> Visualize community variation with PCoA (<a href="https://microbiome.github.io/tutorials/Ordination.html">examples</a>).</p></li>
+<li><p>Use
+<a href="https://microbiome.github.io/tutorials/PERMANOVA.html">PERMANOVA</a>
+to investigate whether the community composition differs between
+obese and non-obese individuals. You can also include covariates
+such as age and gender, and see how this affects the results.</p></li>
 </ul>
 </div>
 <div id="special-properties-of-microbiome-data" class="section level2">
 <h2><span class="header-section-number">4.2</span> Special properties of microbiome data</h2>
 <ul>
-<li>Sparsity, compositionality, non-Gaussianity</li>
-<li>The role of covariates: age, diet, or medication</li>
-<li>Influence on statistical analysis</li>
-<li>Differential abundance analysis: DADA2</li>
-<li>Co-occurrence networks: SparCC</li>
+<li><p><strong>Influence of the data transformations on statistical analysis</strong>
+Visualize community variation with PCoA with the following
+options: 1) Bray-Curtis distances for compositional data; 2)
+Euclidean distances for CLR-transformed data.</p></li>
+<li><p>Differential abundance analysis: use <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">DESeq2</a> to identify which genera are associated with gender differences (<a href="https://microbiome.github.io/tutorials/all.html">examples on DESeq2</a>). For more explanation on the method, see <a href="http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">DESeq2 R/Bioconductor</a>. Note that controlling key covariates (diet, medication, age..) may have remarkable influence on data interpretation (<a href="https://science.sciencemag.org/content/352/6285/560.abstract?ijkey=ADV4ZnF4mHYIg&amp;keytype=ref&amp;siteid=sci">Falony et al. Science 2016</a>)</p></li>
 </ul>
 
 </div>

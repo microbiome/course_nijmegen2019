@@ -20,24 +20,40 @@ analysing microbiome profiling data.
      exceed 0.1% relative abundance in over 50% of the samples
      (prevalence). How many core taxa there are? You can read more about the core microbiota definition in [Salonen et al. 2012](https://www.clinicalmicrobiologyandinfection.com/article/S1198-743X(14)60962-9/fulltext)
 
+ * What is the most prevalent genus in the data (tip: microbiome::prevalence and sort)
+
+ * Special properties of microbiome data: sparsity, compositionality,
+   non-Gaussianity. Visualize the population distribution of
+   abundances for the following taxa: Akkermansia, Dialister,
+   Gemella. Do the same for CLR-transformed abundances.
+
  * Visualize the core microbiota ([examples](https://microbiome.github.io/tutorials/Core.html))
 
  * **Alpha diversity** Estimate taxonomic diversity for each sample
      (function microbiome::alpha). Compare the results between two or more
      diversity indices.
 
- * **Beta diversity** Visualize community variation with PCoA ([examples](https://microbiome.github.io/tutorials/Ordination.html))
+ * **Beta diversity** Visualize community variation with PCoA ([examples](https://microbiome.github.io/tutorials/Ordination.html)).
+
+
+ * Use
+   [PERMANOVA](https://microbiome.github.io/tutorials/PERMANOVA.html)
+   to investigate whether the community composition differs between
+   obese and non-obese individuals. You can also include covariates
+   such as age and gender, and see how this affects the results.
 
 
 
 ## Special properties of microbiome data
 
- * Sparsity, compositionality, non-Gaussianity
- * The role of covariates: age, diet, or medication 
- * Influence on statistical analysis
- * Differential abundance analysis: DADA2
- * Co-occurrence networks: SparCC
+ * **Influence of the data transformations on statistical analysis**
+     Visualize community variation with PCoA with the following
+     options: 1) Bray-Curtis distances for compositional data; 2)
+     Euclidean distances for CLR-transformed data. 
+
+ * Differential abundance analysis: use [DESeq2](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8) to identify which genera are associated with gender differences ([examples on DESeq2](https://microbiome.github.io/tutorials/all.html)). For more explanation on the method, see [DESeq2 R/Bioconductor](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html). Note that controlling key covariates (diet, medication, age..) may have remarkable influence on data interpretation ([Falony et al. Science 2016](https://science.sciencemag.org/content/352/6285/560.abstract?ijkey=ADV4ZnF4mHYIg&keytype=ref&siteid=sci))
 
 
 
 
+ 
