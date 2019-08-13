@@ -27,11 +27,11 @@ library(tidyverse)
      
 ```{r}
 library(microbiome)
-data(atlas1006) 
-print(atlas1006)
+data(dietswap) 
+print(dietswap)
 
 # rename the example data
-pseq <- atlas1006
+pseq <- dietswap
 ```
 
 
@@ -91,8 +91,12 @@ otu.absolute["Akkermansia", ] %>% max()
 ```{r}
 # option 1
 pseq %>% readcount() %>% hist()
+# same using ggplot
+pseq %>% readcount() %>% qplot(bins = 6)
+# same using ggplot
+pseq %>% readcount() %>% qplot(bins = 30)
 # option 2
-otu.absolute %>% colSums() %>% hist()
+otu.absolute %>% colSums() %>% qplot(bins = 30)
 ```
 
 
@@ -126,16 +130,54 @@ pseq %>%
 
  * **Sample metadata** Retrieve sample metadata. How many unique
      subjects this data set has? What is the male/femal ratio? Draw a
-     histogram of subject ages. Tips: microbiome::meta
+     bar plot of subject BMI-group. Tips: microbiome::meta
+
+```{r}
+# option 1 (results in dataframe)
+pseq.meta <- meta(pseq)
+# option 2
+# pseq.meta <- sample_data(pseq)
+
+# number of unique subjects
+pseq.meta$subject %>% 
+  unique() %>% 
+  length()
+
+
+# male/female ratio (of samples)
+sex.count <- pseq.meta %>%
+  select(sex) %>%
+  group_by(sex) %>%
+  summarise(n = n())
+sex.count[sex.count$sex == "male", "n"]/sex.count[sex.count$sex == "female", "n"]
+
+# male/female ratio (of subjects)
+sex.count <- pseq.meta %>% 
+  filter(timepoint == 1) %>% # to only count each subject once
+  group_by(sex, subject) %>%
+  summarise(n = n())
+dim(sex.count[sex.count$sex == "male", ])[1] / dim(sex.count[sex.count$sex == "female", ])[1]
+
+
+# barplot of BMI
+ggplot(pseq.meta, aes(bmi_group)) +
+  geom_bar()
+  
+```
 
 
 
 
 ## Part III: Data manipulation and exploration
 
- * **Subsetting** Pick a subset of the phyloseq object including only
-     obese individuals who are over 40 years old. How many there are?
+ * **Subsetting** Pick a subset of the phyloseq object including only male
+     obese individuals. How many there are?
      Tips: subset_samples
+     
+```{r}
+pseq.obe <- subset_samples(pseq, bmi_group == "obese" & sex == "male")
+```
+
 
  * **Transformations** The phyloseq data has absolute abundances. Use
      the microbiome::transform command to convert these into relative
@@ -144,6 +186,11 @@ pseq %>%
      cross-plot, for instance). Finally, compare the results to CLR-
      transformed data (see e.g. [Gloor et
      al. 2017](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full))
+     
+```{r}
+
+```
+
 
  * **Visual exploration** Visualize the population distribution of
    abundances for the following taxa: Akkermansia, Dialister,
