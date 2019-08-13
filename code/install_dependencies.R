@@ -11,6 +11,8 @@ install.packages("vegan")
 install.packages("phyloseq")
 install.packages("rmarkdown")
 install.packages("knitr")
+install.packages("BiocManager")
+install.packages("devtools")
 
 # Bioconductor packages
 library(BiocManager)
