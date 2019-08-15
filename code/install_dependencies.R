@@ -22,3 +22,7 @@ BiocManager::install("DESeq2")
 library(devtools)
 install_github("microbiome/microbiome")
 install_github("microsud/microbiomeutilities")
+
+
+# Optional tools that I used in the Hands-on examples
+install.packages("GGally")

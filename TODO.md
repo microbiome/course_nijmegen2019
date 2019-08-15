@@ -2,16 +2,16 @@
 
 In a rough order of priority.
 
- * Add the necessary dependencies to code/install_dependencies.R
+ * ~~Add the necessary dependencies to code/install_dependencies.R~~ **DONE**
 
- * Check that all links work **DONE**
+ * ~~Check that all links work~~ **DONE**
 
  * Add links to Radboud / course announcements / your own contact info
    for support / etc. where appropriate
 
- * Consider changeing the example data set from atlas1006 to
+ * ~~Consider changeing the example data set from atlas1006 to
    dietswap. The latter might be more similar to typical case studies
-   encoutntered by the course participants. **CHANGED TO DIETSWAP MAINLY BECAUSE MOST OF THEM WORK WITH 16S DATA** 
+   encoutntered by the course participants.~~ **CHANGED TO DIETSWAP MAINLY BECAUSE MOST OF THEM WORK WITH 16S DATA** 
 
  * Add tips and links to useful examples and material and tips
    throughout to the handson exercise questions. This will help the
