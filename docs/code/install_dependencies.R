@@ -11,6 +11,8 @@ install.packages("vegan")
 install.packages("phyloseq")
 install.packages("rmarkdown")
 install.packages("knitr")
+install.packages("BiocManager")
+install.packages("devtools")
 
 # Bioconductor packages
 library(BiocManager)
@@ -20,3 +22,6 @@ BiocManager::install("DESeq2")
 library(devtools)
 install_github("microbiome/microbiome")
 install_github("microsud/microbiomeutilities")
+
+
+

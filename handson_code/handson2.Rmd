@@ -3,7 +3,7 @@ title: "Example Hands on 2"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 library(knitr)
 opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
@@ -28,8 +28,8 @@ print(dietswap)
 # rename the example data
 pseq <- dietswap
 # transform data for compositional analysis
-pseq.rel <- transform(pseq, transform = "compositional")
-pseq.clr <- transform(pseq, transform = "clr")
+pseq.rel <- microbiome::transform(pseq, transform = "compositional")
+pseq.clr <- microbiome::transform(pseq, transform = "clr")
 ```
 
 

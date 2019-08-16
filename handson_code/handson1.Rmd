@@ -8,7 +8,7 @@ output: html_document
 To create a report, we often want to suppress unneccessary output that would be interesting during coding but not when presenting our results to a colleague. For this we can use chunk options (see [here](https://rmarkdown.rstudio.com/lesson-3.html)).
 
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 library(knitr)
 # this code chunk will not be shown in the output because of
 # include=FALSE
@@ -207,9 +207,9 @@ meta(pseq.obe) %>% filter(timepoint == 1) %>% dim() # and 5 subjects
      
 ```{r}
 # relative abundance
-pseq.rel <- transform(pseq, transform = "compositional")
+pseq.rel <- microbiome::transform(pseq, transform = "compositional")
 # clr transformed abudnances
-pseq.clr <- transform(pseq, transform = "clr")
+pseq.clr <- microbiome::transform(pseq, transform = "clr")
 
 # now extract akkermansia from each object
 akkermansia.absolute <- otu.absolute %>%

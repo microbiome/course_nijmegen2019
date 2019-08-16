@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Hands-on 2: Key concepts and techniques | Introduction to microbiome data science</title>
+  <meta name="description" content="Course material" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Hands-on 2: Key concepts and techniques | Introduction to microbiome data science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course material" />
+  <meta name="github-repo" content="microbiome/course_nijmegen2019" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Hands-on 2: Key concepts and techniques | Introduction to microbiome data science" />
+  
+  <meta name="twitter:description" content="Course material" />
+  
+
+<meta name="author" content="Leo Lahti and Henrik Eckermann" />
+
+
+<meta name="date" content="2019-08-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="hands-on-1-introduction-to-r-tools-1.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-course"><i class="fa fa-check"></i><b>1.1</b> Preparing for the course</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#software-setup"><i class="fa fa-check"></i><b>1.1.1</b> Software setup</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a><ul>
+<li class="chapter" data-level="2.1" data-path="schedule.html"><a href="schedule.html#september-12-thu"><i class="fa fa-check"></i><b>2.1</b> September 12 (Thu)</a></li>
+<li class="chapter" data-level="2.2" data-path="schedule.html"><a href="schedule.html#september-13-fri"><i class="fa fa-check"></i><b>2.2</b> September 13 (Fri)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html"><i class="fa fa-check"></i><b>3</b> Hands-on 1: introduction to R tools</a><ul>
+<li class="chapter" data-level="3.1" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-i-reproducible-reporting-with-rmarkdown"><i class="fa fa-check"></i><b>3.1</b> Part I: Reproducible reporting with Rmarkdown</a></li>
+<li class="chapter" data-level="3.2" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-ii-phyloseq-data-structure"><i class="fa fa-check"></i><b>3.2</b> Part II: Phyloseq data structure</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-iii-data-manipulation-and-exploration"><i class="fa fa-check"></i><b>3.3</b> Part III: Data manipulation and exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html"><i class="fa fa-check"></i><b>4</b> Hands-on 2: Key concepts and techniques</a><ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html#part-i-key-concepts"><i class="fa fa-check"></i><b>4.1</b> Part I: Key concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html#part-ii-statistical-testing"><i class="fa fa-check"></i><b>4.2</b> Part II: Statistical testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-material.html"><a href="study-material.html"><i class="fa fa-check"></i><b>5</b> Study material</a><ul>
+<li class="chapter" data-level="5.1" data-path="study-material.html"><a href="study-material.html#lecture-slides"><i class="fa fa-check"></i><b>5.1</b> Lecture slides</a></li>
+<li class="chapter" data-level="5.2" data-path="study-material.html"><a href="study-material.html#r-programming-additional-resources"><i class="fa fa-check"></i><b>5.2</b> R programming: additional resources</a></li>
+<li class="chapter" data-level="5.3" data-path="study-material.html"><a href="study-material.html#further-reading"><i class="fa fa-check"></i><b>5.3</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hands-on-1-introduction-to-r-tools-1.html"><a href="hands-on-1-introduction-to-r-tools-1.html"><i class="fa fa-check"></i><b>6</b> Hands-on 1: Introduction to R tools</a><ul>
+<li class="chapter" data-level="6.1" data-path="hands-on-1-introduction-to-r-tools-1.html"><a href="hands-on-1-introduction-to-r-tools-1.html#part-ii-phyloseq-data-structure-1"><i class="fa fa-check"></i><b>6.1</b> Part II: Phyloseq data structure</a></li>
+<li class="chapter" data-level="6.2" data-path="hands-on-1-introduction-to-r-tools-1.html"><a href="hands-on-1-introduction-to-r-tools-1.html#part-iii-data-manipulation-and-exploration-1"><i class="fa fa-check"></i><b>6.2</b> Part III: Data manipulation and exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="hands-on-2-key-concepts-and-techniques-1.html"><a href="hands-on-2-key-concepts-and-techniques-1.html"><i class="fa fa-check"></i><b>7</b> Hands-on 2: Key concepts and techniques</a><ul>
+<li class="chapter" data-level="7.1" data-path="hands-on-2-key-concepts-and-techniques-1.html"><a href="hands-on-2-key-concepts-and-techniques-1.html#part-i-key-concepts-1"><i class="fa fa-check"></i><b>7.1</b> Part I: Key concepts</a></li>
+<li class="chapter" data-level="7.2" data-path="hands-on-2-key-concepts-and-techniques-1.html"><a href="hands-on-2-key-concepts-and-techniques-1.html#part-ii-statistical-testing-1"><i class="fa fa-check"></i><b>7.2</b> Part II: Statistical testing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to microbiome data science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hands-on-2-key-concepts-and-techniques-1" class="section level1">
+<h1><span class="header-section-number">7</span> Hands-on 2: Key concepts and techniques</h1>
+<div id="part-i-key-concepts-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Part I: Key concepts</h2>
+<p>Before we can start with the exercises we need to load the required packages and the example data we work with:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="co"># load required packages</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"><span class="kw">library</span>(microbiome)</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="co">#load data</span></a>
+<a class="sourceLine" id="cb46-6" data-line-number="6"><span class="kw">data</span>(dietswap) </a>
+<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="kw">print</span>(dietswap)</a></code></pre></div>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+## sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+## tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="co"># rename the example data</span></a>
+<a class="sourceLine" id="cb48-2" data-line-number="2">pseq &lt;-<span class="st"> </span>dietswap</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="co"># transform data for compositional analysis</span></a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">pseq.rel &lt;-<span class="st"> </span>microbiome<span class="op">::</span><span class="kw">transform</span>(pseq, <span class="dt">transform =</span> <span class="st">&quot;compositional&quot;</span>)</a>
+<a class="sourceLine" id="cb48-5" data-line-number="5">pseq.clr &lt;-<span class="st"> </span>microbiome<span class="op">::</span><span class="kw">transform</span>(pseq, <span class="dt">transform =</span> <span class="st">&quot;clr&quot;</span>)</a></code></pre></div>
+<ul>
+<li><strong>Alpha diversity</strong> Estimate taxonomic diversity for each sample
+(function microbiome::alpha). Compare the results between two or
+more diversity indices (visually or statistically). See
+<a href="https://microbiome.github.io/tutorials/">microbiome tutorial</a>
+for examples.</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">tab.alpha &lt;-<span class="st"> </span><span class="kw">alpha</span>(pseq)</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="kw">head</span>(tab.alpha) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">observed</th>
+<th align="right">chao1</th>
+<th align="right">diversity_inverse_simpson</th>
+<th align="right">diversity_gini_simpson</th>
+<th align="right">diversity_shannon</th>
+<th align="right">diversity_fisher</th>
+<th align="right">diversity_coverage</th>
+<th align="right">evenness_camargo</th>
+<th align="right">evenness_pielou</th>
+<th align="right">evenness_simpson</th>
+<th align="right">evenness_evar</th>
+<th align="right">evenness_bulla</th>
+<th align="right">dominance_dbp</th>
+<th align="right">dominance_dmn</th>
+<th align="right">dominance_absolute</th>
+<th align="right">dominance_relative</th>
+<th align="right">dominance_simpson</th>
+<th align="right">dominance_core_abundance</th>
+<th align="right">dominance_gini</th>
+<th align="right">rarity_log_modulo_skewness</th>
+<th align="right">rarity_low_abundance</th>
+<th align="right">rarity_rare_abundance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample-1</td>
+<td align="right">104</td>
+<td align="right">114.6667</td>
+<td align="right">7.561722</td>
+<td align="right">0.8677550</td>
+<td align="right">2.940698</td>
+<td align="right">16.69360</td>
+<td align="right">4</td>
+<td align="right">0.2014036</td>
+<td align="right">0.6331719</td>
+<td align="right">0.0727089</td>
+<td align="right">0.1709714</td>
+<td align="right">0.3298916</td>
+<td align="right">0.3279347</td>
+<td align="right">0.4297198</td>
+<td align="right">2774</td>
+<td align="right">0.3279347</td>
+<td align="right">0.1322450</td>
+<td align="right">0.9992907</td>
+<td align="right">0.8625360</td>
+<td align="right">2.057691</td>
+<td align="right">0.0289632</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Sample-2</td>
+<td align="right">110</td>
+<td align="right">121.6364</td>
+<td align="right">8.102943</td>
+<td align="right">0.8765881</td>
+<td align="right">2.822472</td>
+<td align="right">15.20257</td>
+<td align="right">3</td>
+<td align="right">0.2261992</td>
+<td align="right">0.6004646</td>
+<td align="right">0.0736631</td>
+<td align="right">0.1334372</td>
+<td align="right">0.2755652</td>
+<td align="right">0.2428626</td>
+<td align="right">0.4656170</td>
+<td align="right">5121</td>
+<td align="right">0.2428626</td>
+<td align="right">0.1234119</td>
+<td align="right">0.9994309</td>
+<td align="right">0.8843695</td>
+<td align="right">2.057552</td>
+<td align="right">0.0299725</td>
+<td align="right">0.0004268</td>
+</tr>
+<tr class="odd">
+<td>Sample-3</td>
+<td align="right">103</td>
+<td align="right">107.5000</td>
+<td align="right">4.291085</td>
+<td align="right">0.7669587</td>
+<td align="right">2.407963</td>
+<td align="right">13.42077</td>
+<td align="right">2</td>
+<td align="right">0.2109176</td>
+<td align="right">0.5195476</td>
+<td align="right">0.0416610</td>
+<td align="right">0.1373098</td>
+<td align="right">0.2541325</td>
+<td align="right">0.4594744</td>
+<td align="right">0.5603989</td>
+<td align="right">13271</td>
+<td align="right">0.4594744</td>
+<td align="right">0.2330413</td>
+<td align="right">0.9999654</td>
+<td align="right">0.9083094</td>
+<td align="right">2.052324</td>
+<td align="right">0.0339646</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Sample-4</td>
+<td align="right">105</td>
+<td align="right">112.1429</td>
+<td align="right">7.930799</td>
+<td align="right">0.8739093</td>
+<td align="right">2.992482</td>
+<td align="right">15.56061</td>
+<td align="right">4</td>
+<td align="right">0.3422309</td>
+<td align="right">0.6429969</td>
+<td align="right">0.0755314</td>
+<td align="right">0.1711334</td>
+<td align="right">0.3176017</td>
+<td align="right">0.3230653</td>
+<td align="right">0.3957720</td>
+<td align="right">4279</td>
+<td align="right">0.3230653</td>
+<td align="right">0.1260907</td>
+<td align="right">0.9995470</td>
+<td align="right">0.8569405</td>
+<td align="right">2.051175</td>
+<td align="right">0.0348056</td>
+<td align="right">0.0002265</td>
+</tr>
+<tr class="odd">
+<td>Sample-5</td>
+<td align="right">103</td>
+<td align="right">110.6818</td>
+<td align="right">3.170738</td>
+<td align="right">0.6846160</td>
+<td align="right">2.106022</td>
+<td align="right">14.53671</td>
+<td align="right">1</td>
+<td align="right">0.1407817</td>
+<td align="right">0.4544002</td>
+<td align="right">0.0307839</td>
+<td align="right">0.1661081</td>
+<td align="right">0.2310307</td>
+<td align="right">0.5450144</td>
+<td align="right">0.6317579</td>
+<td align="right">9456</td>
+<td align="right">0.5450144</td>
+<td align="right">0.3153840</td>
+<td align="right">0.9998847</td>
+<td align="right">0.9212609</td>
+<td align="right">2.059634</td>
+<td align="right">0.0441499</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Sample-6</td>
+<td align="right">105</td>
+<td align="right">113.9091</td>
+<td align="right">2.953753</td>
+<td align="right">0.6614476</td>
+<td align="right">2.071136</td>
+<td align="right">14.55619</td>
+<td align="right">1</td>
+<td align="right">0.1709221</td>
+<td align="right">0.4450266</td>
+<td align="right">0.0281310</td>
+<td align="right">0.1625409</td>
+<td align="right">0.2308364</td>
+<td align="right">0.5693811</td>
+<td align="right">0.6430163</td>
+<td align="right">11243</td>
+<td align="right">0.5693811</td>
+<td align="right">0.3385524</td>
+<td align="right">0.9993923</td>
+<td align="right">0.9192203</td>
+<td align="right">2.059421</td>
+<td align="right">0.0375772</td>
+<td align="right">0.0000506</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># let us select 3 indeces and see how they correlate:</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="co"># I use the function ggpairs from the package GGally, which you</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="co"># might need to install first:</span></a>
+<a class="sourceLine" id="cb50-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(GGally)) {</a>
+<a class="sourceLine" id="cb50-6" data-line-number="6">  <span class="kw">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</a>
+<a class="sourceLine" id="cb50-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb50-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb50-9" data-line-number="9">tab.alpha <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-10" data-line-number="10"><span class="st">  </span><span class="kw">select</span>(</a>
+<a class="sourceLine" id="cb50-11" data-line-number="11">    diversity_inverse_simpson, </a>
+<a class="sourceLine" id="cb50-12" data-line-number="12">    diversity_gini_simpson, </a>
+<a class="sourceLine" id="cb50-13" data-line-number="13">    diversity_shannon) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-14" data-line-number="14"><span class="st">  </span>GGally<span class="op">::</span><span class="kw">ggpairs</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<ul>
+<li><strong>Beta diversity</strong> Visualize community variation with PCoA
+(<a href="https://microbiome.github.io/tutorials/Ordination.html">examples</a>).
+Investigate the influence of the data transformations on
+statistical analysis: Visualize community variation with PCoA
+with the following options:
+<ol style="list-style-type: decimal">
+<li>Bray-Curtis distances for
+compositional data;<br />
+</li>
+<li>Euclidean distances for CLR-transformed
+data.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="co"># option 1: Bray Curtis</span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">ord &lt;-<span class="st"> </span><span class="kw">ordinate</span>(pseq, <span class="dt">method =</span> <span class="st">&quot;PCoA&quot;</span>, <span class="dt">distance =</span> <span class="st">&quot;bray&quot;</span>)</a>
+<a class="sourceLine" id="cb51-3" data-line-number="3"><span class="kw">plot_ordination</span>(pseq, ord, <span class="dt">color =</span> <span class="st">&quot;nationality&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="co"># option 2: Euclidean distance for CLR transformed data</span></a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">ord &lt;-<span class="st"> </span><span class="kw">ordinate</span>(pseq.clr, <span class="dt">method =</span> <span class="st">&quot;PCoA&quot;</span>, <span class="dt">distance =</span> <span class="st">&quot;euclidean&quot;</span>)</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw">plot_ordination</span>(pseq, ord, <span class="dt">color =</span> <span class="st">&quot;nationality&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<ul>
+<li><strong>Prevalence</strong> What is the most prevalent genus in the data (tip:
+microbiome::prevalence and sort)</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">prevalence</span>(pseq.rel, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Yersinia et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Weissella et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Vibrio</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Veillonella</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Uncultured Mollicutes</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Uncultured Clostridiales II</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Uncultured Clostridiales I</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Tannerella et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Sutterella wadsworthia et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Subdoligranulum variable at rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Streptococcus mitis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Streptococcus intermedius et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Streptococcus bovis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Sporobacter termitidis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Ruminococcus obeum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Ruminococcus lactaris et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Ruminococcus gnavus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Ruminococcus callidus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Ruminococcus bromii et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Roseburia intestinalis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Proteus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Propionibacterium</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Prevotella tannerae et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Prevotella oralis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Prevotella melaninogenica et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Phascolarctobacterium faecium et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Peptostreptococcus micros et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Peptococcus niger et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Parabacteroides distasonis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Papillibacter cinnamivorans et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Oxalobacter formigenes et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Outgrouping clostridium cluster XIVa</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Oscillospira guillermondii et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Oceanospirillum</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Mitsuokella multiacida et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Megasphaera elsdenii et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Megamonas hypermegale et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Lactococcus</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Lactobacillus salivarius et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Lactobacillus plantarum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Lactobacillus gasseri et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Lachnospira pectinoschiza et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Lachnobacillus bovis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Klebisiella pneumoniae et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Helicobacter</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Fusobacteria</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Faecalibacterium prausnitzii et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Eubacterium ventriosum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Eubacterium siraeum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Eubacterium rectale et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Eubacterium limosum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Eubacterium hallii et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Eubacterium cylindroides et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Eubacterium biforme et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Escherichia coli et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Enterococcus</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Enterobacter aerogenes et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Eggerthella lenta et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Dorea formicigenerans et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Dialister</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Desulfovibrio et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Corynebacterium</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Coprococcus eutactus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Coprobacillus catenaformis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Collinsella</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium symbiosum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Clostridium stercorarium et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium sphenoides et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Clostridium ramosum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium orbiscindens et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Clostridium nexile et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium leptum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Clostridium difficile et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium colinum et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Clostridium cellulosi et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium (sensu stricto)</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Campylobacter</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Butyrivibrio crossotus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Bulleidia moorei et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Bryantella formatexigens et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Bilophila et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Bifidobacterium</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Bacteroides vulgatus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Bacteroides uniformis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Bacteroides stercoris et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Bacteroides splachnicus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Bacteroides plebeius et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Bacteroides ovatus et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Bacteroides fragilis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Bacillus</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Anaerovorax odorimutans et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Anaerotruncus colihominis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Anaerostipes caccae et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Allistipes et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Alcaligenes faecalis et rel.</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="even">
+<td>Akkermansia</td>
+<td align="right">1.0000000</td>
+</tr>
+<tr class="odd">
+<td>Prevotella ruminicola et rel.</td>
+<td align="right">0.9909910</td>
+</tr>
+<tr class="even">
+<td>Bacteroides intestinalis et rel.</td>
+<td align="right">0.9774775</td>
+</tr>
+<tr class="odd">
+<td>Uncultured Bacteroidetes</td>
+<td align="right">0.8963964</td>
+</tr>
+<tr class="even">
+<td>Xanthomonadaceae</td>
+<td align="right">0.7297297</td>
+</tr>
+<tr class="odd">
+<td>Catenibacterium mitsuokai et rel.</td>
+<td align="right">0.6981982</td>
+</tr>
+<tr class="even">
+<td>Burkholderia</td>
+<td align="right">0.5720721</td>
+</tr>
+<tr class="odd">
+<td>Haemophilus</td>
+<td align="right">0.4369369</td>
+</tr>
+<tr class="even">
+<td>Serratia</td>
+<td align="right">0.4234234</td>
+</tr>
+<tr class="odd">
+<td>Leminorella</td>
+<td align="right">0.2297297</td>
+</tr>
+<tr class="even">
+<td>Moraxellaceae</td>
+<td align="right">0.2162162</td>
+</tr>
+<tr class="odd">
+<td>Uncultured Selenomonadaceae</td>
+<td align="right">0.1891892</td>
+</tr>
+<tr class="even">
+<td>Lactobacillus catenaformis et rel.</td>
+<td align="right">0.1801802</td>
+</tr>
+<tr class="odd">
+<td>Atopobium</td>
+<td align="right">0.1261261</td>
+</tr>
+<tr class="even">
+<td>Aquabacterium</td>
+<td align="right">0.1081081</td>
+</tr>
+<tr class="odd">
+<td>Brachyspira</td>
+<td align="right">0.0810811</td>
+</tr>
+<tr class="even">
+<td>Granulicatella</td>
+<td align="right">0.0720721</td>
+</tr>
+<tr class="odd">
+<td>Actinomycetaceae</td>
+<td align="right">0.0720721</td>
+</tr>
+<tr class="even">
+<td>Staphylococcus</td>
+<td align="right">0.0675676</td>
+</tr>
+<tr class="odd">
+<td>Wissella et rel.</td>
+<td align="right">0.0630631</td>
+</tr>
+<tr class="even">
+<td>Pseudomonas</td>
+<td align="right">0.0405405</td>
+</tr>
+<tr class="odd">
+<td>Anaerofustis</td>
+<td align="right">0.0360360</td>
+</tr>
+<tr class="even">
+<td>Uncultured Chroococcales</td>
+<td align="right">0.0180180</td>
+</tr>
+<tr class="odd">
+<td>Gemella</td>
+<td align="right">0.0180180</td>
+</tr>
+<tr class="even">
+<td>Aeromonas</td>
+<td align="right">0.0090090</td>
+</tr>
+<tr class="odd">
+<td>Peptostreptococcus anaerobius et rel.</td>
+<td align="right">0.0045045</td>
+</tr>
+<tr class="even">
+<td>Novosphingobium</td>
+<td align="right">0.0045045</td>
+</tr>
+<tr class="odd">
+<td>Anaerobiospirillum</td>
+<td align="right">0.0045045</td>
+</tr>
+<tr class="even">
+<td>Micrococcaceae</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>Methylobacterium</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Clostridium thermocellum et rel.</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>Clostridium felsineum et rel.</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Asteroleplasma et rel.</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td>Aneurinibacillus</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td>Aerococcus</td>
+<td align="right">0.0000000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Core microbiota</strong> Pick up the core microbiota including taxa that
+exceed 0.1% relative abundance in over 50% of the samples
+(prevalence). How many core taxa there are? You can read more about the core microbiota definition in <a href="https://www.clinicalmicrobiologyandinfection.com/article/S1198-743X(14)60962-9/fulltext">Salonen et al. 2012</a>. Visualize the core microbiota by following the available <a href="https://microbiome.github.io/tutorials/Core.html">examples</a>.</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">pseq.core &lt;-<span class="st"> </span><span class="kw">core</span>(pseq.rel, <span class="dt">detection =</span> <span class="fl">0.001</span>, <span class="dt">prevalence =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="co"># how many taxa are there?</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw">taxa</span>(pseq.core) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">length</span>()</a></code></pre></div>
+<pre><code>## [1] 52</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co"># vizualize core microbiota</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="co"># core line plots</span></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">detections &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">20</span>)<span class="op">/</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb56-5" data-line-number="5">prevalences &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.05</span>, <span class="dv">1</span>, <span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb56-6" data-line-number="6"><span class="kw">plot_core</span>(pseq.rel, <span class="dt">prevalences =</span> prevalences, <span class="dt">detections =</span> detections, <span class="dt">plot.type =</span> <span class="st">&quot;lineplot&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="1440" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co"># core heatmaps</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">prevalences &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.05</span>, <span class="dv">1</span>, <span class="fl">0.05</span>)</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">detections &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="kw">seq</span>(<span class="kw">log10</span>(<span class="fl">1e-3</span>), <span class="kw">log10</span>(<span class="fl">0.2</span>), <span class="dt">length =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4"><span class="co"># define gray color palette</span></a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">gray &lt;-<span class="st"> </span><span class="kw">gray</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length =</span> <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb57-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">p &lt;-<span class="st"> </span><span class="kw">plot_core</span>(</a>
+<a class="sourceLine" id="cb57-8" data-line-number="8">  pseq.rel, </a>
+<a class="sourceLine" id="cb57-9" data-line-number="9">  <span class="dt">plot.type =</span> <span class="st">&quot;heatmap&quot;</span>, </a>
+<a class="sourceLine" id="cb57-10" data-line-number="10">  <span class="dt">colours =</span> gray, </a>
+<a class="sourceLine" id="cb57-11" data-line-number="11">  <span class="dt">prevalences =</span> prevalences, </a>
+<a class="sourceLine" id="cb57-12" data-line-number="12">  <span class="dt">detections =</span> detections)</a>
+<a class="sourceLine" id="cb57-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb57-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb57-15" data-line-number="15"><span class="kw">print</span>(p)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-2.png" width="1440" /></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co"># Core with absolute counts and horizontal view:</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="co"># and minimum population prevalence (given as percentage)</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">detections &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">^</span><span class="kw">seq</span>(<span class="kw">log10</span>(<span class="dv">1</span>), <span class="kw">log10</span>(<span class="kw">max</span>(<span class="kw">abundances</span>(pseq))<span class="op">/</span><span class="dv">10</span>), <span class="dt">length =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb58-4" data-line-number="4"><span class="kw">library</span>(RColorBrewer)</a>
+<a class="sourceLine" id="cb58-5" data-line-number="5">p &lt;-<span class="st"> </span><span class="kw">plot_core</span>(pseq, </a>
+<a class="sourceLine" id="cb58-6" data-line-number="6">               <span class="dt">plot.type =</span> <span class="st">&quot;heatmap&quot;</span>,</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7">               <span class="dt">prevalences =</span> prevalences,</a>
+<a class="sourceLine" id="cb58-8" data-line-number="8">               <span class="dt">detections =</span> detections,</a>
+<a class="sourceLine" id="cb58-9" data-line-number="9">               <span class="dt">colours =</span> <span class="kw">rev</span>(<span class="kw">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Spectral&quot;</span>)),</a>
+<a class="sourceLine" id="cb58-10" data-line-number="10">               <span class="dt">min.prevalence =</span> <span class="fl">.2</span>, </a>
+<a class="sourceLine" id="cb58-11" data-line-number="11">               <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb58-12" data-line-number="12"><span class="kw">print</span>(p)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-3.png" width="1440" /></p>
+</div>
+<div id="part-ii-statistical-testing-1" class="section level2">
+<h2><span class="header-section-number">7.2</span> Part II: Statistical testing</h2>
+<ul>
+<li><strong>Community-level comparisons</strong> Use
+<a href="https://microbiome.github.io/tutorials/PERMANOVA.html">PERMANOVA</a>
+to investigate whether the community composition differs between
+two groups of individuals (e.g. males and females, or some other
+grouping of your choice). You can also include covariates such as
+age and gender, and see how this affects the results.</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="co"># to perform PERMANOVA we need vegan</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">library</span>(vegan)</a>
+<a class="sourceLine" id="cb59-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="co"># extract relative abundances and meta data</span></a>
+<a class="sourceLine" id="cb59-5" data-line-number="5">otu.relative &lt;-<span class="st"> </span><span class="kw">abundances</span>(pseq.rel)</a>
+<a class="sourceLine" id="cb59-6" data-line-number="6">meta &lt;-<span class="st"> </span><span class="kw">meta</span>(pseq.rel)</a>
+<a class="sourceLine" id="cb59-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb59-8" data-line-number="8"><span class="co"># Before we perform PERMANOVA we must test the assumption </span></a>
+<a class="sourceLine" id="cb59-9" data-line-number="9"><span class="co"># that the multivariate spread between the groups is similar.</span></a>
+<a class="sourceLine" id="cb59-10" data-line-number="10">dist &lt;-<span class="st"> </span><span class="kw">vegdist</span>(<span class="kw">t</span>(otu.relative))</a>
+<a class="sourceLine" id="cb59-11" data-line-number="11"><span class="co"># in this specific case the assumption is not met for bmi_group</span></a>
+<a class="sourceLine" id="cb59-12" data-line-number="12"><span class="kw">betadisper</span>(dist, meta<span class="op">$</span>bmi_group) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb59-13" data-line-number="13"><span class="st">  </span><span class="kw">anova</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb59-14" data-line-number="14"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Groups</td>
+<td align="right">2</td>
+<td align="right">0.1789275</td>
+<td align="right">0.0894637</td>
+<td align="right">7.699571</td>
+<td align="right">0.0005867</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">219</td>
+<td align="right">2.5446297</td>
+<td align="right">0.0116193</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co"># perform PERMANOVA</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">pm &lt;-<span class="st"> </span><span class="kw">adonis</span>(</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">  <span class="kw">t</span>(otu.relative) <span class="op">~</span><span class="st"> </span>bmi_group,</a>
+<a class="sourceLine" id="cb60-4" data-line-number="4">  <span class="dt">data =</span> meta,</a>
+<a class="sourceLine" id="cb60-5" data-line-number="5">  <span class="dt">permutations =</span> <span class="dv">99</span>,</a>
+<a class="sourceLine" id="cb60-6" data-line-number="6">  <span class="dt">method =</span> <span class="st">&quot;bray&quot;</span></a>
+<a class="sourceLine" id="cb60-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb60-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb60-9" data-line-number="9"><span class="co"># to obtain the effect size and the F-test p-value:</span></a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">pm<span class="op">$</span>aov.tab <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">SumsOfSqs</th>
+<th align="right">MeanSqs</th>
+<th align="right">F.Model</th>
+<th align="right">R2</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bmi_group</td>
+<td align="right">2</td>
+<td align="right">2.260931</td>
+<td align="right">1.1304655</td>
+<td align="right">7.167585</td>
+<td align="right">0.061436</td>
+<td align="right">0.01</td>
+</tr>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">219</td>
+<td align="right">34.540499</td>
+<td align="right">0.1577192</td>
+<td align="right">NA</td>
+<td align="right">0.938564</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">221</td>
+<td align="right">36.801430</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1.000000</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># to investigate the top factors</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2">coef &lt;-<span class="st"> </span><span class="kw">coefficients</span>(pm)[<span class="st">&quot;bmi_group1&quot;</span>, ]</a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="co"># with base R</span></a>
+<a class="sourceLine" id="cb62-5" data-line-number="5">top.coef &lt;-<span class="st"> </span>coef[<span class="kw">rev</span>(<span class="kw">order</span>(<span class="kw">abs</span>(coef)))[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>]]</a>
+<a class="sourceLine" id="cb62-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">14</span>, <span class="dv">2</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb62-7" data-line-number="7"><span class="kw">barplot</span>(<span class="kw">sort</span>(top.coef), <span class="dt">horiz =</span> T, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">main =</span> <span class="st">&quot;Top taxa&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co"># with ggplot</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">coef <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># convert to dataframe</span></a>
+<a class="sourceLine" id="cb63-3" data-line-number="3"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;taxa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># add the rownames as a column for plotting</span></a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="st">  </span><span class="kw">select</span>(taxa, <span class="dt">coef =</span> <span class="st">&quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># select and rename the columns</span></a>
+<a class="sourceLine" id="cb63-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="kw">abs</span>(coef))) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># sort by absolute value</span></a>
+<a class="sourceLine" id="cb63-6" data-line-number="6"><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># pick 20 highest coefficients</span></a>
+<a class="sourceLine" id="cb63-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(coef)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># sort by value</span></a>
+<a class="sourceLine" id="cb63-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">top_taxa =</span> <span class="kw">factor</span>(taxa, <span class="dt">levels =</span> taxa)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># for ggplot to keep order we need factor</span></a>
+<a class="sourceLine" id="cb63-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(top_taxa, coef)) <span class="op">+</span><span class="st"> </span><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb63-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb63-11" data-line-number="11"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<ul>
+<li><strong>OTU-level comparisons</strong> Use
+<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8">DESeq2</a>
+to identify which genera are associated with gender differences
+(<a href="https://microbiome.github.io/tutorials/all.html">examples on
+DESeq2</a>). For
+more explanation on the method, see <a href="http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">DESeq2
+R/Bioconductor</a>.</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">library</span>(DESeq2)</a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"><span class="co"># start by converting phyloseq object to deseq2 format</span></a>
+<a class="sourceLine" id="cb64-3" data-line-number="3">ds2 &lt;-<span class="st"> </span><span class="kw">phyloseq_to_deseq2</span>(pseq, <span class="op">~</span>group <span class="op">+</span><span class="st"> </span>nationality)</a>
+<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="co"># Run DeSeq2 analysis (all taxa at once!)</span></a>
+<a class="sourceLine" id="cb64-5" data-line-number="5">dds &lt;-<span class="st"> </span><span class="kw">DESeq</span>(ds2)</a>
+<a class="sourceLine" id="cb64-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb64-7" data-line-number="7"><span class="co"># Investigate results </span></a>
+<a class="sourceLine" id="cb64-8" data-line-number="8">res &lt;-<span class="st"> </span><span class="kw">results</span>(dds)</a>
+<a class="sourceLine" id="cb64-9" data-line-number="9">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(res) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb64-10" data-line-number="10"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;taxon&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-11" data-line-number="11"><span class="st">  </span><span class="kw">arrange</span>(log2FoldChange, padj)</a>
+<a class="sourceLine" id="cb64-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb64-13" data-line-number="13">df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(pvalue <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.05</span> <span class="op">&amp;</span><span class="st"> </span>log2FoldChange <span class="op">&gt;</span><span class="st"> </span><span class="fl">1.5</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-14" data-line-number="14"><span class="st">  </span><span class="kw">arrange</span>(pvalue, log2FoldChange) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb64-15" data-line-number="15"><span class="st">  </span><span class="kw">mutate_if</span>(is.numeric, round, <span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># round to 3 decimal places</span></a>
+<a class="sourceLine" id="cb64-16" data-line-number="16"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">taxon</th>
+<th align="right">baseMean</th>
+<th align="right">log2FoldChange</th>
+<th align="right">lfcSE</th>
+<th align="right">stat</th>
+<th align="right">pvalue</th>
+<th align="right">padj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Clostridium difficile et rel.</td>
+<td align="right">29.205</td>
+<td align="right">1.912</td>
+<td align="right">0.134</td>
+<td align="right">14.235</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left">Mitsuokella multiacida et rel.</td>
+<td align="right">51.652</td>
+<td align="right">3.041</td>
+<td align="right">0.287</td>
+<td align="right">10.601</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Klebisiella pneumoniae et rel.</td>
+<td align="right">12.397</td>
+<td align="right">1.838</td>
+<td align="right">0.185</td>
+<td align="right">9.920</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left">Megasphaera elsdenii et rel.</td>
+<td align="right">44.165</td>
+<td align="right">1.783</td>
+<td align="right">0.231</td>
+<td align="right">7.729</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Escherichia coli et rel.</td>
+<td align="right">66.938</td>
+<td align="right">1.683</td>
+<td align="right">0.253</td>
+<td align="right">6.646</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left">Weissella et rel.</td>
+<td align="right">3.635</td>
+<td align="right">1.531</td>
+<td align="right">0.231</td>
+<td align="right">6.618</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="left">Serratia</td>
+<td align="right">5.740</td>
+<td align="right">3.073</td>
+<td align="right">0.478</td>
+<td align="right">6.423</td>
+<td align="right">0</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="left">Moraxellaceae</td>
+<td align="right">0.422</td>
+<td align="right">1.701</td>
+<td align="right">0.471</td>
+<td align="right">3.607</td>
+<td align="right">0</td>
+<td align="right">0.001</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Role of covariates</strong> Note that including key covariates (diet,
+medication, age..) may have remarkable influence on data
+interpretation in the above analyses (<a href="https://science.sciencemag.org/content/352/6285/560.abstract?ijkey=ADV4ZnF4mHYIg&amp;keytype=ref&amp;siteid=sci">Falony et al. Science
+2016</a>)</p></li>
+<li><p>Experiment with the other available tools in the <a href="https://microbiome.github.io/tutorials/">microbiome
+tutorial</a></p></li>
+<li><p>Provide a compact summary of the data and analyses in the form of a
+reproducible Rmarkdown report. Include only selected summaries and
+analyses of your choice, and focus on delivering a clear and
+compact report.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hands-on-1-introduction-to-r-tools-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

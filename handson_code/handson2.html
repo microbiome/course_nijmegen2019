@@ -386,8 +386,8 @@ print(dietswap)</code></pre>
 <pre class="r"><code># rename the example data
 pseq &lt;- dietswap
 # transform data for compositional analysis
-pseq.rel &lt;- transform(pseq, transform = &quot;compositional&quot;)
-pseq.clr &lt;- transform(pseq, transform = &quot;clr&quot;)</code></pre>
+pseq.rel &lt;- microbiome::transform(pseq, transform = &quot;compositional&quot;)
+pseq.clr &lt;- microbiome::transform(pseq, transform = &quot;clr&quot;)</code></pre>
 <ul>
 <li><strong>Alpha diversity</strong> Estimate taxonomic diversity for each sample (function microbiome::alpha). Compare the results between two or more diversity indices (visually or statistically). See <a href="https://microbiome.github.io/tutorials/">microbiome tutorial</a> for examples.</li>
 </ul>
@@ -575,6 +575,13 @@ head(tab.alpha) %&gt;% kable()</code></pre>
 </tbody>
 </table>
 <pre class="r"><code># let us select 3 indeces and see how they correlate:
+# I use the function ggpairs from the package GGally, which you
+# might need to install first:
+
+if(!require(GGally)) {
+  install.packages(&quot;GGally&quot;)
+}
+
 tab.alpha %&gt;%
   select(
     diversity_inverse_simpson, 

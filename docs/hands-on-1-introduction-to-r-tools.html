@@ -24,7 +24,7 @@
 <meta name="author" content="Leo Lahti and Henrik Eckermann" />
 
 
-<meta name="date" content="2019-08-12" />
+<meta name="date" content="2019-08-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -113,6 +113,7 @@
 document (markdown, PDF, docx or other format)</p></li>
 <li><p>Experiment with different options with <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">Rmarkdown</a></p></li>
 </ul>
+<p>If you are new to Rmarkdown, <a href="https://rmarkdown.rstudio.com/lesson-1.html">Rstudio provides ressources</a> to learn reporting using Rmarkdown.</p>
 </div>
 <div id="part-ii-phyloseq-data-structure" class="section level2">
 <h2><span class="header-section-number">3.2</span> Part II: Phyloseq data structure</h2>
@@ -120,9 +121,7 @@ document (markdown, PDF, docx or other format)</p></li>
 <p>In this course, we focus on downstream analysis of taxonomic profiling data, and assume that the data has already been appropriately preprocessed and converted in the phyloseq format. The exact steps vary based on the 16S profiling platform. Hands-on examples for converting the Illumina MiSeq sequencing data into R phyloseq object can be found from Bioconductor Workflow for Microbiome Data Analysis: from raw reads to community analyses (<a href="https://f1000research.com/articles/5-1492/v2">Callahan et al. F1000, 2016</a>).</p>
 <p>Provide the answers to at least some of the following questions in the form of a reproducible report (with Rmarkdown). Include the code that you use to retrieve the results. We will release code that provides solutions to all exercises.</p>
 <ul>
-<li><p><strong>Load example data</strong> of the gut microbiome profiling of 1006
-western adults from <a href="https://microbiome.github.io/tutorials/Data.html">microbiome R
-package</a>. The
+<li><p><strong>Load example data</strong> of the two-week <a href="http://dx.doi.org/10.1038/ncomms7342">diet swap study</a> between western (USA) and traditional (rural Africa) diets from <a href="https://microbiome.github.io/tutorials/Data.html">microbiome R package</a>. The
 example data sets are already in the <a href="http://joey711.github.io/phyloseq/import-data">phyloseq
 format</a>. R
 provides many readily available tools to handle and analyze
@@ -130,8 +129,7 @@ taxonomic profiling data that is provided in this format.</p></li>
 <li><p><strong>Microbal abundances / OTU Table</strong> retrieve the microbial (OTU)
 abundance table from the example data set (phyloseq object). This
 example data set has abundances at the genus level instead of OTU
-level. The taxonomic groupings in this 16S data set are only
-approximations to exact genus-level taxonomic classifications. Tip:
+level.c Tip:
 microbiome::abundances or phyloseq::otu_table</p></li>
 <li><p><strong>OTU tables</strong> Retrieve the OTU table and investigate: 1) How many
 different samples and genus-level groups this phyloseq object has?
@@ -155,15 +153,14 @@ first few lines of it with the R command head(). Investigate how
 many different phylum-level groups this phyloseq object has? Tips:
 phyloseq::tax_table and unique.</p></li>
 <li><p><strong>Sample metadata</strong> Retrieve sample metadata. How many unique
-subjects this data set has? What is the male/femal ratio? Draw a
+subjects this data set has? What is the male/female ratio? Draw a
 histogram of subject ages. Tips: microbiome::meta</p></li>
 </ul>
 </div>
 <div id="part-iii-data-manipulation-and-exploration" class="section level2">
 <h2><span class="header-section-number">3.3</span> Part III: Data manipulation and exploration</h2>
 <ul>
-<li><p><strong>Subsetting</strong> Pick a subset of the phyloseq object including only
-obese individuals who are over 40 years old. How many there are?
+<li><p><strong>Subsetting</strong> Pick a subset of the phyloseq object including only male and obese individuals. How many there are?
 Tips: subset_samples</p></li>
 <li><p><strong>Transformations</strong> The phyloseq data has absolute abundances. Use
 the microbiome::transform command to convert these into relative

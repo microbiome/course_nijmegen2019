@@ -2,7 +2,7 @@
 
 In a rough order of priority.
 
- * ~~Add the necessary dependencies to code/install_dependencies.R~~ **DONE - WORKS with R 3.6.1**
+ * ~~Add the necessary dependencies to code/install_dependencies.R~~ **DONE - Tested  with R 3.6.1 on Mac OS Mojave and Windows 10**
 
  * ~~Check that all links work~~ **DONE**
 

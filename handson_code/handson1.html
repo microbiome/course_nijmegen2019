@@ -590,7 +590,7 @@ pseq %&gt;%
   dim() # count</code></pre>
 <pre><code>## [1] 8 1</code></pre>
 <ul>
-<li><strong>Sample metadata</strong> Retrieve sample metadata. How many unique subjects this data set has? What is the male/femal ratio? Draw a bar plot of subject BMI-group. Tips: microbiome::meta</li>
+<li><strong>Sample metadata</strong> Retrieve sample metadata. How many unique subjects this data set has? What is the male/female ratio? Draw a bar plot of subject BMI-group. Tips: microbiome::meta</li>
 </ul>
 <pre class="r"><code># option 1 (results in dataframe)
 pseq.meta &lt;- meta(pseq)
@@ -646,7 +646,7 @@ ggplot(pseq.meta, aes(bmi_group)) +
 <div id="part-iii-data-manipulation-and-exploration" class="section level2">
 <h2>Part III: Data manipulation and exploration</h2>
 <ul>
-<li><strong>Subsetting</strong> Pick a subset of the phyloseq object including only male obese individuals. How many there are? Tips: subset_samples</li>
+<li><strong>Subsetting</strong> Pick a subset of the phyloseq object including only male and obese individuals. How many there are? Tips: subset_samples</li>
 </ul>
 <pre class="r"><code>pseq.obe &lt;- subset_samples(pseq, bmi_group == &quot;obese&quot; &amp; sex == &quot;male&quot;)
 meta(pseq.obe) %&gt;% dim() # there are 30 samples</code></pre>
@@ -657,9 +657,9 @@ meta(pseq.obe) %&gt;% dim() # there are 30 samples</code></pre>
 <li><strong>Transformations</strong> The phyloseq data has absolute abundances. Use the microbiome::transform command to convert these into relative abundances. Compare Akkermansia abundance using the example data before and after the compositionality transformation (with a cross-plot, for instance). Finally, compare the results to CLR- transformed data (see e.g. <a href="https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full">Gloor et al. 2017</a>)</li>
 </ul>
 <pre class="r"><code># relative abundance
-pseq.rel &lt;- transform(pseq, transform = &quot;compositional&quot;)
+pseq.rel &lt;- microbiome::transform(pseq, transform = &quot;compositional&quot;)
 # clr transformed abudnances
-pseq.clr &lt;- transform(pseq, transform = &quot;clr&quot;)
+pseq.clr &lt;- microbiome::transform(pseq, transform = &quot;clr&quot;)
 
 # now extract akkermansia from each object
 akkermansia.absolute &lt;- otu.absolute %&gt;%
