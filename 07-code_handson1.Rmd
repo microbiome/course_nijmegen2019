@@ -143,7 +143,7 @@ pseq %>%
 
 
  * **Sample metadata** Retrieve sample metadata. How many unique
-     subjects this data set has? What is the male/femal ratio? Draw a
+     subjects this data set has? What is the male/female ratio? Draw a
      bar plot of subject BMI-group. Tips: microbiome::meta
 
 ```{r}
@@ -187,8 +187,7 @@ ggplot(pseq.meta, aes(bmi_group)) +
 
 ## Part III: Data manipulation and exploration
 
- * **Subsetting** Pick a subset of the phyloseq object including only male
-     obese individuals. How many there are?
+ * **Subsetting** Pick a subset of the phyloseq object including only male and obese individuals. How many there are?
      Tips: subset_samples
      
 ```{r}
