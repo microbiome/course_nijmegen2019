@@ -13,14 +13,14 @@ In a rough order of priority.
    dietswap. The latter might be more similar to typical case studies
    encoutntered by the course participants.~~ **CHANGED TO DIETSWAP MAINLY BECAUSE MOST OF THEM WORK WITH 16S DATA** 
 
- * Add tips and links to useful examples and material and tips
+ * ~~Add tips and links to useful examples and material and tips
    throughout to the handson exercise questions. This will help the
    students to find the necessary examples and code easily. Some of
    the R links in the study material might better go to the actual
-   hands-on instructions?
+   hands-on instructions?~~ **Added very few. I will try to add more after reading some material**
 
  * Consider if you are willing to lead one of the hands-on sessions
-   (with my help); and then we can switch for the other one?
+   (with my help); and then we can switch for the other one? **yes**
 
  * ~~Prepare model solutions to the hands-on session questions; as
    reproducible scripts that can be run through as is. This will also
