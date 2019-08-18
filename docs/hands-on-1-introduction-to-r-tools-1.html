@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Hands-on 1: Introduction to R tools | Introduction to microbiome data science</title>
+  <meta name="description" content="Course material" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Hands-on 1: Introduction to R tools | Introduction to microbiome data science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course material" />
+  <meta name="github-repo" content="microbiome/course_nijmegen2019" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Hands-on 1: Introduction to R tools | Introduction to microbiome data science" />
+  
+  <meta name="twitter:description" content="Course material" />
+  
+
+<meta name="author" content="Leo Lahti and Henrik Eckermann" />
+
+
+<meta name="date" content="2019-08-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="study-material.html">
+<link rel="next" href="hands-on-2-key-concepts-and-techniques-1.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-course"><i class="fa fa-check"></i><b>1.1</b> Preparing for the course</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#software-setup"><i class="fa fa-check"></i><b>1.1.1</b> Software setup</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a><ul>
+<li class="chapter" data-level="2.1" data-path="schedule.html"><a href="schedule.html#september-12-thu"><i class="fa fa-check"></i><b>2.1</b> September 12 (Thu)</a></li>
+<li class="chapter" data-level="2.2" data-path="schedule.html"><a href="schedule.html#september-13-fri"><i class="fa fa-check"></i><b>2.2</b> September 13 (Fri)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html"><i class="fa fa-check"></i><b>3</b> Hands-on 1: introduction to R tools</a><ul>
+<li class="chapter" data-level="3.1" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-i-reproducible-reporting-with-rmarkdown"><i class="fa fa-check"></i><b>3.1</b> Part I: Reproducible reporting with Rmarkdown</a></li>
+<li class="chapter" data-level="3.2" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-ii-phyloseq-data-structure"><i class="fa fa-check"></i><b>3.2</b> Part II: Phyloseq data structure</a></li>
+<li class="chapter" data-level="3.3" data-path="hands-on-1-introduction-to-r-tools.html"><a href="hands-on-1-introduction-to-r-tools.html#part-iii-data-manipulation-and-exploration"><i class="fa fa-check"></i><b>3.3</b> Part III: Data manipulation and exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html"><i class="fa fa-check"></i><b>4</b> Hands-on 2: Key concepts and techniques</a><ul>
+<li class="chapter" data-level="4.1" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html#part-i-key-concepts"><i class="fa fa-check"></i><b>4.1</b> Part I: Key concepts</a></li>
+<li class="chapter" data-level="4.2" data-path="hands-on-2-key-concepts-and-techniques.html"><a href="hands-on-2-key-concepts-and-techniques.html#part-ii-statistical-testing"><i class="fa fa-check"></i><b>4.2</b> Part II: Statistical testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-material.html"><a href="study-material.html"><i class="fa fa-check"></i><b>5</b> Study material</a><ul>
+<li class="chapter" data-level="5.1" data-path="study-material.html"><a href="study-material.html#lecture-slides"><i class="fa fa-check"></i><b>5.1</b> Lecture slides</a></li>
+<li class="chapter" data-level="5.2" data-path="study-material.html"><a href="study-material.html#r-programming-additional-resources"><i class="fa fa-check"></i><b>5.2</b> R programming: additional resources</a></li>
+<li class="chapter" data-level="5.3" data-path="study-material.html"><a href="study-material.html#further-reading"><i class="fa fa-check"></i><b>5.3</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hands-on-1-introduction-to-r-tools-1.html"><a href="hands-on-1-introduction-to-r-tools-1.html"><i class="fa fa-check"></i><b>6</b> Hands-on 1: Introduction to R tools</a><ul>
+<li class="chapter" data-level="6.1" data-path="hands-on-1-introduction-to-r-tools-1.html"><a href="hands-on-1-introduction-to-r-tools-1.html#part-ii-phyloseq-data-structure-1"><i class="fa fa-check"></i><b>6.1</b> Part II: Phyloseq data structure</a></li>
+<li class="chapter" data-level="6.2" data-path="hands-on-1-introduction-to-r-tools-1.html"><a href="hands-on-1-introduction-to-r-tools-1.html#part-iii-data-manipulation-and-exploration-1"><i class="fa fa-check"></i><b>6.2</b> Part III: Data manipulation and exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="hands-on-2-key-concepts-and-techniques-1.html"><a href="hands-on-2-key-concepts-and-techniques-1.html"><i class="fa fa-check"></i><b>7</b> Hands-on 2: Key concepts and techniques</a><ul>
+<li class="chapter" data-level="7.1" data-path="hands-on-2-key-concepts-and-techniques-1.html"><a href="hands-on-2-key-concepts-and-techniques-1.html#part-i-key-concepts-1"><i class="fa fa-check"></i><b>7.1</b> Part I: Key concepts</a></li>
+<li class="chapter" data-level="7.2" data-path="hands-on-2-key-concepts-and-techniques-1.html"><a href="hands-on-2-key-concepts-and-techniques-1.html#part-ii-statistical-testing-1"><i class="fa fa-check"></i><b>7.2</b> Part II: Statistical testing</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to microbiome data science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hands-on-1-introduction-to-r-tools-1" class="section level1">
+<h1><span class="header-section-number">6</span> Hands-on 1: Introduction to R tools</h1>
+<p>To create a report, we often want to suppress unneccessary output that would be interesting during coding but not when presenting our results to a colleague. For this we can use chunk options (see <a href="https://rmarkdown.rstudio.com/lesson-3.html">here</a>).</p>
+<div id="part-ii-phyloseq-data-structure-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Part II: Phyloseq data structure</h2>
+<ul>
+<li><strong>Load example data</strong> of the two-week <a href="http://dx.doi.org/10.1038/ncomms7342">diet swap study</a> between western (USA) and traditional (rural Africa) diets from <a href="https://microbiome.github.io/tutorials/Data.html">microbiome R package</a>. The
+example data sets are already in the <a href="http://joey711.github.io/phyloseq/import-data">phyloseq
+format</a>. R
+provides many readily available tools to handle and analyze
+taxonomic profiling data that is provided in this format.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># before I load the data I load tidyverse. It includes ggplot </span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># and dplyr which are great for data manipulation and visualization</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">library</span>(microbiome)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="kw">data</span>(dietswap) </a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">print</span>(dietswap)</a></code></pre></div>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+## sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+## tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># rename the example data</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">pseq &lt;-<span class="st"> </span>dietswap</a></code></pre></div>
+<ul>
+<li><strong>Microbal abundances / OTU Table</strong> retrieve the microbial (OTU)
+abundance table from the example data set (phyloseq object). This
+example data set has abundances at the genus level instead of OTU
+level. The taxonomic groupings in this 16S data set are only
+approximations to exact genus-level taxonomic classifications. Tip:
+microbiome::abundances or phyloseq::otu_table</li>
+</ul>
+<p><strong>Note</strong> that I use the pipe operator (%&gt;%) below. This operator basically takes the output of the first expression and passes it to the next function. See <a href="https://www.datacamp.com/community/tutorials/pipe-r-tutorial">here</a> for more about the pipe operator (you can skip to <em>Why Use It</em> to get the main idea).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># full tables of abundances</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">otu.absolute &lt;-<span class="st"> </span><span class="kw">abundances</span>(pseq)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># or</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#otu.absolute &lt;- otu_table(pseq)</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># abundances results in a matrix object</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">abundances</span>(pseq) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">otu_table</span>(pseq) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">class</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;otu_table&quot;
+## attr(,&quot;package&quot;)
+## [1] &quot;phyloseq&quot;</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># print only 5 genera and first 10 samples</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">kable</span>(otu.absolute[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sample-1</th>
+<th align="right">Sample-2</th>
+<th align="right">Sample-3</th>
+<th align="right">Sample-4</th>
+<th align="right">Sample-5</th>
+<th align="right">Sample-6</th>
+<th align="right">Sample-7</th>
+<th align="right">Sample-8</th>
+<th align="right">Sample-9</th>
+<th align="right">Sample-10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Actinomycetaceae</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>Aerococcus</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>Aeromonas</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>Akkermansia</td>
+<td align="right">18</td>
+<td align="right">97</td>
+<td align="right">67</td>
+<td align="right">256</td>
+<td align="right">21</td>
+<td align="right">16</td>
+<td align="right">26</td>
+<td align="right">30</td>
+<td align="right">19</td>
+<td align="right">125</td>
+</tr>
+<tr class="odd">
+<td>Alcaligenes faecalis et rel.</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>OTU tables</strong> Retrieve the OTU table and investigate:</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>How many
+different samples and genus-level groups this phyloseq object has?</li>
+<li>What is the maximum abundance of Akkermansia in this data set?
+Tips: see data operations in the <a href="https://microbiome.github.io/tutorials/">microbiome
+tutorial</a></li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># 1 </span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">dim</span>(otu.absolute) <span class="co"># 130 genera (rownumber) and 222 samples (column number)</span></a></code></pre></div>
+<pre><code>## [1] 130 222</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># 2</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">otu.absolute[<span class="st">&quot;Akkermansia&quot;</span>, ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">max</span>()</a></code></pre></div>
+<pre><code>## [1] 2627</code></pre>
+<ul>
+<li>Draw a histogram of library sizes (total number of reads per
+sample). You can use the readcount function, or count the sum of
+reads per sample by using the colSums command applied on the otu
+table abundances. The example data set is from phylogenetic
+microarray, hence the numbers correspond to light intensity on the
+array rather than sequencing reads but the interpretation is
+analogous and we can ignore this detail for demonstration
+purposes. The key idea is that different samples may have different
+bacterial load. Check <a href="https://www.nature.com/articles/nature24460">Vandeputte et
+al. 2017</a> for further
+discussion on the differences between absolute and relative
+quantification of microbial abundances.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># option 1</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">pseq <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">readcount</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">hist</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># same using ggplot</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">pseq <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">readcount</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">qplot</span>(<span class="dt">bins =</span> <span class="dv">6</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># same using ggplot with different binsize</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">pseq <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">readcount</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">qplot</span>(<span class="dt">bins =</span> <span class="dv">30</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># option 2 using colSums</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">otu.absolute <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">colSums</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">qplot</span>(<span class="dt">bins =</span> <span class="dv">30</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-4.png" width="672" /></p>
+<ul>
+<li><strong>Taxonomy table</strong> Retrieve the taxonomy table and print out the
+first few lines of it with the R command head(). Investigate how
+many different phylum-level groups this phyloseq object has? Tips:
+phyloseq::tax_table and unique.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># print first few lines</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">pseq <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw">tax_table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Phylum</th>
+<th align="left">Family</th>
+<th align="left">Genus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Actinomycetaceae</td>
+<td align="left">Actinobacteria</td>
+<td align="left">Actinobacteria</td>
+<td align="left">Actinomycetaceae</td>
+</tr>
+<tr class="even">
+<td>Aerococcus</td>
+<td align="left">Firmicutes</td>
+<td align="left">Bacilli</td>
+<td align="left">Aerococcus</td>
+</tr>
+<tr class="odd">
+<td>Aeromonas</td>
+<td align="left">Proteobacteria</td>
+<td align="left">Proteobacteria</td>
+<td align="left">Aeromonas</td>
+</tr>
+<tr class="even">
+<td>Akkermansia</td>
+<td align="left">Verrucomicrobia</td>
+<td align="left">Verrucomicrobia</td>
+<td align="left">Akkermansia</td>
+</tr>
+<tr class="odd">
+<td>Alcaligenes faecalis et rel.</td>
+<td align="left">Proteobacteria</td>
+<td align="left">Proteobacteria</td>
+<td align="left">Alcaligenes faecalis et rel.</td>
+</tr>
+<tr class="even">
+<td>Allistipes et rel.</td>
+<td align="left">Bacteroidetes</td>
+<td align="left">Bacteroidetes</td>
+<td align="left">Allistipes et rel.</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># how many different phylum-level groups?</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co"># option 1</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">tax_table</span>(pseq)[, <span class="dv">1</span>] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="st">    </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="st">    </span><span class="kw">length</span>()</a></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="co"># option 2 </span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">pseq <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw">tax_table</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># we convert the matrix to a data frame for the next step</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw">distinct</span>(Phylum) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># select only unique Phyla</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"><span class="st">  </span><span class="kw">dim</span>() <span class="co"># count</span></a></code></pre></div>
+<pre><code>## [1] 8 1</code></pre>
+<ul>
+<li><strong>Sample metadata</strong> Retrieve sample metadata. How many unique
+subjects this data set has? What is the male/female ratio? Draw a
+bar plot of subject BMI-group. Tips: microbiome::meta</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="co"># option 1 (results in dataframe)</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">pseq.meta &lt;-<span class="st"> </span><span class="kw">meta</span>(pseq)</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="co"># option 2</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="co"># pseq.meta &lt;- sample_data(pseq)</span></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="co"># number of unique subjects</span></a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">pseq.meta<span class="op">$</span>subject <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-8" data-line-number="8"><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-9" data-line-number="9"><span class="st">  </span><span class="kw">length</span>()</a></code></pre></div>
+<pre><code>## [1] 38</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="co"># male/female ratio (of samples)</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">sex.count &lt;-<span class="st"> </span>pseq.meta <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(sex) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7"><span class="co"># take a look at the table</span></a>
+<a class="sourceLine" id="cb24-8" data-line-number="8"><span class="kw">kable</span>(sex.count)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sex</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">female</td>
+<td align="right">102</td>
+</tr>
+<tr class="even">
+<td align="left">male</td>
+<td align="right">120</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">sex.count[sex.count<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>, <span class="st">&quot;n&quot;</span>]<span class="op">/</span>sex.count[sex.count<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span>, <span class="st">&quot;n&quot;</span>]</a></code></pre></div>
+<pre><code>##          n
+## 1 1.176471</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co"># male/female ratio (of subjects)</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">sex.count &lt;-<span class="st"> </span>pseq.meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(timepoint <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># to only count each subject once</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(sex, subject) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>())</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="kw">dim</span>(sex.count[sex.count<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>, ])[<span class="dv">1</span>] <span class="op">/</span><span class="st"> </span><span class="kw">dim</span>(sex.count[sex.count<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span>, ])[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## [1] 1.235294</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># barplot of BMI</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">ggplot</span>(pseq.meta, <span class="kw">aes</span>(bmi_group)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="part-iii-data-manipulation-and-exploration-1" class="section level2">
+<h2><span class="header-section-number">6.2</span> Part III: Data manipulation and exploration</h2>
+<ul>
+<li><strong>Subsetting</strong> Pick a subset of the phyloseq object including only male and obese individuals. How many there are?
+Tips: subset_samples</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">pseq.obe &lt;-<span class="st"> </span><span class="kw">subset_samples</span>(pseq, bmi_group <span class="op">==</span><span class="st"> &quot;obese&quot;</span> <span class="op">&amp;</span><span class="st"> </span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">meta</span>(pseq.obe) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">dim</span>() <span class="co"># there are 30 samples</span></a></code></pre></div>
+<pre><code>## [1] 30  8</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">meta</span>(pseq.obe) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(timepoint <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">dim</span>() <span class="co"># and 5 subjects</span></a></code></pre></div>
+<pre><code>## [1] 5 8</code></pre>
+<ul>
+<li><strong>Transformations</strong> The phyloseq data has absolute abundances. Use
+the microbiome::transform command to convert these into relative
+abundances. Compare Akkermansia abundance using the example data
+before and after the compositionality transformation (with a
+cross-plot, for instance). Finally, compare the results to CLR-
+transformed data (see e.g. <a href="https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full">Gloor et
+al. 2017</a>)</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># relative abundance</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">pseq.rel &lt;-<span class="st"> </span>microbiome<span class="op">::</span><span class="kw">transform</span>(pseq, <span class="dt">transform =</span> <span class="st">&quot;compositional&quot;</span>)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co"># clr transformed abudnances</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">pseq.clr &lt;-<span class="st"> </span>microbiome<span class="op">::</span><span class="kw">transform</span>(pseq, <span class="dt">transform =</span> <span class="st">&quot;clr&quot;</span>)</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"><span class="co"># now extract akkermansia from each object</span></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">akkermansia.absolute &lt;-<span class="st"> </span>otu.absolute <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;sample_id&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-11" data-line-number="11"><span class="st">  </span><span class="kw">select</span>(sample_id, <span class="dt">akkermansia_abs =</span> Akkermansia)</a>
+<a class="sourceLine" id="cb34-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">akkermansia.relative &lt;-<span class="st"> </span><span class="kw">abundances</span>(pseq.rel) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-14" data-line-number="14"><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-15" data-line-number="15"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-16" data-line-number="16"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;sample_id&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-17" data-line-number="17"><span class="st">  </span><span class="kw">select</span>(sample_id, <span class="dt">akkermansia_rel =</span> Akkermansia)</a>
+<a class="sourceLine" id="cb34-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb34-19" data-line-number="19">akkermansia.clr &lt;-<span class="st"> </span><span class="kw">abundances</span>(pseq.clr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-20" data-line-number="20"><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-21" data-line-number="21"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb34-22" data-line-number="22"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="st">&quot;sample_id&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-23" data-line-number="23"><span class="st">  </span><span class="kw">select</span>(sample_id, <span class="dt">akkermansia_clr =</span> Akkermansia)</a>
+<a class="sourceLine" id="cb34-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb34-25" data-line-number="25"><span class="co"># for the crossplot I combine the abundances into one dataframe</span></a>
+<a class="sourceLine" id="cb34-26" data-line-number="26">akkermansia &lt;-<span class="st"> </span><span class="kw">left_join</span>(</a>
+<a class="sourceLine" id="cb34-27" data-line-number="27">    akkermansia.absolute, </a>
+<a class="sourceLine" id="cb34-28" data-line-number="28">    akkermansia.relative, </a>
+<a class="sourceLine" id="cb34-29" data-line-number="29">    <span class="dt">by =</span> <span class="st">&quot;sample_id&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-30" data-line-number="30"><span class="st">  </span><span class="kw">left_join</span>(akkermansia.clr, <span class="dt">by =</span> <span class="st">&quot;sample_id&quot;</span>)</a>
+<a class="sourceLine" id="cb34-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb34-32" data-line-number="32"><span class="co"># absolute versus relative</span></a>
+<a class="sourceLine" id="cb34-33" data-line-number="33"><span class="kw">ggplot</span>(akkermansia, <span class="kw">aes</span>(akkermansia_abs, akkermansia_rel)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb34-34" data-line-number="34"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># absolute versus clr</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw">ggplot</span>(akkermansia, <span class="kw">aes</span>(akkermansia_abs, akkermansia_clr)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co"># relative vs clr</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw">ggplot</span>(akkermansia, <span class="kw">aes</span>(akkermansia_rel, akkermansia_clr)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
+<ul>
+<li><strong>Visual exploration</strong> Visualize the population distribution of
+abundances for the following taxa: Akkermansia, Dialister,
+Gemella. Do the same for CLR-transformed abundances. Tip:
+microbiome::plot_density / microbiome::transform</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="co"># option 1: use the function individually for each genus, e.g.:</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="kw">plot_density</span>(pseq, <span class="dt">variable =</span> <span class="st">&quot;Akkermansia&quot;</span>)</a></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="co"># option 2: use the map function over a vector:</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">otus &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Akkermansia&quot;</span>, <span class="st">&quot;Dialister&quot;</span>, <span class="st">&quot;Gemella&quot;</span>)</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="kw">map</span>(otus, <span class="op">~</span><span class="kw">plot_density</span>(pseq, <span class="dt">variable =</span> .x))</a></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-4.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co"># same for the CLR transformed:</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">map</span>(otus, <span class="op">~</span><span class="kw">plot_density</span>(pseq.clr, <span class="dt">variable =</span> .x))</a></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-5.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-6.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-7.png" width="672" /></p>
+<ul>
+<li>Experiment with other <a href="https://microbiome.github.io/tutorials/Preprocessing.html">phyloseq data manipulation
+tools</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="study-material.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hands-on-2-key-concepts-and-techniques-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

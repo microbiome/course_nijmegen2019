@@ -1,0 +1,274 @@
+---
+title: "Example Hands on 1"
+output: html_document
+---
+
+# Hands-on 1: Introduction to R tools
+
+Check out the basics of Rmarkdown at the website of [Rstudio](https://rmarkdown.rstudio.com/lesson-1.html).
+
+
+
+```{r, include=FALSE}
+# By default, the code you write into an Rmarkdown document is printed in the resport. Sometimes, you want to suppress unneccessary output that would be interesting during coding but not when presenting our results to a colleague. For this we can use chunk options (see https://rmarkdown.rstudio.com/lesson-3.html). E.g. this code chunk will not be shown in the output because of include=FALSE. Here we set global chunk options:
+library(knitr)
+opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+
+
+## Part II: Phyloseq data structure
+
+     
+ * **Load example data** of the two-week [diet swap study](http://dx.doi.org/10.1038/ncomms7342) between western (USA) and traditional (rural Africa) diets from [microbiome R package](https://microbiome.github.io/tutorials/Data.html). The
+     example data sets are already in the [phyloseq
+     format](http://joey711.github.io/phyloseq/import-data). R
+     provides many readily available tools to handle and analyze
+     taxonomic profiling data that is provided in this format.
+     
+
+     
+```{r}
+# before I load the data I load tidyverse. It includes ggplot 
+# and dplyr which are great for data manipulation and visualization
+library(tidyverse)
+
+# load data
+library(microbiome)
+data(dietswap) 
+print(dietswap)
+
+# rename the example data
+pseq <- dietswap
+```
+
+
+ * **Microbal abundances / OTU Table** retrieve the microbial (OTU)
+   abundance table from the example data set (phyloseq object). This
+   example data set has abundances at the genus level instead of OTU
+   level. The taxonomic groupings in this 16S data set are only
+   approximations to exact genus-level taxonomic classifications. Tip:
+   microbiome::abundances or phyloseq::otu_table
+   
+**Note** that I use the pipe operator (%>%) below. This operator basically takes the output of the first expression and passes it to the next function. See [here](https://www.datacamp.com/community/tutorials/pipe-r-tutorial) for more about the pipe operator (you can skip to _Why Use It_ to get the main idea).
+
+   
+   
+```{r}
+# full tables of abundances
+otu.absolute <- abundances(pseq)
+# or
+#otu.absolute <- otu_table(pseq)
+
+# abundances results in a matrix object
+abundances(pseq) %>% class()
+otu_table(pseq) %>% class()
+
+# print only 5 genera and first 10 samples
+kable(otu.absolute[1:5,1:10])
+```
+
+
+ * **OTU tables** Retrieve the OTU table and investigate: 
+ 
+ 1) How many
+   different samples and genus-level groups this phyloseq object has?
+   2) What is the maximum abundance of Akkermansia in this data set?
+   Tips: see data operations in the [microbiome
+   tutorial](https://microbiome.github.io/tutorials/)
+   
+   
+```{r}
+# 1 
+dim(otu.absolute) # 130 genera (rownumber) and 222 samples (column number)
+
+# 2
+otu.absolute["Akkermansia", ] %>% max()
+```
+
+
+ * Draw a histogram of library sizes (total number of reads per
+   sample). You can use the readcount function, or count the sum of
+   reads per sample by using the colSums command applied on the otu
+   table abundances. The example data set is from phylogenetic
+   microarray, hence the numbers correspond to light intensity on the
+   array rather than sequencing reads but the interpretation is
+   analogous and we can ignore this detail for demonstration
+   purposes. The key idea is that different samples may have different
+   bacterial load. Check [Vandeputte et
+   al. 2017](https://www.nature.com/articles/nature24460) for further
+   discussion on the differences between absolute and relative
+   quantification of microbial abundances.
+   
+   
+```{r}
+# option 1
+pseq %>% readcount() %>% hist()
+# same using ggplot
+pseq %>% readcount() %>% qplot(bins = 6)
+# same using ggplot with different binsize
+pseq %>% readcount() %>% qplot(bins = 30)
+# option 2 using colSums
+otu.absolute %>% colSums() %>% qplot(bins = 30)
+```
+
+
+ * **Taxonomy table** Retrieve the taxonomy table and print out the
+   first few lines of it with the R command head(). Investigate how
+   many different phylum-level groups this phyloseq object has? Tips:
+   phyloseq::tax_table and unique.
+   
+   
+```{r}
+# print first few lines
+pseq %>% 
+  tax_table() %>% 
+  head() %>%
+  kable()
+
+# how many different phylum-level groups?
+
+# option 1
+tax_table(pseq)[, 1] %>% 
+    unique() %>% 
+    length()
+
+# option 2 
+pseq %>% 
+  tax_table() %>% 
+  as.data.frame() %>% # we convert the matrix to a data frame for the next step
+  distinct(Phylum) %>% # select only unique Phyla
+  dim() # count
+```
+
+
+ * **Sample metadata** Retrieve sample metadata. How many unique
+     subjects this data set has? What is the male/female ratio? Draw a
+     bar plot of subject BMI-group. Tips: microbiome::meta
+
+```{r}
+# option 1 (results in dataframe)
+pseq.meta <- meta(pseq)
+# option 2
+# pseq.meta <- sample_data(pseq)
+
+# number of unique subjects
+pseq.meta$subject %>% 
+  unique() %>% 
+  length()
+
+
+# male/female ratio (of samples)
+sex.count <- pseq.meta %>%
+  select(sex) %>%
+  group_by(sex) %>%
+  summarise(n = n())
+
+# take a look at the table
+kable(sex.count)
+sex.count[sex.count$sex == "male", "n"]/sex.count[sex.count$sex == "female", "n"]
+
+# male/female ratio (of subjects)
+sex.count <- pseq.meta %>% 
+  filter(timepoint == 1) %>% # to only count each subject once
+  group_by(sex, subject) %>%
+  summarise(n = n())
+dim(sex.count[sex.count$sex == "male", ])[1] / dim(sex.count[sex.count$sex == "female", ])[1]
+
+
+# barplot of BMI
+ggplot(pseq.meta, aes(bmi_group)) +
+  geom_bar()
+  
+```
+
+
+
+
+## Part III: Data manipulation and exploration
+
+ * **Subsetting** Pick a subset of the phyloseq object including only male and obese individuals. How many there are?
+     Tips: subset_samples
+     
+```{r}
+pseq.obe <- subset_samples(pseq, bmi_group == "obese" & sex == "male")
+meta(pseq.obe) %>% dim() # there are 30 samples
+meta(pseq.obe) %>% filter(timepoint == 1) %>% dim() # and 5 subjects
+```
+
+
+ * **Transformations** The phyloseq data has absolute abundances. Use
+     the microbiome::transform command to convert these into relative
+     abundances. Compare Akkermansia abundance using the example data
+     before and after the compositionality transformation (with a
+     cross-plot, for instance). Finally, compare the results to CLR-
+     transformed data (see e.g. [Gloor et
+     al. 2017](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full))
+     
+```{r}
+# relative abundance
+pseq.rel <- microbiome::transform(pseq, transform = "compositional")
+# clr transformed abudnances
+pseq.clr <- microbiome::transform(pseq, transform = "clr")
+
+# now extract akkermansia from each object
+akkermansia.absolute <- otu.absolute %>%
+  t() %>% 
+  as.data.frame() %>% 
+  rownames_to_column("sample_id") %>%
+  select(sample_id, akkermansia_abs = Akkermansia)
+
+akkermansia.relative <- abundances(pseq.rel) %>%
+  t() %>% 
+  as.data.frame() %>% 
+  rownames_to_column("sample_id") %>%
+  select(sample_id, akkermansia_rel = Akkermansia)
+
+akkermansia.clr <- abundances(pseq.clr) %>%
+  t() %>% 
+  as.data.frame() %>% 
+  rownames_to_column("sample_id") %>%
+  select(sample_id, akkermansia_clr = Akkermansia)
+
+# for the crossplot I combine the abundances into one dataframe
+akkermansia <- left_join(
+    akkermansia.absolute, 
+    akkermansia.relative, 
+    by = "sample_id") %>%
+  left_join(akkermansia.clr, by = "sample_id")
+
+# absolute versus relative
+ggplot(akkermansia, aes(akkermansia_abs, akkermansia_rel)) +
+  geom_point()
+# absolute versus clr
+ggplot(akkermansia, aes(akkermansia_abs, akkermansia_clr)) +
+  geom_point()
+# relative vs clr
+ggplot(akkermansia, aes(akkermansia_rel, akkermansia_clr)) +
+  geom_point()
+```
+
+
+ * **Visual exploration** Visualize the population distribution of
+   abundances for the following taxa: Akkermansia, Dialister,
+   Gemella. Do the same for CLR-transformed abundances. Tip:
+   microbiome::plot_density / microbiome::transform
+   
+```{r}
+# option 1: use the function individually for each genus, e.g.:
+plot_density(pseq, variable = "Akkermansia")
+
+# option 2: use the map function over a vector:
+otus <- c("Akkermansia", "Dialister", "Gemella")
+map(otus, ~plot_density(pseq, variable = .x))
+
+# same for the CLR transformed:
+map(otus, ~plot_density(pseq.clr, variable = .x))
+
+```
+
+   
+ * Experiment with other [phyloseq data manipulation
+   tools](https://microbiome.github.io/tutorials/Preprocessing.html)
+   
+   
