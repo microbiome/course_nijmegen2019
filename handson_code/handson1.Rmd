@@ -5,13 +5,13 @@ output: html_document
 
 # Hands-on 1: Introduction to R tools
 
-To create a report, we often want to suppress unneccessary output that would be interesting during coding but not when presenting our results to a colleague. For this we can use chunk options (see [here](https://rmarkdown.rstudio.com/lesson-3.html)).
+Check out the basics of Rmarkdown at the website of [Rstudio](https://rmarkdown.rstudio.com/lesson-1.html).
+
 
 
 ```{r, include=FALSE}
+# By default, the code you write into an Rmarkdown document is printed in the resport. Sometimes, you want to suppress unneccessary output that would be interesting during coding but not when presenting our results to a colleague. For this we can use chunk options (see https://rmarkdown.rstudio.com/lesson-3.html). E.g. this code chunk will not be shown in the output because of include=FALSE. Here we set global chunk options:
 library(knitr)
-# this code chunk will not be shown in the output because of
-# include=FALSE
 opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
