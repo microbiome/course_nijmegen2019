@@ -41,6 +41,8 @@ Install the following software before the course:
 
 If you are not familiar with R programming, we highly recommend going through [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry and further links to R resources in the [study material](https://microbiome.github.io/course_nijmegen2019/study-material.html).
 
+If you already have installed a recent version of R, try to run the [Installation script](code/install_dependencies.R). In case installing or loading the packages fails, consider updating R. We tested the material using the newest version (R 3.6.1). For questions regarding installation you may contact [Henrik](mailto:henrikeckermann87@gmail.com).
+
 
 
 
