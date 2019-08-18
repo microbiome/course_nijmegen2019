@@ -43,7 +43,7 @@ Provide the answers to at least some of the following questions in the form of a
  * **Microbal abundances / OTU Table** retrieve the microbial (OTU)
    abundance table from the example data set (phyloseq object). This
    example data set has abundances at the genus level instead of OTU
-   level.c Tip:
+   level. Tip:
    microbiome::abundances or phyloseq::otu_table
 
  * **OTU tables** Retrieve the OTU table and investigate: 1) How many
