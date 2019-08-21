@@ -33,15 +33,15 @@ This course provides an overview of the standard bioinformatics workflow in taxo
 
 We recommend using your own laptop. If this is not possible, kindly contact the organizers.
 
-Install the following software before the course:
+Follow the following steps before the course:
 
-* R [Download link](https://cran.r-project.org)
-* Rstudio [Download link](https://www.rstudio.com/products/rstudio/download/)
-* R Libraries [Installation script](code/install_dependencies.R)
+1. Install R: Follow the [Download link](https://cran.r-project.org) and then choose your operating system. Then in the next step choose R-3.6.1 for Mac or "base" and then R 3.6.1 for Windows. If you already have installed a recent version of R, install Rstudio (see step 2) and then go to step 3. In case installing or loading the packages fails, consider updating R by performing step 1. We tested the material using the newest version (R 3.6.1) as well as R 3.5.
+2. Install/Update Rstudio: Follow the [Download link](https://www.rstudio.com/products/rstudio/download/) and choose "Rstudio Desktop" (Open Source License) to download the newest version of Rstudio. Choose the installer that matches your operating system. 
+3. Open [this Installation script](code/install_dependencies.R) in Rstudio and run the entire script. This will install all required packages for the course.
 
 If you are not familiar with R programming, we highly recommend going through [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry and further links to R resources in the [study material](https://microbiome.github.io/course_nijmegen2019/study-material.html).
 
-If you already have installed a recent version of R, try to run the [Installation script](code/install_dependencies.R). In case installing or loading the packages fails, consider updating R. We tested the material using the newest version (R 3.6.1). For questions regarding installation you may contact [Henrik](mailto:henrikeckermann87@gmail.com).
+For questions regarding the installation of the software you may contact [Henrik](mailto:henrikeckermann87@gmail.com).
 
 
 

@@ -11,6 +11,8 @@ site: bookdown::bookdown_site
 
 ## September 12 (Thu)
 
+**Welcome (9.00-9.30  / 0.5 hours)**
+
 **Session 1 (9.30-11.30  / 2 hours): Standard bioinformatics workflow in microbiome research**
 
  * Introduction and learning goals
@@ -21,6 +23,8 @@ site: bookdown::bookdown_site
 **Session 2 (12-13 / 1 hour)**
 
  * Lecture: Contemporary research in microbiome data science
+ 
+**Lunch (13-14:30 / 1.5 hours)**
 
 
 **Session 3 (14.30-17.30 / 3 hours including breaks) / Hands-on 1: introduction to R tools**
@@ -32,7 +36,7 @@ site: bookdown::bookdown_site
 
 ## September 13 (Fri)
 
-**Session 4 (9.30-12:00 / 2.5 hours): Key concepts and techniques: mixed lecture and hands-on**
+**Session 4 (9.00-12:00 / 3 hours): Key concepts and techniques: mixed lecture and hands-on**
 
  * Part I:  Key concepts: diversity, core, landscape view
  * Part II: Statistical testing and special properties of microbiome data
