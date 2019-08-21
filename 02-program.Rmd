@@ -11,7 +11,9 @@ site: bookdown::bookdown_site
 
 ## September 12 (Thu)
 
-**Session 1 (9.00-11.30  / 2.5 hours): Standard bioinformatics workflow in microbiome research**
+**Welcome (9.00-9.30  / 0.5 hours)**
+
+**Session 1 (9.30-11.30  / 2 hours): Standard bioinformatics workflow in microbiome research**
 
  * Introduction and learning goals
  * Overview of a standard bioinformatics workflow
