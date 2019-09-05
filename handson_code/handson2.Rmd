@@ -158,20 +158,20 @@ library(vegan)
 
 # extract relative abundances and meta data
 otu.relative <- abundances(pseq.rel)
-meta <- meta(pseq.rel)
+pseq.meta <- meta(pseq.rel)
 
 # Before we perform PERMANOVA we must test the assumption 
 # that the multivariate spread between the groups is similar.
 dist <- vegdist(t(otu.relative))
 # in this specific case the assumption is not met for bmi_group
-betadisper(dist, meta$bmi_group) %>%
+betadisper(dist, pseq.meta$bmi_group) %>%
   anova() %>% 
   kable()
 
 # perform PERMANOVA
 pm <- adonis(
   t(otu.relative) ~ bmi_group,
-  data = meta,
+  data = pseq.meta,
   permutations = 99,
   method = "bray"
   )
@@ -243,6 +243,9 @@ df %>% filter(pvalue < 0.05 & log2FoldChange > 1.5) %>%
 
  * Experiment with the other available tools in the [microbiome
    tutorial](https://microbiome.github.io/tutorials/)
+   
+   
+
 
  * Provide a compact summary of the data and analyses in the form of a
    reproducible Rmarkdown report. Include only selected summaries and

@@ -55,11 +55,7 @@ Provide the answers to at least some of the following questions in the form of a
  * Draw a histogram of library sizes (total number of reads per
    sample). You can use the readcount function, or count the sum of
    reads per sample by using the colSums command applied on the otu
-   table abundances. The example data set is from phylogenetic
-   microarray, hence the numbers correspond to light intensity on the
-   array rather than sequencing reads but the interpretation is
-   analogous and we can ignore this detail for demonstration
-   purposes. The key idea is that different samples may have different
+   table abundances. The key idea is that different samples may have different
    bacterial load. Check [Vandeputte et
    al. 2017](https://www.nature.com/articles/nature24460) for further
    discussion on the differences between absolute and relative
