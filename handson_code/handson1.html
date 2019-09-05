@@ -269,7 +269,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -369,7 +368,7 @@ summary {
 
 <div id="hands-on-1-introduction-to-r-tools" class="section level1">
 <h1>Hands-on 1: Introduction to R tools</h1>
-<p>To create a report, we often want to suppress unneccessary output that would be interesting during coding but not when presenting our results to a colleague. For this we can use chunk options (see <a href="https://rmarkdown.rstudio.com/lesson-3.html">here</a>).</p>
+<p>Check out the basics of Rmarkdown at the website of <a href="https://rmarkdown.rstudio.com/lesson-1.html">Rstudio</a>.</p>
 <div id="part-ii-phyloseq-data-structure" class="section level2">
 <h2>Part II: Phyloseq data structure</h2>
 <ul>
@@ -505,7 +504,7 @@ dim(otu.absolute) # 130 genera (rownumber) and 222 samples (column number)</code
 otu.absolute[&quot;Akkermansia&quot;, ] %&gt;% max()</code></pre>
 <pre><code>## [1] 2627</code></pre>
 <ul>
-<li>Draw a histogram of library sizes (total number of reads per sample). You can use the readcount function, or count the sum of reads per sample by using the colSums command applied on the otu table abundances. The example data set is from phylogenetic microarray, hence the numbers correspond to light intensity on the array rather than sequencing reads but the interpretation is analogous and we can ignore this detail for demonstration purposes. The key idea is that different samples may have different bacterial load. Check <a href="https://www.nature.com/articles/nature24460">Vandeputte et al. 2017</a> for further discussion on the differences between absolute and relative quantification of microbial abundances.</li>
+<li>Draw a histogram of library sizes (total number of reads per sample). You can use the readcount function, or count the sum of reads per sample by using the colSums command applied on the otu table abundances. The key idea is that different samples may have different bacterial load. Check <a href="https://www.nature.com/articles/nature24460">Vandeputte et al. 2017</a> for further discussion on the differences between absolute and relative quantification of microbial abundances.</li>
 </ul>
 <pre class="r"><code># option 1
 pseq %&gt;% readcount() %&gt;% hist()</code></pre>
