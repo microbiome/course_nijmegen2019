@@ -218,21 +218,35 @@ coef %>% as.data.frame() %>% # convert to dataframe
 ```{r}
 library(DESeq2)
 # start by converting phyloseq object to deseq2 format
-ds2 <- phyloseq_to_deseq2(pseq, ~group + nationality)
+ds2 <- phyloseq_to_deseq2(pseq, ~nationality)
 # Run DeSeq2 analysis (all taxa at once!)
 dds <- DESeq(ds2)
+```
 
-# Investigate results 
+Compare nationalities based on DESeq2 results. Note that covariates are ignored.
+
+```{r nationality}
+res1 <- results(dds, contrast = c("nationality", "AAM", "AFR"))
+kable(head(as.data.frame(res1)))
+```
+
+
+MA-plot
+
+```{r maplot}
+plotMA(res1, cex = 1)
+```
+
+Summarize the largest differences as a table:
+
+```{r}
 res <- results(dds)
 df <- as.data.frame(res) %>% 
   rownames_to_column("taxon") %>%
-  arrange(log2FoldChange, padj)
-
-df %>% filter(pvalue < 0.05 & log2FoldChange > 1.5) %>%
-  arrange(pvalue, log2FoldChange) %>%
+  filter(padj < 0.05 & abs(log2FoldChange) > 1.5) %>%  
+  arrange(padj, desc(abs(log2FoldChange))) %>%
   mutate_if(is.numeric, round, 3) %>% # round to 3 decimal places
   kable()
-
 ```
 
 
