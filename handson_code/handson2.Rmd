@@ -57,7 +57,8 @@ tab.alpha %>%
   select(
     diversity_inverse_simpson, 
     diversity_gini_simpson, 
-    diversity_shannon) %>%
+    diversity_shannon,
+    chao1) %>%
   GGally::ggpairs()
 ```
 
@@ -172,18 +173,17 @@ betadisper(dist, pseq.meta$bmi_group) %>%
 pm <- adonis(
   t(otu.relative) ~ bmi_group,
   data = pseq.meta,
-  permutations = 99,
+  permutations = 999,
   method = "bray"
   )
 
 # to obtain the effect size and the F-test p-value:
+pm$aov.tab %>% as.data.frame() %>%
+  kable()
 ```
 
 
 ```{r}
-pm$aov.tab %>% as.data.frame() %>%
-  kable()
-
 # to investigate the top factors
 coef <- coefficients(pm)["bmi_group1", ]
 
@@ -203,8 +203,62 @@ coef %>% as.data.frame() %>% # convert to dataframe
   ggplot(aes(top_taxa, coef)) + # plot
   geom_bar(stat = "identity") +
   coord_flip()
-
 ```
+
+
+Below I explore whether using a different distance metric as suggested by [Gloor et
+     al. 2017](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full) makes a difference in the interpreations of the results:
+
+
+```{r}
+# extract relative abundances and meta data
+otu.clr <- abundances(pseq.clr)
+pseq.meta <- meta(pseq.clr)
+
+# Before we perform PERMANOVA we must test the assumption 
+# that the multivariate spread between the groups is similar.
+dist.ait <- vegdist(t(otu.clr), method = "euclidean")
+# in this specific case the assumption is not met for bmi_group
+betadisper(dist.ait, pseq.meta$bmi_group) %>%
+  anova() %>% 
+  kable()
+
+# perform PERMANOVA
+pm.ait <- adonis(
+  t(otu.clr) ~ bmi_group,
+  data = pseq.meta,
+  permutations = 999,
+  method = "euclidean"
+  )
+
+# to obtain the effect size and the F-test p-value:
+pm.ait$aov.tab %>% as.data.frame() %>%
+  kable()
+
+# to investigate the top factors
+coef.ait <- coefficients(pm.ait)["bmi_group1", ]
+
+# with base R
+top.coef.ait <- coef.ait[rev(order(abs(coef.ait)))[1:20]]
+par(mar = c(3, 14, 2, 1))
+barplot(sort(top.coef.ait), horiz = T, las = 1, main = "Top taxa")
+
+# with ggplot
+coef.ait %>% as.data.frame() %>% # convert to dataframe
+  rownames_to_column("taxa") %>% # add the rownames as a column for plotting
+  select(taxa, coef = ".") %>% # select and rename the columns
+  arrange(desc(abs(coef.ait))) %>% # sort by absolute value
+  head(20) %>% # pick 20 highest coefficients
+  arrange(desc(coef)) %>% # sort by value
+  mutate(top_taxa = factor(taxa, levels = taxa)) %>% # for ggplot to keep order we need factor
+  ggplot(aes(top_taxa, coef)) + # plot
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+
+We see that in both cases the conclusions would be similar: The assumptions of similar multivariate spread between groups is violated. The PERMANOVA would suggest that belonging to a different BMI group explains a small portion of variation in the microbiota composition. When it comes to most important genera, there is a clear overlap. However, when using Aitchison distance the differences in importance are less extreme.
+
+
 
 
  * **OTU-level comparisons** Use
@@ -247,6 +301,7 @@ df <- as.data.frame(res) %>%
   arrange(padj, desc(abs(log2FoldChange))) %>%
   mutate_if(is.numeric, round, 3) %>% # round to 3 decimal places
   kable()
+df
 ```
 
 
@@ -258,8 +313,9 @@ df <- as.data.frame(res) %>%
  * Experiment with the other available tools in the [microbiome
    tutorial](https://microbiome.github.io/tutorials/)
    
-   
 
+   
+   
 
  * Provide a compact summary of the data and analyses in the form of a
    reproducible Rmarkdown report. Include only selected summaries and
