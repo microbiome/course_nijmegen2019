@@ -29,6 +29,11 @@ The lecture slides will be added here.
 
 - [Microbiome Data Science. Shetty & Lahti, 2019](https://openresearchlabs.github.io/publications/papers/2018-Shetty-Lahti-MDS.pdf)
 
+## Solutions Handson
+- [Day 1](https://github.com/microbiome/course_nijmegen2019/raw/master/handson_code/handson1.html.zip)
+
+
+
 
 
 
