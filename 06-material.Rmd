@@ -31,7 +31,7 @@ The lecture slides will be added here.
 
 ## Solutions Handson
 - [Day 1](https://github.com/microbiome/course_nijmegen2019/raw/master/handson_code/handson1.html.zip)
-
+- [Day 2](https://github.com/microbiome/course_nijmegen2019/raw/master/handson_code/handson2.html.zip)
 
 
 

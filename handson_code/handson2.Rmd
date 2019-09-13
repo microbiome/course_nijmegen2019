@@ -63,6 +63,13 @@ tab.alpha %>%
 ```
 
 
+
+
+
+
+
+
+
  * **Beta diversity** Visualize community variation with PCoA
      ([examples](https://microbiome.github.io/tutorials/Ordination.html)).
      Investigate the influence of the data transformations on
@@ -89,7 +96,13 @@ plot_ordination(pseq, ord, color = "nationality")
      microbiome::prevalence and sort)
 
 ```{r}
-prevalence(pseq.rel, sort = TRUE) %>% 
+```
+
+
+```{r}
+prevalence(pseq.rel, detection = 0, sort = TRUE) %>% 
+  kable()
+prevalence(pseq.rel, detection = 0.003, sort = TRUE) %>% 
   kable()
 ```
 
@@ -103,6 +116,8 @@ prevalence(pseq.rel, sort = TRUE) %>%
 pseq.core <- core(pseq.rel, detection = 0.001, prevalence = 0.5)
 # how many taxa are there?
 taxa(pseq.core) %>% length()
+# alternative
+core_members(pseq.rel, detection = 0.001, prevalence = 0.5) %>% length()
 
 # vizualize core microbiota
 
@@ -130,7 +145,7 @@ print(p)
 
 # Core with absolute counts and horizontal view:
 # and minimum population prevalence (given as percentage)
-detections <- 10^seq(log10(1), log10(max(abundances(pseq))/10), length = 10)
+detections <- 10^seq(log10(1), log10(max(abundances(pseq))/100), length = 10)
 library(RColorBrewer)
 p <- plot_core(pseq, 
                plot.type = "heatmap",
